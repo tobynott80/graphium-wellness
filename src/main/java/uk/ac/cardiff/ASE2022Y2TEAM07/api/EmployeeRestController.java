@@ -1,6 +1,7 @@
 package uk.ac.cardiff.ASE2022Y2TEAM07.api;
 
 
+import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,16 +15,13 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api")
+@AllArgsConstructor
 public class EmployeeRestController {
 
     private EmployeeService employeeService;
 
     private OneToOneService onetoOneService;
 
-    public EmployeeRestController(EmployeeService employeeService, OneToOneService onetoOneService) {
-        this.employeeService = employeeService;
-        this.onetoOneService = onetoOneService;
-    }
 
 
     @GetMapping("employee")
