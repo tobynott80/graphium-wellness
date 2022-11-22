@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface OneToOneService {
     List<OneToOneDto> findAll();
+
 }

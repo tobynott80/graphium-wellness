@@ -3,13 +3,11 @@ package uk.ac.cardiff.ASE2022Y2TEAM07.api;
 
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import uk.ac.cardiff.ASE2022Y2TEAM07.dto.CheckinDto;
 import uk.ac.cardiff.ASE2022Y2TEAM07.dto.EmployeeDto;
 import uk.ac.cardiff.ASE2022Y2TEAM07.dto.OneToOneDto;
 import uk.ac.cardiff.ASE2022Y2TEAM07.service.EmployeeService;
-import uk.ac.cardiff.ASE2022Y2TEAM07.service.OneToOneService;
 
 import java.util.List;
 
@@ -20,17 +18,26 @@ public class EmployeeRestController {
 
     private EmployeeService employeeService;
 
-    private OneToOneService onetoOneService;
 
 
 
     @GetMapping("employee")
-    public ResponseEntity<List<EmployeeDto>> findAllEmployees() {
+    public ResponseEntity<List<EmployeeDto>> findAllEmployees(@RequestParam(value="employeeID", defaultValue = "") Integer employeeID) {
         return ResponseEntity.ok(employeeService.findAll());
     }
 
-    @GetMapping("1to1")
-    public ResponseEntity<List<OneToOneDto>> findAll1to1s() {
-        return ResponseEntity.ok(onetoOneService.findAll());
+    @GetMapping("employee/onetoone/")
+    public ResponseEntity<List<OneToOneDto>> findAllEmployees1to1s(@RequestParam(value="employeeID", defaultValue = "") Integer employeeID) {
+        return ResponseEntity.ok(employeeService.findAllEmployees1to1s(employeeID));
+    }
+
+    @GetMapping("employee/checkin")
+    public ResponseEntity<List<CheckinDto>> findAllCheckins(@RequestParam(value="employeeID", defaultValue = "") Integer employeeID){
+        return ResponseEntity.ok(employeeService.findAllEmployeesCheckins(employeeID));
+    }
+
+    @PostMapping("employee")
+    public ResponseEntity<EmployeeDto> createEmployee(@RequestBody SignupForm signupForm) {
+        return ResponseEntity.ok(employeeService.addNewEmployee(employeeDto));
     }
 }
