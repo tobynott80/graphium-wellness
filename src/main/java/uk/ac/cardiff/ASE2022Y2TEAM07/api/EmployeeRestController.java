@@ -8,6 +8,8 @@ import uk.ac.cardiff.ASE2022Y2TEAM07.dto.CheckinDto;
 import uk.ac.cardiff.ASE2022Y2TEAM07.dto.EmployeeDto;
 import uk.ac.cardiff.ASE2022Y2TEAM07.dto.OneToOneDto;
 import uk.ac.cardiff.ASE2022Y2TEAM07.service.EmployeeService;
+import uk.ac.cardiff.ASE2022Y2TEAM07.service.message.ResponseTransfer;
+import uk.ac.cardiff.ASE2022Y2TEAM07.web.forms.EmployeeSignupForm;
 
 import java.util.List;
 
@@ -17,8 +19,6 @@ import java.util.List;
 public class EmployeeRestController {
 
     private EmployeeService employeeService;
-
-
 
 
     @GetMapping("employee")
@@ -37,7 +37,8 @@ public class EmployeeRestController {
     }
 
     @PostMapping("employee")
-    public ResponseEntity<EmployeeDto> createEmployee(@RequestBody SignupForm signupForm) {
-        return ResponseEntity.ok(employeeService.addNewEmployee(employeeDto));
+    public ResponseTransfer  createEmployee(@RequestBody EmployeeSignupForm employeeSignupForm) {
+        //TODO: add employee details to database
+        return new ResponseTransfer("Employee created successfully", "200");
     }
 }
