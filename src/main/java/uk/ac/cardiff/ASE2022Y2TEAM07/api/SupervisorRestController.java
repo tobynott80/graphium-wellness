@@ -37,4 +37,10 @@ public class SupervisorRestController {
         return new ResponseTransfer("Employee created successfully", "200");
     }
 
+    @PutMapping ("supervisor")
+    public ResponseTransfer updateSupervisor(@RequestBody SupervisorDto supervisorDto) {
+        //TODO: update supervisor details in database
+        return new ResponseTransfer("Employee updated successfully", "200");
+    }
+
 }

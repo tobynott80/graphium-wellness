@@ -41,4 +41,10 @@ public class EmployeeRestController {
         //TODO: add employee details to database
         return new ResponseTransfer("Employee created successfully", "200");
     }
+
+    @PutMapping("employee")
+    public ResponseTransfer updateEmployee(@RequestBody EmployeeDto employeeDto) {
+        //TODO: update employee details in database
+        return new ResponseTransfer("Employee updated successfully", "200");
+    }
 }

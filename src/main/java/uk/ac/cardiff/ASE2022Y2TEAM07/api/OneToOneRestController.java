@@ -25,4 +25,9 @@ public class OneToOneRestController {
     public ResponseTransfer createOneToOne(@RequestBody OneToOneForm oneToOneForm) {
         return new ResponseTransfer("One to one created successfully", "200");
     }
+
+    @PutMapping("onetoone")
+    public ResponseTransfer updateOneToOne(@RequestBody OneToOneForm oneToOneForm) {
+        return new ResponseTransfer("One to one updated successfully", "200");
+    }
 }
