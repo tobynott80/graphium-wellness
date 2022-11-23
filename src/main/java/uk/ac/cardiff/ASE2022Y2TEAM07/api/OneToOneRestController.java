@@ -23,11 +23,13 @@ public class OneToOneRestController {
 
     @PostMapping("onetoone")
     public ResponseTransfer createOneToOne(@RequestBody OneToOneForm oneToOneForm) {
+        //TODO: add one to one details to database
         return new ResponseTransfer("One to one created successfully", "200");
     }
 
     @PutMapping("onetoone")
     public ResponseTransfer updateOneToOne(@RequestBody OneToOneForm oneToOneForm) {
+        //TODO: update one to one details in database
         return new ResponseTransfer("One to one updated successfully", "200");
     }
 }
