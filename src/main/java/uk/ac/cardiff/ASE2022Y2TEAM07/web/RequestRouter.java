@@ -10,7 +10,7 @@ public class RequestRouter implements WebMvcConfigurer {
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("login").setViewName("/LoginPage");
 
-        registry.addViewController("supervisor").setViewName("/supervisor");
+        registry.addViewController("supervisor").setViewName("/SupervisorPage");
     }
 
 }
