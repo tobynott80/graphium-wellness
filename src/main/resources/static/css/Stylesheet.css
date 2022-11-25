@@ -1,0 +1,80 @@
+.header{
+    margin: auto;
+    font-weight: bold;
+    text-align: center;
+}
+
+.title-homepage{
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+    font-size: 3em;
+}
+
+.container-homepage{
+    border-style: solid;
+}
+
+.container-homepage-buttons{
+    position: relative;
+    margin: auto;
+    /*border-style: solid;*/
+    /*border-color: brown;*/
+    text-align: center;
+}
+
+.button-homepage-1to1{
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+    /*font-size: 12px;*/
+
+    position: center;
+    width: 17.5em;
+    height: 12.5em;
+    border-radius: 12px;
+    border: none;
+    margin: 20px 10px;
+
+    transition-duration: 0.4s;
+}
+
+.button-homepage-1to1:hover{
+    background-color: cadetblue;
+    colour: white;
+}
+
+.button-homepage-checkin{
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+    /*font-size: 12px;*/
+
+    position: center;
+    width: 17.5em;
+    height: 12.5em;
+    border-radius: 12px;
+    border: none;
+    margin: 20px 10px;
+
+    transition-duration: 0.4s;
+}
+
+.button-homepage-checkin:hover{
+    background-color: cadetblue;
+    colour: white;
+}
+
+.container-checkintracker{
+    border-style: solid;
+    border-color: red;
+    text-align: center;
+}
+
+.filler-image{
+    max-width: 65%;
+    height: auto;
+}
+
+.footer{
+    margin: auto;
+    font-weight: bold;
+    text-align: center;
+}
