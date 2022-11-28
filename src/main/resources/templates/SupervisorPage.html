@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Supervisor Home Page</title>
+    <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-base.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar bg-dark">
+    <p class="nav-item" style="color:aliceblue">Navbar Placeholder</p>
+</nav>
+
+<div>
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Employee Name</th>
+            <th scope="col">Employee Average</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">{user.name}</th>
+            <td>Checkin Placeholder</td>
+        </tr>
+        <tr>
+            <th scope="row">{user.name}</th>
+            <td>Checkin Placeholder</td>
+        </tr>
+        <tr>
+            <th scope="row">{user.name}</th>
+            <td>Checkin Placeholder</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="container my-4">
+    <h2 class="font-weight-bold">
+       Historical Data
+    </h2>
+    <div id = "container">
+        <script>
+            anychart.onDocumentReady(function () {
+
+                var data = [
+
+                ];
+
+                var dataSet = anychart.data.set(data);
+
+                var averageData = dataSet.mapAs({x: 0, value: 1});
+
+                var chart = anychart.line();
+
+                var average = chart.line(averageData);
+                average.name("Team");
+
+                chart.legend().enabled(true);
+
+                chart.title("Supervisor's Team Average");
+
+                chart.container("container");
+
+                chart.draw();
+
+            });
+        </script>
+    </div>
+</div>
+
+<div class="contianer align-items-center text-center py-4">
+    <div class="contianer align-items-center text-center py-4">
+        <div class="row">
+            <h2>Scheduled One To One meetings</h2>
+        </div>
+    </div>
+    <a href="SupervisorOneToOne.html" class="btn btn-primary">View</a>
+</div>
+</body>
+</html>
