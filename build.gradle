@@ -33,8 +33,25 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	runtimeOnly 'com.h2database:h2'
 	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+
+// MariaDB
+	runtimeOnly 'mysql:mysql-connector-java'
+	implementation 'org.mariadb.jdbc:mariadb-java-client'
+	implementation 'org.mariadb.jdbc:mariadb-java-client:3.0.6'
 }
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+// Path: application-prod.properties
+tasks.register('bootRunProd') {
+	group = 'application'
+	description = 'Runs this project as a production environment (mariaDB)'
+	doFirst{
+		tasks.bootRun.configure {
+			systemProperty 'spring.profiles.active', 'prod'
+		}
+	}
+	finalizedBy 'bootRun'
 }
