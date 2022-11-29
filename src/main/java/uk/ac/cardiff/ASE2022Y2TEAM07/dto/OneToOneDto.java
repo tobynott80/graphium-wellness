@@ -12,6 +12,6 @@ public class OneToOneDto {
     private Integer One_To_One_ID;
     private Integer Employee_ID;
     private Integer Supervisor_ID;
-    private String Date; //if it doesn't work change it to "Date instead of string"
+    private String Date; //if it doesn't work change it to "Date" instead of string.
 
 }
