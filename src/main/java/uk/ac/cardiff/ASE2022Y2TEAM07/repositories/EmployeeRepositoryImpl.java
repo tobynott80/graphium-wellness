@@ -22,7 +22,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
     }
 
     @Override
-    public Employee findByEmployeeId(String employeeId) {
+    public Employee findByEmployeeId(Integer employeeId) {
         return repoJdbc.findByEmployeeId(employeeId);
     }
 

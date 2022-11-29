@@ -8,7 +8,7 @@ public interface EmployeeRepository {
 
     Employee findByEmail(String email);
 
-    Employee findByEmployeeId(String employeeId);
+    Employee findByEmployeeId(Integer employeeId);
 
     List<Employee> findAll();
 }

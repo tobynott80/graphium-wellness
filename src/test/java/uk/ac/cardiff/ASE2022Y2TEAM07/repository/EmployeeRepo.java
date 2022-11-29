@@ -26,7 +26,7 @@ public class EmployeeRepo {
     @Test
     public void shouldGetEmployeeById() throws Exception {
         //GIVEN
-        String employeeId = "1";
+        Integer employeeId = 1;
         Employee john = employeeRepository.findByEmployeeId(employeeId);
         assertEquals("JOHN", john.getName());
     }
