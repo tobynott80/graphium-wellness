@@ -10,7 +10,7 @@ import java.util.List;
 public class OneToOneServiceImpl implements OneToOneService {
     @Override
     public List<OneToOneDto> findAll() {
-        return null;
+        return ;
     }
     //TODO: Implement this service
 }
