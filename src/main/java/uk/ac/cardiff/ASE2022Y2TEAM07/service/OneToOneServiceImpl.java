@@ -39,12 +39,10 @@ public class OneToOneServiceImpl implements OneToOneService {
         return null;
     }
 
-
     @Override
     public OneToOne getOneToOneById(Integer OneToOneId) {
         OneToOne oneToOne = oneToOneRepository.getOneToOneById(OneToOneId);
         return oneToOne;
     }
-
 
 }
