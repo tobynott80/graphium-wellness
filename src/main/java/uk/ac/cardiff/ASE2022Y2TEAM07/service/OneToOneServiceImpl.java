@@ -46,5 +46,5 @@ public class OneToOneServiceImpl implements OneToOneService {
         OneToOne oneToOne = oneToOneRepository.getOneToOneById(OneToOneId);
         return oneToOne;
     }
-    
+
 }
