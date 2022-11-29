@@ -7,4 +7,5 @@ import java.util.Optional;
 
 public interface OneToOneRepositorySpringDataJdbc extends CrudRepository<OneToOne, Integer> {
     OneToOne findByOneToOneId(Integer oneToOneId);
+
 }

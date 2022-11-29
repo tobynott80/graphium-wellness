@@ -10,11 +10,13 @@ import uk.ac.cardiff.ASE2022Y2TEAM07.dto.OneToOneDto;
 import uk.ac.cardiff.ASE2022Y2TEAM07.repositories.NoteRepository;
 import uk.ac.cardiff.ASE2022Y2TEAM07.repositories.OneToOneRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 @Service
 public class OneToOneServiceImpl implements OneToOneService {
+
 
     @Autowired
     private OneToOneRepository oneToOneRepository;
@@ -44,5 +46,5 @@ public class OneToOneServiceImpl implements OneToOneService {
         OneToOne oneToOne = oneToOneRepository.getOneToOneById(OneToOneId);
         return oneToOne;
     }
-
+    
 }
