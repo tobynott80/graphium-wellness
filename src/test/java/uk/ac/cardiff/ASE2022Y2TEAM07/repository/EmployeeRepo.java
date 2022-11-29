@@ -20,6 +20,21 @@ public class EmployeeRepo {
         //GIVEN
         String email = "JOHN@GMAIL.COM";
         Employee john = employeeRepository.findByEmail(email);
-        assertEquals("John", john.getName());
+        assertEquals("JOHN", john.getName());
+    }
+
+    @Test
+    public void shouldGetEmployeeById() throws Exception {
+        //GIVEN
+        String employeeId = "1";
+        Employee john = employeeRepository.findByEmployeeId(employeeId);
+        assertEquals("JOHN", john.getName());
+    }
+
+    @Test
+    public void shouldGetAllEmployees() throws Exception {
+        //GIVEN there are 8 employees in the test db (H2)
+        int numberOfEmployees = employeeRepository.findAll().size();
+        assertEquals(8, numberOfEmployees);
     }
 }
