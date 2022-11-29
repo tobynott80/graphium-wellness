@@ -6,10 +6,10 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class Employee {
-    private int employeeId;
+    private Integer employeeId;
     private String name;
     private String email;
     private String role;
     private String passwordHash;
-    private int supervisorId;
+    private Integer supervisorId;
 }
