@@ -1,7 +1,9 @@
 package uk.ac.cardiff.ASE2022Y2TEAM07.api;
 
 import lombok.AllArgsConstructor;
+import org.springframework.boot.context.properties.bind.BindResult;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import uk.ac.cardiff.ASE2022Y2TEAM07.dto.CheckinDto;
 import uk.ac.cardiff.ASE2022Y2TEAM07.service.CheckinService;
@@ -23,8 +25,8 @@ public class CheckinRestController {
     }
 
     @PostMapping("checkin")
-    public ResponseTransfer createCheckin(@RequestBody CheckinForm checkinForm) {
-        //TODO: add checkin details to database
+    public ResponseTransfer createCheckin(@RequestBody CheckinForm checkinForm, Object employeeCheckinPage) {
+        System.out.printf("employee checkin space" + employeeCheckinPage);
         return new ResponseTransfer("Checkin created successfully", "200");
     }
 }
