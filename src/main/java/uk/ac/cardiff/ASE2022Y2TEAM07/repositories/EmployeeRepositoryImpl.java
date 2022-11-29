@@ -3,6 +3,9 @@ package uk.ac.cardiff.ASE2022Y2TEAM07.repositories;
 import org.springframework.stereotype.Repository;
 import uk.ac.cardiff.ASE2022Y2TEAM07.domain.Employee;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Repository
 public class EmployeeRepositoryImpl implements EmployeeRepository {
@@ -18,4 +21,15 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
         return repoJdbc.findByEmail(email);
     }
 
+    @Override
+    public Employee findByEmployeeId(String employeeId) {
+        return repoJdbc.findByEmployeeId(employeeId);
+    }
+
+    @Override
+    public List<Employee> findAll() {
+        List<Employee> employees = new ArrayList<>();
+        repoJdbc.findAll().forEach(employees::add);
+        return employees;
+    }
 }
