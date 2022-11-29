@@ -9,23 +9,31 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
 
-//TODO: Low Priority: Replace deprecated WebSecuityConfigurerAdapter with SecurityFilterChain Bean to configure HttpSecurity and a WebSecurityCustomizer Bean to configure WebSecurity
 //adapted from: https://stackoverflow.com/questions/49387988/authentication-of-users-from-two-database-tables-in-spring-security
 
+@Configuration
 @EnableWebSecurity
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+public class SecurityConfig {
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-
                 .authorizeRequests()
                 .anyRequest().authenticated()
                 .and().formLogin();
+        return http.build();
     }
+//
+//    @Bean
+//    public WebSecurityCustomizer webSecurityCustomizer() {
+//
+//}
+
 
 
     @Bean
