@@ -13,6 +13,10 @@ public interface OneToOneRepository {
     Integer getNewestOneToOneId();
 
 
+    static List<OneToOne> getOneToOnes() {
+        return null;
+    }
+
     List<OneToOne> findAll();
 
 }
