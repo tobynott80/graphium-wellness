@@ -33,7 +33,6 @@ public class CheckinRestController {
 
     @GetMapping("checkin")
     public ResponseEntity<List<Checkin>> findAllCheckins(){
-        System.out.println("herksh");
         List<Checkin> check = checkinRepository.findAll();
         return ResponseEntity.ok(check);
     }

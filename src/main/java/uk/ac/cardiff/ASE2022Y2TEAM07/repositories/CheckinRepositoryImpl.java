@@ -12,10 +12,8 @@ import java.util.List;
 @Repository
 public class CheckinRepositoryImpl implements CheckinRepository{
 
-    @Autowired
     private CheckinRepositorySpringDataJdbc repoJdbc;
 
-    @Autowired
     public CheckinRepositoryImpl(CheckinRepositorySpringDataJdbc aRepo){
         this.repoJdbc = aRepo;
     }

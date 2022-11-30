@@ -24,7 +24,6 @@ public class Checkin {
 
         model.addAttribute("name","john");
         model.addAttribute("supervisor","carl");
-        //
         model.addAttribute("score", 5);
         var mv = new ModelAndView("/EmployeeCheckinPage", model.asMap());
         return mv;
