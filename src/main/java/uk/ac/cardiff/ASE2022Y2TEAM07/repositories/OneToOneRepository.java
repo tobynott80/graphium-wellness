@@ -7,6 +7,10 @@ import java.util.Optional;
 
 public interface OneToOneRepository {
 
+    static List<OneToOne> getOneToOnes() {
+        return null;
+    }
+
     List<OneToOne> findAll();
 
     //
