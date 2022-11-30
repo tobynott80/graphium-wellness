@@ -1,6 +1,7 @@
 package uk.ac.cardiff.ASE2022Y2TEAM07.repositories;
 
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 import uk.ac.cardiff.ASE2022Y2TEAM07.domain.Checkin;
 
 import java.util.Optional;
@@ -15,6 +16,5 @@ public interface CheckinRepositorySpringDataJdbc extends CrudRepository<Checkin,
 
     Checkin findByScore(Integer score);
 
-    Checkin findByCheckInId(Integer checkInId);
-
+    Checkin findByCheckInsId(Integer checkInId);
 }

@@ -10,6 +10,4 @@ import lombok.NoArgsConstructor;
 public class CheckinForm {
     private Integer employeeID;
     private Integer score;
-
-
 }

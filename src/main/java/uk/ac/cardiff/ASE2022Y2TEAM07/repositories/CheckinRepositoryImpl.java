@@ -1,7 +1,10 @@
 package uk.ac.cardiff.ASE2022Y2TEAM07.repositories;
 
+import org.hibernate.validator.constraints.Length;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import uk.ac.cardiff.ASE2022Y2TEAM07.domain.Checkin;
+import uk.ac.cardiff.ASE2022Y2TEAM07.dto.CheckinDto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,15 +12,17 @@ import java.util.List;
 @Repository
 public class CheckinRepositoryImpl implements CheckinRepository{
 
+    @Autowired
     private CheckinRepositorySpringDataJdbc repoJdbc;
 
+    @Autowired
     public CheckinRepositoryImpl(CheckinRepositorySpringDataJdbc aRepo){
-        repoJdbc = aRepo;
+        this.repoJdbc = aRepo;
     }
 
     @Override
-    public Checkin findByCheckInId(Integer checkinId) {
-        return repoJdbc.findByCheckInId(checkinId);
+    public Checkin findByCheckInId(Integer checkinsId) {
+        return repoJdbc.findByCheckInsId(checkinsId);
     }
 
     @Override
@@ -33,7 +38,13 @@ public class CheckinRepositoryImpl implements CheckinRepository{
     @Override
     public List<Checkin> findAll() {
         List<Checkin> checkins = new ArrayList<>();
+        System.out.println("repo: "+repoJdbc.findAll());
         repoJdbc.findAll().forEach(checkins::add);
         return checkins;
+    }
+
+    @Override
+    public void save(Checkin checkin) {
+        repoJdbc.save(checkin);
     }
 }
