@@ -9,12 +9,7 @@ import java.util.List;
 public interface OneToOneService {
 
 
-    void save(OneToOne NewoneToOne);
-
-    void save(OneToOneDto oneToOneDto);
-
     void save(OneToOneDto oneToOneDto, NoteDto noteDto);
 
     List<OneToOneDto> findAll();
-
 }

@@ -16,13 +16,15 @@ public class OneToOneServiceImpl implements OneToOneService {
     public void save(OneToOneDto oneToOneDto, NoteDto noteDto) {
         System.out.println("Coming from service: " + oneToOneDto.toString());
         OneToOne newOneToOne = new OneToOne(oneToOneDto.getOneToOneId(), oneToOneDto.getEmployeeId(), oneToOneDto.getSupervisorId(), oneToOneDto.getDate());
-        Note newNote = new Note(NoteDto.getNoteId(), )
-    }
-
+        Note newNote = new Note(noteDto.getNoteID(),
+                noteDto.getOneToOneID(),
+                noteDto.getNote());
     }
 
     @Override
     public List<OneToOneDto> findAll() {
         return null;
     }
+
+
 }

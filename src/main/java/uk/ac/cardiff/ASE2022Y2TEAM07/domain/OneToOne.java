@@ -14,6 +14,13 @@ public class OneToOne {
     private int employeeId;
     private int supervisorId;
 
+    public OneToOne(int oneToOneId, int employeeId, int supervisorId, LocalDate date) {
+        OneToOneId = oneToOneId;
+        this.employeeId = employeeId;
+        this.supervisorId = supervisorId;
+        this.date = date;
+    }
+
     private LocalDate date;
 
 
