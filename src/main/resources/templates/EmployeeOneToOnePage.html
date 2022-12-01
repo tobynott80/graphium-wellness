@@ -16,7 +16,9 @@
     <h2>Request a One to One Meeting</h2>
   </div>
   <div class="row px-5">
-    <form>
+    <form method=post
+          th:action="@{/employee (furl=${charityForm.furl}, id=${trusteeForm.id})}"
+          th:object="${trusteeForm}">
       <div class="mb-3">
         <label for="datetime" class="form-label">Requested Time for Meeting</label>
         <input type="datetime-local" class="form-control" id="datetime">
