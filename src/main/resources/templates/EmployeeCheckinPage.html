@@ -13,18 +13,18 @@
 
 <div class="container align-items-center text-center py-4">
     <div class="row">
-<!--        <h2>How are you today {user.name}?</h2>-->
         <h2 th:text="'How are you today '+${name}+'?'"></h2>
     </div>
     <div class="row justify-content-center p-4">
       <span class=" display-5" id="emoji">&#128512</span>
     </div>
 
-    <form th:action="@{/checkin/form}" th:method="post" th:object="${employeeCheckinPage}">
+    <form th:action="@{/employee/{employeeId}/checkin (employeeId=${checkinForm.employeeId})}" th:method="post" th:object="${checkinForm}">
+
         <div class="row">
             <div class="input-group justify-content-center p-2">
-<!--                <input th:field="*{score}" class="inputRange" type="range" min="1" max="10" value="5">-->
-                <input th:object="${score}" class="inputRange" type="range" min="1" max="10" value="5">
+                <label for="score"></label>
+                <input class="inputRange" type="range" min="1" max="10" value="5" th:field="*{score}">
             </div>
         </div>
         <div class="row">

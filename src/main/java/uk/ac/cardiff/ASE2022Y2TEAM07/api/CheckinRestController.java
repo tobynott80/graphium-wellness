@@ -1,24 +1,13 @@
 package uk.ac.cardiff.ASE2022Y2TEAM07.api;
 
-import lombok.AllArgsConstructor;
-import org.springframework.boot.context.properties.bind.BindResult;
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.format.datetime.DateFormatter;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import uk.ac.cardiff.ASE2022Y2TEAM07.domain.Checkin;
-import uk.ac.cardiff.ASE2022Y2TEAM07.dto.CheckinDto;
-import uk.ac.cardiff.ASE2022Y2TEAM07.repositories.CheckinRepository;
 import uk.ac.cardiff.ASE2022Y2TEAM07.repositories.CheckinRepositoryImpl;
-import uk.ac.cardiff.ASE2022Y2TEAM07.service.CheckinService;
 import uk.ac.cardiff.ASE2022Y2TEAM07.service.message.ResponseTransfer;
 import uk.ac.cardiff.ASE2022Y2TEAM07.web.forms.CheckinForm;
 
-import java.text.DateFormat;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.List;
 
 @RestController
