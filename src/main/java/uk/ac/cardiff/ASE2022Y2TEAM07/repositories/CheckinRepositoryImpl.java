@@ -36,7 +36,6 @@ public class CheckinRepositoryImpl implements CheckinRepository{
     @Override
     public List<Checkin> findAll() {
         List<Checkin> checkins = new ArrayList<>();
-        System.out.println("repo: "+repoJdbc.findAll());
         repoJdbc.findAll().forEach(checkins::add);
         return checkins;
     }
