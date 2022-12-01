@@ -7,41 +7,21 @@
 
     <link rel="stylesheet" type="text/css" media="all" href="../../css/Stylesheet" th:href="@{/css/Stylesheet.css}">
 
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">
+    <link th:replace="fragments/employeeHeader :: bootstrap-css">
 
     <title>Employee Homepage</title>
 </head>
 <body>
-
-<div class="header">
-    header
-</div>
-
-<div class="title-homepage">
-    Homepage
-</div>
-
-<div class="container-homepage">
-    <div class="container-homepage-buttons">
-        <button class="button-homepage-checkin">Check-in</button>
-
-        <button class="button-homepage-1to1">1-to-1</button>
-    </div>
-
-
-    <div class="container-checkintracker">
+<div th:replace="fragments/employeeHeader :: employeeHeader"></div>
+    <div class="d-flex justify-content-center p-5">
         <img class="filler-image" src="https://www.researchgate.net/publication/336183372/figure/fig4/AS:869803812196353@1584388797209/Tests-by-authors-using-remote-means-a-graph-of-happiness-over-the-days-of-the-week.png" alt="filler line graph">
 <!--        filler for when we have a graph of their happiness over the course of the week-->
     </div>
 
 </div>
 
-<div class="footer">
-    footer
-</div>
+
+<script th:replace="fragments/footer :: bootstrap-js"></script>
 
 </body>
 </html>
