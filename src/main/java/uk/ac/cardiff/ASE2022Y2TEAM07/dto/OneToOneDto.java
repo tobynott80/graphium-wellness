@@ -14,6 +14,13 @@ public class OneToOneDto {
     private int supervisorId;
     private LocalDate date;
 
+    public OneToOneDto(int oneToOneId, int employeeId, int supervisorId, LocalDate date) {
+        OneToOneId = oneToOneId;
+        this.employeeId = employeeId;
+        this.supervisorId = supervisorId;
+        this.date = date;
+    }
+
     public int getOneToOneId() {
         return OneToOneId;
     }
@@ -29,4 +36,6 @@ public class OneToOneDto {
     public LocalDate getDate() {
         return date;
     }
+
+
 }

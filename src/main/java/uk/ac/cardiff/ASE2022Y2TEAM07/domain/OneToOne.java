@@ -1,21 +1,19 @@
 package uk.ac.cardiff.ASE2022Y2TEAM07.domain;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.data.relational.core.mapping.Table;
 
 import java.time.LocalDate;
 
 @Data
-@AllArgsConstructor
 @Table
 public class OneToOne {
-    private int OneToOneId;
+    private int oneToOneId;
     private int employeeId;
     private int supervisorId;
 
     public OneToOne(int oneToOneId, int employeeId, int supervisorId, LocalDate date) {
-        OneToOneId = oneToOneId;
+        this.oneToOneId = oneToOneId;
         this.employeeId = employeeId;
         this.supervisorId = supervisorId;
         this.date = date;
@@ -25,7 +23,7 @@ public class OneToOne {
 
 
     public int getOneToOneId() {
-        return OneToOneId;
+        return oneToOneId;
     }
 
     public int getEmployeeId() {

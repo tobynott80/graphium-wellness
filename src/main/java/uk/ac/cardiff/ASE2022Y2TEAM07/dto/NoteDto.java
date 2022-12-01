@@ -5,8 +5,13 @@ import lombok.AllArgsConstructor;
 import lombok.Value;
 
 @Value
-@AllArgsConstructor
 public class NoteDto {
+    public NoteDto(Integer noteID, Integer oneToOneID, String note) {
+        NoteID = noteID;
+        OneToOneID = oneToOneID;
+        this.note = note;
+    }
+
     public Integer getNoteID() {
         return NoteID;
     }

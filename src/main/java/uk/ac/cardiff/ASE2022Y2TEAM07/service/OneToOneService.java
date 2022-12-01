@@ -12,4 +12,7 @@ public interface OneToOneService {
     void save(OneToOneDto oneToOneDto, NoteDto noteDto);
 
     List<OneToOneDto> findAll();
+
+
+    OneToOne getOneToOneById(Integer OneToOneId);
 }
