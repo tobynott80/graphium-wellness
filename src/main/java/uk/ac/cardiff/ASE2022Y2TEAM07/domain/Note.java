@@ -32,9 +32,6 @@ public class Note {
     }
 
     public Note() {
-        OneToOneID = 1;
-        this.note = "This is a note";
-        this.noteId = 1;
     }
     public Integer getNoteId() {
         return noteId;
