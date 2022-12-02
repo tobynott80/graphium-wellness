@@ -15,6 +15,12 @@ public interface OneToOneRepository {
 
     //
 
+
+    List<OneToOne> getAllOneToOne();
+
+
+    //
+
     <S extends OneToOne> S save(S entity);
 
     <S extends OneToOne> Iterable<S> saveAll(Iterable<S> entities);
