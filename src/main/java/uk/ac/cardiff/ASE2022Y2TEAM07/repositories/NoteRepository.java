@@ -6,7 +6,7 @@ import java.util.Optional;
 
 public interface NoteRepository {
 
-    Optional<Note> getNoteById(Integer noteId);
+//    Optional<Note> getNoteById(Integer noteId);
 
     void save(Note note);
 }

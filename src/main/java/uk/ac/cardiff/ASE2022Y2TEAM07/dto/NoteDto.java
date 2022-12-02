@@ -13,6 +13,7 @@ public class NoteDto {
         this.note = note;
     }
 
+
     public Integer getNoteID() {
         return NoteID;
     }

@@ -14,11 +14,11 @@ public class NoteRepositoryImpl implements NoteRepository {
         repoJdbc = aRepo;
     }
 
-    @Override
-    public Optional<Note> getNoteById(Integer noteId) {
-        Optional<Note> note = repoJdbc.findByNoteId(noteId);
-        return note;
-    }
+//    @Override
+//    public Optional<Note> getNoteById(Integer noteId) {
+//        Optional<Note> note = repoJdbc.findByNoteId(noteId);
+//        return note;
+//    }
 
     @Override
     public void save(Note note) {
