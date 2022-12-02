@@ -1,18 +1,19 @@
 package uk.ac.cardiff.ASE2022Y2TEAM07.domain;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
+import org.springframework.data.annotation.Id;
 
 @Data
-@AllArgsConstructor
 public class Note {
 
     public Note(Integer noteID, Integer oneToOneID, String note) {
-        NoteID = noteID;
+        NoteId = noteID;
         OneToOneID = oneToOneID;
         this.note = note;
     }
-    private Integer NoteID;
+
+    @Id
+    private Integer NoteId;
     private Integer OneToOneID;
     private String note;
 

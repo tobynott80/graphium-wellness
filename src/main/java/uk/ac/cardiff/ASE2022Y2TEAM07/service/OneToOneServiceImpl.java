@@ -7,6 +7,7 @@ import uk.ac.cardiff.ASE2022Y2TEAM07.domain.Note;
 import uk.ac.cardiff.ASE2022Y2TEAM07.domain.OneToOne;
 import uk.ac.cardiff.ASE2022Y2TEAM07.dto.NoteDto;
 import uk.ac.cardiff.ASE2022Y2TEAM07.dto.OneToOneDto;
+import uk.ac.cardiff.ASE2022Y2TEAM07.repositories.NoteRepository;
 import uk.ac.cardiff.ASE2022Y2TEAM07.repositories.OneToOneRepository;
 
 import java.util.List;
@@ -18,6 +19,9 @@ public class OneToOneServiceImpl implements OneToOneService {
     @Autowired
     private OneToOneRepository oneToOneRepository;
 
+    @Autowired
+    private NoteRepository noteRepository;
+
     @Override
     public void save(OneToOneDto oneToOneDto, NoteDto noteDto) {
         System.out.println("Coming from service: " + oneToOneDto.toString());
@@ -25,6 +29,9 @@ public class OneToOneServiceImpl implements OneToOneService {
         Note newNote = new Note(noteDto.getNoteID(),
                 noteDto.getOneToOneID(),
                 noteDto.getNote());
+        oneToOneRepository.save(newOneToOne);
+        noteRepository.save(newNote);
+
     }
 
     @Override

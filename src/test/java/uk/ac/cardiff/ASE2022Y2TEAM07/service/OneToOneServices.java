@@ -7,6 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import uk.ac.cardiff.ASE2022Y2TEAM07.dto.NoteDto;
 import uk.ac.cardiff.ASE2022Y2TEAM07.dto.OneToOneDto;
 import uk.ac.cardiff.ASE2022Y2TEAM07.repositories.EmployeeRepository;
+import uk.ac.cardiff.ASE2022Y2TEAM07.repositories.NoteRepository;
 import uk.ac.cardiff.ASE2022Y2TEAM07.repositories.OneToOneRepository;
 
 import java.time.LocalDate;
@@ -21,6 +22,9 @@ public class OneToOneServices {
 
     @Autowired
     private OneToOneRepository oneToOneRepository;
+
+    @Autowired
+    private NoteRepository noteRepository;
 
     @Autowired
     private EmployeeRepository employeeRepository;

@@ -17,4 +17,9 @@ public class OneToOneRepositoryImpl implements OneToOneRepository {
         OneToOne oneToOne = repoJdbc.findByOneToOneId(oneToOneId);
         return oneToOne;
     }
+
+    @Override
+    public void save(OneToOne oneToOne) {
+        repoJdbc.save(oneToOne);
+    }
 }
