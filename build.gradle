@@ -1,6 +1,6 @@
 plugins {
 	id 'java'
-	id 'org.springframework.boot' version '3.0.0-SNAPSHOT'
+	id 'org.springframework.boot' version '2.7.6'
 	id 'io.spring.dependency-management' version '1.1.0'
 }
 
@@ -21,10 +21,12 @@ repositories {
 }
 
 dependencies {
+	implementation 'org.springframework:spring-web:5.3.23'
 	implementation 'org.springframework.boot:spring-boot-starter'
 	implementation 'org.springframework.boot:spring-boot-starter-web:2.7.5'
 	implementation 'org.projectlombok:lombok'
 	implementation 'org.springframework.boot:spring-boot-starter-validation:2.7.5'
+//	implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.7.5'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-tools:2.2.13.RELEASE'
@@ -35,14 +37,22 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
 
+	implementation 'org.springframework.security:spring-security-web:5.7.3'
+	implementation 'org.springframework.security:spring-security-config:5.7.3'
+
+
 // MariaDB
 	runtimeOnly 'mysql:mysql-connector-java'
 	implementation 'org.mariadb.jdbc:mariadb-java-client'
-	implementation 'org.mariadb.jdbc:mariadb-java-client:3.0.6'
+//	implementation 'org.mariadb.jdbc:mariadb-java-client:3.0.6'
 }
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+tasks.bootRun.configure {
+	systemProperty("spring.profiles.active", "dev")
 }
 
 // Path: application-prod.properties
