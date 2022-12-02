@@ -7,9 +7,13 @@ import org.springframework.data.relational.core.mapping.Table;
 
 import java.sql.Date;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import org.springframework.data.relational.core.mapping.Table;
 
 @Data
+@AllArgsConstructor
 @Table
 public class OneToOne {
     @Id
@@ -62,5 +66,11 @@ public class OneToOne {
         return date;
     }
 
+
+
+    private Integer One_To_One_ID;
+    private Integer Employee_ID;
+    private Integer Supervisor_ID;
+    private String Date;
 
 }
