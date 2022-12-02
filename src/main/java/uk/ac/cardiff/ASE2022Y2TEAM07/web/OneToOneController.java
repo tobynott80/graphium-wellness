@@ -2,7 +2,9 @@ package uk.ac.cardiff.ASE2022Y2TEAM07.web;
 
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 import uk.ac.cardiff.ASE2022Y2TEAM07.service.OneToOneService;
 
 @Controller
@@ -12,5 +14,10 @@ public class OneToOneController {
 
     public OneToOneController(OneToOneService oneToOneService) {
         this.oneToOneService = oneToOneService;
+    }
+
+    @GetMapping("/employee/onetoone")
+    public ModelAndView getOneToOneForm () {
+        return new ModelAndView("employee/onetoone");
     }
 }
