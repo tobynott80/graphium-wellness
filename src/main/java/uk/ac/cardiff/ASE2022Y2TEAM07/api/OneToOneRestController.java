@@ -2,8 +2,9 @@ package uk.ac.cardiff.ASE2022Y2TEAM07.api;
 
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import uk.ac.cardiff.ASE2022Y2TEAM07.api.json.OneToOneJson;
+import uk.ac.cardiff.ASE2022Y2TEAM07.api.json.OneToOneJsonAssembler;
 import uk.ac.cardiff.ASE2022Y2TEAM07.dto.OneToOneDto;
 import uk.ac.cardiff.ASE2022Y2TEAM07.service.OneToOneService;
 import uk.ac.cardiff.ASE2022Y2TEAM07.service.message.ResponseTransfer;
@@ -13,9 +14,21 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api")
-@AllArgsConstructor
+//@AllArgsConstructor
 public class OneToOneRestController {
     private OneToOneService oneToOneService;
+
+    public OneToOneRestController(OneToOneService aService) {
+        oneToOneService = aService;
+    }
+
+    @GetMapping("onetoone")
+    public ResponseEntity<List<OneToOneJson>> getAllOneToOne() {
+        OneToOneListRequest onetooneRequest = OneToOneListRequest.of().build();
+        OneToOneListResponse onetooneListResponse = OneToOneService.getOneToOnes(onetooneRequest);
+
+        return ResponseEntity.ok(OneToOneJsonAssembler.toOneToOneJsonList(onetooneListResponse.getOneToOnes));
+    }
 
     @GetMapping("onetoone")
     public ResponseEntity<List<OneToOneDto>> findAllOneToOne() {

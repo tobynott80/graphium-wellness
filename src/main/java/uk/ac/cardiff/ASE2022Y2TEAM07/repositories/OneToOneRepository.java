@@ -19,4 +19,6 @@ public interface OneToOneRepository {
 
     List<OneToOne> findAll();
 
+    List<OneToOne> getAllOneToOne();
+
 }
