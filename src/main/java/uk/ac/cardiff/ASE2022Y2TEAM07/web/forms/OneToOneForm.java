@@ -5,14 +5,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotEmpty;
+import java.time.LocalDateTime;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class OneToOneForm {
-    @NotEmpty
-    private Integer employeeID;
 
+    private LocalDateTime date;
 
     private String notes;
 }

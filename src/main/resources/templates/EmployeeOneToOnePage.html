@@ -16,16 +16,14 @@
     <h2>Request a One to One Meeting</h2>
   </div>
   <div class="row px-5">
-    <form method=post
-          th:action="@{/employee (furl=${charityForm.furl}, id=${trusteeForm.id})}"
-          th:object="${trusteeForm}">
+    <form th:method="post" th:action="@{/employee/oneToOne}"> th:object="${OneToOneForm}"
       <div class="mb-3">
         <label for="datetime" class="form-label">Requested Time for Meeting</label>
-        <input type="datetime-local" class="form-control" id="datetime">
+        <input type="datetime-local" class="form-control" id="datetime" th:field="*{date}" >
       </div>
       <div class="mb-3">
         <label for="notes" class="form-label">Meeting Notes</label>
-        <input type="text" class="form-control" id="notes">
+        <input type="text" class="form-control" id="notes" th:feild="*{notes}">
       </div>
 
       <button type="submit" class="btn btn-primary">Submit</button>
