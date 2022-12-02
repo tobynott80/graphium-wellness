@@ -30,11 +30,13 @@ public class OneToOneServices {
     private EmployeeRepository employeeRepository;
 
 
+
+
     @Test
-    public void shouldSaveOneToOne() {
+    public void shouldSaveOneToOneAndNote() {
         //GIVEN
         OneToOneDto oneToOneDto = new OneToOneDto(5, 1, 1, LocalDate.now());
-        NoteDto noteDto = new NoteDto(null,5, "This is a note");
+        NoteDto noteDto = new NoteDto(null, 5, "This is a note");
         //WHEN
         oneToOneService.save(oneToOneDto, noteDto);
         //THEN

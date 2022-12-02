@@ -6,5 +6,7 @@ import uk.ac.cardiff.ASE2022Y2TEAM07.domain.Note;
 import java.util.Optional;
 
 public interface NoteRepositorySpringDataJdbc extends CrudRepository<Note, Integer> {
+    Optional<Note> findByNoteId(int NoteId);
+
 //    Optional<Note> findByNoteId(Integer noteID);
 }
