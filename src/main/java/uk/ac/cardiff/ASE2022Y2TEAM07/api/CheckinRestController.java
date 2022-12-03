@@ -28,7 +28,6 @@ public class CheckinRestController {
 
     @PostMapping("checkin")
     public ResponseTransfer createCheckin(@RequestBody CheckinForm checkinForm, Object employeeCheckinPage) {
-        System.out.println("hello" + checkinForm);
 
         // ----get employeeId need completing by getting the id once the user has been logged in.
         Integer employeeId = 0;

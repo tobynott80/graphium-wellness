@@ -27,4 +27,17 @@ public class Checkin {
         this.score = score;
         this.date = date;
     }
+
+    public Integer getCheckInsId() {
+        return checkInsId;
+    }
+
+    public Integer getEmployeeId() {
+        return employeeId;
+    }
+
+    public Integer getScore() {
+        return score;
+    }
+
 }
