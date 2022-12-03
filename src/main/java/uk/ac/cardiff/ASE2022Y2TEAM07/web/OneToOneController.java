@@ -43,7 +43,7 @@ public class OneToOneController {
     @GetMapping("")
     public ModelAndView getOneToOneForm (Model model) {
         model.addAttribute("OneToOneForm", new OneToOneForm());
-        var mv = new ModelAndView("EmployeeOneToOnePage", model.asMap());
+        var mv = new ModelAndView("employee/EmployeeOneToOnePage", model.asMap());
         return mv;
     }
 
@@ -54,7 +54,7 @@ public class OneToOneController {
         OneToOneDto oneToOneDto = new OneToOneDto(1, employee.getEmployeeId(), employee.getSupervisorId(), oneToOneForm.getDate());
         NoteDto noteDto = new NoteDto(1, 1, oneToOneForm.getNotes());
         oneToOneService.save(oneToOneDto, noteDto);
-        var mv = new ModelAndView("EmployeeHomepage.html");
+        var mv = new ModelAndView("employee/EmployeeHomepage.html");
         return mv;
     }
 }

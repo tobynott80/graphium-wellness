@@ -34,7 +34,7 @@ public class CheckinController {
         model.addAttribute("name","John");
         model.addAttribute("supervisor", "Carl");
         model.addAttribute("checkinForm",new CheckinForm(employeeId, 10));
-        var mv = new ModelAndView("/EmployeeCheckinPage", model.asMap());
+        var mv = new ModelAndView("employee/EmployeeCheckinPage", model.asMap());
         return mv;
     }
 
@@ -47,7 +47,7 @@ public class CheckinController {
         Checkin checkin = new Checkin(null, checkinForm.getEmployeeId(), checkinForm.getScore(), now);
         checkinRepository.save(checkin);
 
-        var mv = new ModelAndView("redirect:/homepage", model.asMap());
+        var mv = new ModelAndView("employee/EmployeeHomepage.html", model.asMap());
         return mv;
 
 //        return new ResponseTransfer("Checkin created successfully", "200");
