@@ -54,7 +54,7 @@ public class OneToOneController {
         OneToOneDto oneToOneDto = new OneToOneDto(0, employee.getEmployeeId(), employee.getSupervisorId(), oneToOneForm.getDate());
         NoteDto noteDto = new NoteDto(0, 0, oneToOneForm.getNotes());
         oneToOneService.save(oneToOneDto, noteDto);
-        var mv = new ModelAndView("redirect:/employee/onetoone", model.asMap());
+        var mv = new ModelAndView("EmployeeHomepage.html");
         return mv;
     }
 }
