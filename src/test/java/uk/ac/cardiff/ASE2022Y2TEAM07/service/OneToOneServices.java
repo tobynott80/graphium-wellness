@@ -11,6 +11,7 @@ import uk.ac.cardiff.ASE2022Y2TEAM07.repositories.NoteRepository;
 import uk.ac.cardiff.ASE2022Y2TEAM07.repositories.OneToOneRepository;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -35,7 +36,7 @@ public class OneToOneServices {
     @Test
     public void shouldSaveOneToOneAndNote() {
         //GIVEN
-        OneToOneDto oneToOneDto = new OneToOneDto(5, 1, 1, LocalDate.now());
+        OneToOneDto oneToOneDto = new OneToOneDto(5, 1, 1, LocalDateTime.now());
         NoteDto noteDto = new NoteDto(null, 5, "This is a note");
         //WHEN
         oneToOneService.save(oneToOneDto, noteDto);

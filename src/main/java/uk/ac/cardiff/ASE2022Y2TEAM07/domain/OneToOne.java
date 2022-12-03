@@ -1,7 +1,6 @@
 package uk.ac.cardiff.ASE2022Y2TEAM07.domain;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
@@ -9,6 +8,7 @@ import org.springframework.data.relational.core.mapping.Table;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 @Table
@@ -20,12 +20,12 @@ public class OneToOne {
     private int employeeId;
     private int supervisorId;
 
-    public OneToOne(int employeeId, int supervisorId, LocalDate date) {
+    public OneToOne(int employeeId, int supervisorId, LocalDateTime date) {
         this.employeeId = employeeId;
         this.supervisorId = supervisorId;
         this.date = date;
     }
-    public OneToOne(int oneToOneId, int employeeId, int supervisorId, LocalDate date) {
+    public OneToOne(int oneToOneId, int employeeId, int supervisorId, LocalDateTime date) {
         this.oneToOneId = oneToOneId;
         this.employeeId = employeeId;
         this.supervisorId = supervisorId;
@@ -35,7 +35,7 @@ public class OneToOne {
     public OneToOne() {
     }
 
-    private LocalDate date;
+    private LocalDateTime date;
 
 
     public int getOneToOneId() {
@@ -50,7 +50,7 @@ public class OneToOne {
         return supervisorId;
     }
 
-    public LocalDate getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 

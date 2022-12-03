@@ -4,17 +4,17 @@ import lombok.AllArgsConstructor;
 import lombok.Value;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Value
-@AllArgsConstructor
 public class OneToOneDto {
 
     private int OneToOneId;
     private int employeeId;
     private int supervisorId;
-    private LocalDate date;
+    private LocalDateTime date;
 
-    public OneToOneDto(int oneToOneId, int employeeId, int supervisorId, LocalDate date) {
+    public OneToOneDto(int oneToOneId, int employeeId, int supervisorId, LocalDateTime date) {
         OneToOneId = oneToOneId;
         this.employeeId = employeeId;
         this.supervisorId = supervisorId;
@@ -33,7 +33,7 @@ public class OneToOneDto {
         return supervisorId;
     }
 
-    public LocalDate getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 

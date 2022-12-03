@@ -16,10 +16,10 @@
     <h2>Request a One to One Meeting</h2>
   </div>
   <div class="row px-5">
-    <form th:method="post" th:action="@{/employee/oneToOne}"> th:object="${OneToOneForm}"
+    <form th:method="post" th:action="@{/employee/oneToOne}" th:object="${OneToOneForm}">
       <div class="mb-3">
         <label for="datetime" class="form-label">Requested Time for Meeting</label>
-        <input type="datetime-local" class="form-control" id="datetime" th:field="*{date}" >
+        <input type="datetime-local" class="form-control" id="datetime" th:feild="*{date}" >
       </div>
       <div class="mb-3">
         <label for="notes" class="form-label">Meeting Notes</label>
