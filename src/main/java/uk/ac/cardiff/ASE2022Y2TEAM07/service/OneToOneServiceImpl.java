@@ -12,6 +12,8 @@ import uk.ac.cardiff.ASE2022Y2TEAM07.repositories.NoteRepository;
 
 import uk.ac.cardiff.ASE2022Y2TEAM07.assembler.OneToOneAssembler;
 import uk.ac.cardiff.ASE2022Y2TEAM07.repositories.OneToOneRepository;
+import uk.ac.cardiff.ASE2022Y2TEAM07.service.message.OneToOneListRequest;
+import uk.ac.cardiff.ASE2022Y2TEAM07.service.message.OneToOneListResponse;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -50,18 +52,43 @@ public class OneToOneServiceImpl implements OneToOneService {
         return oneToOne;
     }
 
-    private List<Object> getOneToOnes () {
+    private List<Object> getOneToOnes() {
         List<OneToOne> onetoones = OneToOneRepository.getOneToOnes();
         return onetoones.stream().map(c -> OneToOneAssembler.toDto(c)).collect(Collectors.toList());
 
     }
+
     public OneToOneListResponse getAllOneToOne(OneToOneListRequest onetooneListRequest) {
         return null;
+
+//    //working on this
+//
+//    private final OneToOneRepository oneToOneRepository;
     }
 
-//    private List<Object> getOneToOnes() {
-//        List<OneToOne> onetoones = OneToOneRepository.getOneToOnes();
-//        return onetoones.stream().map(c -> OneToOneAssembler.toDto(c)).collect(Collectors.toList());
-//    }
+    public OneToOneServiceImpl(OneToOneRepository otoRepo) {
+            this.oneToOneRepository = otoRepo;
+    }
+
+    public OneToOneListResponse getOneToOnes (OneToOneListRequest oneToOneListRequest){
+        List<OneToOneDto> oneToOnes;
+        if (oneToOneListRequest.hasSearchTerm()) {
+            oneToOnes = getOneToOnesBySearch(OneToOneListRequest.getSearchTerm());
+        } else {
+            oneToOnes = getOneToOnes();
+        }
+
+        return OneToOneListResponse
+                .of()
+                .request(oneToOneListRequest)
+                .onetoone(oneToOnes)
+                .build();
+    }
+
+    private List<OneToOneDto> getOneToOnes () {
+        List<OneToOne> oneToOnes = oneToOneRepository.getOneToOnes();
+
+        return oneToOnes.stream().map(oto -> OneToOneAssembler.toDto(oto)).collect(Collectors.toList());
+    }
 
 }

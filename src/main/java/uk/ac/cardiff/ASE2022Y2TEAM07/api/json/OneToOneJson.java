@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Value;
 
+import java.sql.Date;
+
 @Value
 @AllArgsConstructor
 @Builder(builderMethodName="of")
@@ -12,6 +14,6 @@ public class OneToOneJson {
     private Integer One_To_One_ID;
     private Integer Employee_ID;
     private Integer Supervisor_ID;
-    private String Date;
+    private java.sql.Date Date;
 
 }

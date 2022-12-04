@@ -10,7 +10,10 @@ import java.time.LocalDate;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
+
+import java.sql.Date;
 
 @Data
 @AllArgsConstructor
@@ -65,12 +68,5 @@ public class OneToOne {
     public LocalDate getDate() {
         return date;
     }
-
-
-
-    private Integer One_To_One_ID;
-    private Integer Employee_ID;
-    private Integer Supervisor_ID;
-    private String Date;
 
 }

@@ -20,9 +20,9 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="onetoone : ${onetoones}">
-                <td>
-                    <a href="@{}"></a>
+            <tr th:each="onetoone : ${OneToOnes}">
+                <td th:text="${onetoone}">
+                    one to one
                 </td>
             </tr>
             </tbody>

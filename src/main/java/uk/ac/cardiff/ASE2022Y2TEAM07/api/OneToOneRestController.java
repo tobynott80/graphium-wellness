@@ -2,16 +2,22 @@ package uk.ac.cardiff.ASE2022Y2TEAM07.api;
 
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import uk.ac.cardiff.ASE2022Y2TEAM07.api.json.OneToOneJson;
 import uk.ac.cardiff.ASE2022Y2TEAM07.api.json.OneToOneJsonAssembler;
 import uk.ac.cardiff.ASE2022Y2TEAM07.dto.OneToOneDto;
 import uk.ac.cardiff.ASE2022Y2TEAM07.service.OneToOneService;
+import uk.ac.cardiff.ASE2022Y2TEAM07.service.message.OneToOneListRequest;
+import uk.ac.cardiff.ASE2022Y2TEAM07.service.message.OneToOneListResponse;
 import uk.ac.cardiff.ASE2022Y2TEAM07.service.message.ResponseTransfer;
 import uk.ac.cardiff.ASE2022Y2TEAM07.web.forms.OneToOneForm;
 
 import java.util.List;
 
+@Controller
 @RestController
 @RequestMapping("api")
 //@AllArgsConstructor
@@ -23,11 +29,11 @@ public class OneToOneRestController {
     }
 
     @GetMapping("onetoone")
-    public ResponseEntity<List<OneToOneJson>> getAllOneToOne() {
-        OneToOneListRequest onetooneRequest = OneToOneListRequest.of().build();
-        OneToOneListResponse onetooneListResponse = OneToOneService.getOneToOnes(onetooneRequest);
+    public ResponseEntity<List<OneToOneJson>> getAllOneToOnes() {
+        OneToOneListRequest listRequest = OneToOneListRequest.of().build();
+        OneToOneListResponse oneToOneListResponse = oneToOneService.getOneToOnes(listRequest);
 
-        return ResponseEntity.ok(OneToOneJsonAssembler.toOneToOneJsonList(onetooneListResponse.getOneToOnes));
+        return ResponseEntity.ok(OneToOneJsonAssembler.toOneToOneJsonList(oneToOneListResponse.getOneToOnes()));
     }
 
     @GetMapping("onetoone")
