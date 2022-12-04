@@ -75,7 +75,7 @@ public class OneToOneServiceImpl implements OneToOneService {
         if (oneToOneListRequest.hasSearchTerm()) {
             oneToOnes = getOneToOnesBySearch(OneToOneListRequest.getSearchTerm());
         } else {
-            oneToOnes = getOneToOnes(listRequest);
+            oneToOnes = getOneToOnes();
         }
 
         return OneToOneListResponse
@@ -85,14 +85,15 @@ public class OneToOneServiceImpl implements OneToOneService {
                 .build();
     }
 
-    private List<OneToOneDto> getOneToOnes () {
-        
+    private List<OneToOneDto> getOneToOnes(OneToOneListRequest listRequest) {
+
     }
 
-    private List<OneToOneDto> getOneToOnes(OneToOneListRequest listRequest) {
+    private List<OneToOneDto> getOneToOnes () {
         List<OneToOne> oneToOnes = oneToOneRepository.getOneToOnes();
 
         return oneToOnes.stream().map(oto -> OneToOneAssembler.toDto(oto)).collect(Collectors.toList());
     }
+        
 
 }
