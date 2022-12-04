@@ -16,4 +16,5 @@ public interface OneToOneRepository {
     //working on this
     List<OneToOne> getOneToOnes();
 
+    List<OneToOne> getOneToOnesBySearch(String search);
 }

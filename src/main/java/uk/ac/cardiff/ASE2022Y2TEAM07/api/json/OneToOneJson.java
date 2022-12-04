@@ -4,16 +4,16 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Value;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 @Value
 @AllArgsConstructor
-@Builder(builderMethodName="of")
+@Builder(builderMethodName = "of")
 public class OneToOneJson {
 
     private Integer One_To_One_ID;
     private Integer Employee_ID;
     private Integer Supervisor_ID;
-    private java.sql.Date Date;
+    private LocalDate Date;
 
 }

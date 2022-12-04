@@ -7,20 +7,20 @@ import java.util.stream.Collectors;
 
 public class OneToOneJsonAssembler {
 
-  public static OneToOneJson toOneToOneJson(OneToOneDto onetooneDto) {
+  public static OneToOneJson toOneToOneJson(OneToOneDto oneToOneDto) {
       return OneToOneJson
               .of()
-              .One_To_One_ID(onetooneDto.getOne_To_One_ID())
-              .Employee_ID(onetooneDto.getEmployee_ID())
-              .Supervisor_ID(onetooneDto.getSupervisor_ID())
-              .Date(onetooneDto.getDate())
+              .One_To_One_ID(oneToOneDto.getOne_To_One_ID())
+              .Employee_ID(oneToOneDto.getEmployee_ID())
+              .Supervisor_ID(oneToOneDto.getSupervisor_ID())
+              .Date(oneToOneDto.getDate())
               .build();
   }
 
-  public static List<OneToOneJson> toOneToOneJsonList(List<OneToOneDto> onetooneDtoList) {
-      return onetooneDtoList
+  public static List<OneToOneJson> toOneToOneJsonList(List<OneToOneDto> oneToOneDtoList) {
+      return oneToOneDtoList
               .stream()
-              .map(c -> OneToOneJsonAssembler.toOneToOneJson(c))
+              .map(oto -> OneToOneJsonAssembler.toOneToOneJson(oto))
               .collect(Collectors.toList());
   }
 

@@ -5,10 +5,11 @@ import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
-import java.sql.Date;
+
+import java.time.LocalDate;
 
 @Data
-@AllArgsConstructor
+//@AllArgsConstructor
 @Table
 public class OneToOne {
 
@@ -18,10 +19,11 @@ public class OneToOne {
     private Integer One_To_One_ID;
     private Integer Employee_ID;
     private Integer Supervisor_ID;
-    private java.sql.Date Date;
+    private LocalDate Date;
 
-   public static OneToOne of(Integer One_To_One_ID, Integer Employee_ID, Integer Supervisor_ID, Date Date) {
-       return new OneToOne(One_To_One_ID, Employee_ID, Supervisor_ID, Date);
-   }
+//   public static OneToOne of(Integer One_To_One_ID, Integer Employee_ID, Integer Supervisor_ID, LocalDate Date) {
+//       return new OneToOne(One_To_One_ID, Employee_ID, Supervisor_ID, Date);
+//   }
+
 
 }
