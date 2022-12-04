@@ -38,7 +38,7 @@ public class OneToOneServiceImpl implements OneToOneService {
         } else {
             oneToOnes = getOneToOnes();
         }
-        
+
         return OneToOneListResponse
                 .of()
                 .request(oneToOneListRequest)
@@ -51,63 +51,5 @@ public class OneToOneServiceImpl implements OneToOneService {
 
         return oneToOnes.stream().map(oto -> OneToOneAssembler.toDto(oto)).collect(Collectors.toList());
     }
-
-
-
-
-
-
-
-
-//    private final JdbcTemplate jdbc;
-//    private RowMapper<OneToOne> oneToOneMapper;
-//
-//    public OneToOneServiceImpl(JdbcTemplate jdbcTemplate) {
-//        jdbc = jdbcTemplate;
-//        setOneToOneMapper();
-//    }
-//
-//    private void setOneToOneMapper() {
-//        oneToOneMapper = (rs, i) -> new OneToOne(
-//                rs.getInt("OneToOneID"),
-//                rs.getInt("EmployeeID"),
-//                rs.getInt("SupervisorID"),
-//                rs.getString("Date")
-//        );
-//    }
-//
-//    public List<OneToOne> getOneToOnes() {
-//
-//        String allOneToOnesSQL = "select * from OneToOne";
-//        return jdbc.query(allOneToOnesSQL, oneToOneMapper);
-//
-//    }
-
-
-//    @Override
-//    public OneToOneListResponse getOneToOnes(OneToOneListRequest onetooneRequest) {
-//        return null;
-//    }
-
-
-//    public OneToOneListResponse getOneToOnes(OneToOneListRequest onetooneListRequest) {
-//       List<OneToOneDto> onetoone;
-//       if (onetooneListRequest.hasSearchTerm()) {
-//           onetoone = getOneToOnes(onetooneListRequest.getSearchTerm());
-//       } else {
-//           onetoone = getOneToOnes();
-//       }
-//
-//        return OneToOneListResponse
-//                .of()
-//                .request(onetooneListRequest)
-//                .onetoone(onetoone)
-//                .build();
-//    }
-
-//    private List<Object> getOneToOnes() {
-//        List<OneToOne> onetoones = OneToOneRepository.getOneToOnes();
-//        return onetoones.stream().map(c -> OneToOneAssembler.toDto(c)).collect(Collectors.toList());
-//    }
 
 }
