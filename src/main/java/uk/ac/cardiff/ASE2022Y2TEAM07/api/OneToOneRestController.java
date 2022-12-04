@@ -15,6 +15,8 @@ import uk.ac.cardiff.ASE2022Y2TEAM07.service.message.OneToOneListResponse;
 import uk.ac.cardiff.ASE2022Y2TEAM07.service.message.ResponseTransfer;
 import uk.ac.cardiff.ASE2022Y2TEAM07.web.forms.OneToOneForm;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.List;
 
 @Controller
@@ -29,6 +31,7 @@ public class OneToOneRestController {
     }
 
     @GetMapping("onetoone")
+//    @RequestMapping(method = {RequestMethod.GET})
     public ResponseEntity<List<OneToOneJson>> getAllOneToOnes() {
         OneToOneListRequest listRequest = OneToOneListRequest.of().build();
         OneToOneListResponse oneToOneListResponse = oneToOneService.getOneToOnes(listRequest);

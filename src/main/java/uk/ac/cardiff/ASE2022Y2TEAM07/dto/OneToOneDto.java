@@ -1,10 +1,14 @@
 package uk.ac.cardiff.ASE2022Y2TEAM07.dto;
 
-import lombok.AllArgsConstructor;
 import lombok.Value;
 
 import java.time.LocalDate;
+
 import java.time.LocalDateTime;
+
+import java.util.List;
+import java.util.stream.Collector;
+
 
 @Value
 public class OneToOneDto {

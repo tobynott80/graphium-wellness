@@ -1,17 +1,14 @@
 package uk.ac.cardiff.ASE2022Y2TEAM07.repositories;
 
-
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import uk.ac.cardiff.ASE2022Y2TEAM07.domain.OneToOne;
-import uk.ac.cardiff.ASE2022Y2TEAM07.service.OneToOneService;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import java.util.Optional;
-
 
 @Repository
 public class OneToOneRepositoryImpl implements OneToOneRepository {
@@ -57,5 +54,12 @@ public class OneToOneRepositoryImpl implements OneToOneRepository {
         repoJdbc.findAll().forEach(oneToOnes::add);
         return oneToOnes;
     }
+
+    @Override
+    public List<OneToOne> getOneToOnesBySearch(String search) {
+        return repoJdbc.findByNameContaining(search);
+    }
+
+}
 
 }
