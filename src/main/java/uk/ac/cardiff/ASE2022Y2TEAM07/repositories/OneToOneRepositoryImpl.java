@@ -23,64 +23,11 @@ public class OneToOneRepositoryImpl implements OneToOneRepository{
     }
 
     @Override
-    public List<OneToOne> getAllOneToOne() {
-        List<OneToOne> onetoone = new ArrayList<>();
-        repoJdbc.getAllOneToOne().forEach(onetoone::add);
-        return onetoone;
+    public List<OneToOne> getOneToOnes() {
+        List<OneToOne> oneToOnes = new ArrayList<>();
+        repoJdbc.findAll().forEach(oneToOnes::add);
+        return oneToOnes;
     }
 
-    @Override
-    public <S extends OneToOne> S save(S entity) {
-        return null;
-    }
-
-    @Override
-    public <S extends OneToOne> Iterable<S> saveAll(Iterable<S> entities) {
-        return null;
-    }
-
-    @Override
-    public Optional<OneToOne> findById(Integer integer) {
-        return Optional.empty();
-    }
-
-    @Override
-    public boolean existsById(Integer integer) {
-        return false;
-    }
-
-    Iterable<OneToOne> findAllById(Iterable<Integer> integers) {
-        return null;
-    }
-
-    @Override
-    public long count() {
-        return 0;
-    }
-
-    @Override
-    public void deleteById(Integer integer) {
-
-    }
-
-    @Override
-    public void delete(OneToOne entity) {
-
-    }
-
-    @Override
-    public void deleteAllById(Iterable<? extends Integer> integers) {
-
-    }
-
-    @Override
-    public void deleteAll(Iterable<? extends OneToOne> entities) {
-
-    }
-
-    @Override
-    public void deleteAll() {
-
-    }
 
 }

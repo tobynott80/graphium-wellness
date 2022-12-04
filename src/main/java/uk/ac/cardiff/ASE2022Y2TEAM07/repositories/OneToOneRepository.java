@@ -7,37 +7,13 @@ import java.util.Optional;
 
 public interface OneToOneRepository {
 
-    static List<OneToOne> getOneToOnes() {
-        return null;
-    }
 
     List<OneToOne> findAll();
 
-    //
 
 
-    List<OneToOne> getAllOneToOne();
 
+    //working on this
+    List<OneToOne> getOneToOnes();
 
-    //
-
-    <S extends OneToOne> S save(S entity);
-
-    <S extends OneToOne> Iterable<S> saveAll(Iterable<S> entities);
-
-    Optional<OneToOne> findById(Integer integer);
-
-    boolean existsById(Integer integer);
-
-    long count();
-
-    void deleteById(Integer integer);
-
-    void delete(OneToOne entity);
-
-    void deleteAllById(Iterable<? extends Integer> integers);
-
-    void deleteAll(Iterable<? extends OneToOne> entities);
-
-    void deleteAll();
 }

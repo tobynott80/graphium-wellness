@@ -6,9 +6,10 @@ import uk.ac.cardiff.ASE2022Y2TEAM07.dto.OneToOneDto;
 public class OneToOneAssembler {
 
     //TODO: Implement this class
-//    static OneToOneDto toDto(OneToOne c) {
-//        return new OneToOneDto(c.getOneToOneID);
-//    }
+
+    public static OneToOneDto toDto(OneToOne oto) {
+        return new OneToOneDto(oto.getOne_To_One_ID(), oto.getEmployee_ID(), oto.getSupervisor_ID(), oto.getDate());
+    }
 
 
 }
