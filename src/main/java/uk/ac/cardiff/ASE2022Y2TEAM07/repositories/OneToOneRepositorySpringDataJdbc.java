@@ -13,6 +13,6 @@ public interface OneToOneRepositorySpringDataJdbc extends CrudRepository<OneToOn
 
     Iterable<OneToOne> findAll();
 
-    Iterable<OneToOne> getAllOneToOne();
+    Iterable<OneToOne> getOneToOnes();
 }
 

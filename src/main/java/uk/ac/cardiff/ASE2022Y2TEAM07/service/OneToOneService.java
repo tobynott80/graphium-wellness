@@ -20,6 +20,6 @@ public interface OneToOneService {
     OneToOneListResponse getAllOneToOne(OneToOneListRequest onetooneListRequest);
 
     //
-    OneToOneListResponse getOneToOnes();
+    OneToOneListResponse getOneToOnes(OneToOneListRequest listRequest);
 
 }
