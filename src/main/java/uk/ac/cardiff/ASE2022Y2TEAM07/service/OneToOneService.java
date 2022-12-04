@@ -10,6 +10,6 @@ public interface OneToOneService {
     List<OneToOneDto> findAll();
 
     //
-    OneToOneListResponse getOneToOnes();
+    OneToOneListResponse getOneToOnes(OneToOneListRequest listRequest);
 
 }
