@@ -6,8 +6,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+//import javax.persistence.GeneratedValue;
+//import javax.persistence.GenerationType;
 
 @Data
 @Table
@@ -15,7 +15,7 @@ public class Note {
 
     @Id
     @Column("NOTE_ID")
-    @GeneratedValue(strategy= GenerationType.AUTO)
+  //  @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer noteId;
     private Integer OneToOneID;
     private String note;
