@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import uk.ac.cardiff.ASE2022Y2TEAM07.domain.Checkin;
 import uk.ac.cardiff.ASE2022Y2TEAM07.domain.OneToOne;
+
+import org.springframework.stereotype.Service;
 import uk.ac.cardiff.ASE2022Y2TEAM07.dto.CheckinDto;
 import uk.ac.cardiff.ASE2022Y2TEAM07.repositories.CheckinRepository;
 

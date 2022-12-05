@@ -9,7 +9,7 @@ import lombok.Value;
 @Builder(builderMethodName="of")
 public class OneToOneListRequest {
 
-    private String searchTerm;
+    private Integer searchTerm;
     public Boolean hasSearchTerm() {
         return (searchTerm != null);
     }

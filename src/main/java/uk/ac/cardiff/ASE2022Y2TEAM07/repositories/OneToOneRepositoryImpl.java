@@ -56,8 +56,8 @@ public class OneToOneRepositoryImpl implements OneToOneRepository {
     }
 
     @Override
-    public List<OneToOne> getOneToOnesBySearch(String search) {
-        return repoJdbc.findByNameContaining(search);
+    public List<OneToOne> getOneToOnesBySearch(Integer search) {
+        return repoJdbc.findByOneToOneIDContaining(search);
     }
 
 }

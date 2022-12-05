@@ -12,7 +12,8 @@ import uk.ac.cardiff.ASE2022Y2TEAM07.repositories.NoteRepository;
 
 import uk.ac.cardiff.ASE2022Y2TEAM07.assembler.OneToOneAssembler;
 import uk.ac.cardiff.ASE2022Y2TEAM07.repositories.OneToOneRepository;
-import uk.ac.cardiff.ASE2022Y2TEAM07.service.message.*;
+import uk.ac.cardiff.ASE2022Y2TEAM07.service.message.OneToOneListRequest;
+import uk.ac.cardiff.ASE2022Y2TEAM07.service.message.OneToOneListResponse;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -102,6 +103,7 @@ public class OneToOneServiceImpl implements OneToOneService {
                 .build();
     }
 
+
     private List<OneToOneDto> getOneToOnes (OneToOneListRequest listRequest){
 
     }
@@ -111,6 +113,9 @@ public class OneToOneServiceImpl implements OneToOneService {
     }
 
     private List<OneToOneDto> getOneToOnesBySearch (String search){
+
+    }
+    private List<OneToOneDto> getOneToOnesBySearch(Integer search) {
         List<OneToOne> oneToOnes = oneToOneRepository.getOneToOnesBySearch(search);
         return oneToOnes.stream().map(oto -> OneToOneAssembler.toDto(oto)).collect(Collectors.toList());
     }

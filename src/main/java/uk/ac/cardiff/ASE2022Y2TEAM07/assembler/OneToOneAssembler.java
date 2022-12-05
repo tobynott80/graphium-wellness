@@ -8,8 +8,7 @@ public class OneToOneAssembler {
     //TODO: Implement this class
 
     public static OneToOneDto toDto(OneToOne oto) {
-        return new OneToOneDto(oto.getOne_To_One_ID(), oto.getEmployee_ID(), oto.getSupervisor_ID(), oto.getDate());
+        return new OneToOneDto(oto.getOneToOneID(), oto.getEmployeeID(), oto.getSupervisorID(), oto.getDate());
     }
-
 
 }
