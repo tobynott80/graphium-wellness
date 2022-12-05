@@ -5,7 +5,9 @@
 
 
 **Gherkin Test (Given, When, Then)**
-
+- Given
+- When
+- Then
 
 
 **Tracking Data**
