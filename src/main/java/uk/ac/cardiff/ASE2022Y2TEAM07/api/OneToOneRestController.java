@@ -19,7 +19,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-@Controller
 @RestController
 @RequestMapping("api")
 //@AllArgsConstructor
@@ -31,7 +30,7 @@ public class OneToOneRestController {
     }
 
     @GetMapping("onetoone")
-//    @RequestMapping(method = {RequestMethod.GET})
+    @RequestMapping(method = {RequestMethod.GET})
     public ResponseEntity<List<OneToOneJson>> getAllOneToOnes() {
         OneToOneListRequest listRequest = OneToOneListRequest.of().build();
         OneToOneListResponse oneToOneListResponse = oneToOneService.getOneToOnes(listRequest);

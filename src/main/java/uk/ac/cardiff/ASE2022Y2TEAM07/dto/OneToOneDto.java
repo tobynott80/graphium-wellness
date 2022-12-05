@@ -8,17 +8,18 @@ import java.util.stream.Collector;
 
 @Value
 public class OneToOneDto {
+    private Integer oneToOneID;
+    private Integer employeeID;
+    private Integer supervisorID;
+    private LocalDate date;
 
-    private Integer One_To_One_ID;
-    private Integer Employee_ID;
-    private Integer Supervisor_ID;
-    private LocalDate Date;
-
-    public OneToOneDto(Integer One_To_One_ID, Integer Employee_ID, Integer Supervisor_ID, LocalDate Date) {
-        this.One_To_One_ID = One_To_One_ID;
-        this.Employee_ID = Employee_ID;
-        this.Supervisor_ID = Supervisor_ID;
-        this.Date = Date;
+    public OneToOneDto(Integer oneToOneID, Integer employeeID, Integer supervisorID, LocalDate date) {
+        this.oneToOneID = oneToOneID;
+        this.employeeID = employeeID;
+        this.supervisorID = supervisorID;
+        this.date = date;
     }
+
+
 
 }

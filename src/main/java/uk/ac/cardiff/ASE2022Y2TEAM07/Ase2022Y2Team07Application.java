@@ -2,6 +2,7 @@ package uk.ac.cardiff.ASE2022Y2TEAM07;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 public class Ase2022Y2Team07Application {

@@ -5,7 +5,6 @@ import uk.ac.cardiff.ASE2022Y2TEAM07.domain.OneToOne;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public class OneToOneRepositoryImpl implements OneToOneRepository{
@@ -31,8 +30,8 @@ public class OneToOneRepositoryImpl implements OneToOneRepository{
     }
 
     @Override
-    public List<OneToOne> getOneToOnesBySearch(String search) {
-        return repoJdbc.findByNameContaining(search);
+    public List<OneToOne> getOneToOnesBySearch(Integer search) {
+        return repoJdbc.findByOneToOneIDContaining(search);
     }
 
 }

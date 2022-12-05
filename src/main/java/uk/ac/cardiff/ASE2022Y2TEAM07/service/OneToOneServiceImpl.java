@@ -1,12 +1,14 @@
 package uk.ac.cardiff.ASE2022Y2TEAM07.service;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import uk.ac.cardiff.ASE2022Y2TEAM07.assembler.OneToOneAssembler;
 import uk.ac.cardiff.ASE2022Y2TEAM07.domain.OneToOne;
 import uk.ac.cardiff.ASE2022Y2TEAM07.dto.OneToOneDto;
 import uk.ac.cardiff.ASE2022Y2TEAM07.repositories.OneToOneRepository;
-import uk.ac.cardiff.ASE2022Y2TEAM07.service.message.*;
+import uk.ac.cardiff.ASE2022Y2TEAM07.service.message.OneToOneListRequest;
+import uk.ac.cardiff.ASE2022Y2TEAM07.service.message.OneToOneListResponse;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -45,7 +47,7 @@ public class OneToOneServiceImpl implements OneToOneService {
                 .build();
     }
 
-    private List<OneToOneDto> getOneToOnesBySearch(String search) {
+    private List<OneToOneDto> getOneToOnesBySearch(Integer search) {
         List<OneToOne> oneToOnes = oneToOneRepository.getOneToOnesBySearch(search);
         return oneToOnes.stream().map(oto -> OneToOneAssembler.toDto(oto)).collect(Collectors.toList());
     }
@@ -54,31 +56,5 @@ public class OneToOneServiceImpl implements OneToOneService {
         List<OneToOne> oneToOnes = oneToOneRepository.getOneToOnes();
         return oneToOnes.stream().map(oto -> OneToOneAssembler.toDto(oto)).collect(Collectors.toList());
     }
-
-
-
-
-
-
-//    public OneToOneListResponse getOneToOnes(OneToOneListRequest oneToOneListRequest) {
-//        List<OneToOneDto> oneToOnes;
-//        if (oneToOneListRequest.hasSearchTerm()) {
-//            oneToOnes = getOneToOnesBySearch(OneToOneListRequest.getSearchTerm());
-//        } else {
-//            oneToOnes = getOneToOnes();
-//        }
-//
-//        return OneToOneListResponse
-//                .of()
-//                .request(oneToOneListRequest)
-//                .onetoone(oneToOnes)
-//                .build();
-//    }
-
-//    private List<OneToOneDto> getOneToOnes() {
-//        List<OneToOne> oneToOnes = oneToOneRepository.getOneToOnes();
-//
-//        return oneToOnes.stream().map(c -> OneToOneAssembler.toDto(c)).collect(Collectors.toList());
-//    }
 
 }
