@@ -15,10 +15,6 @@ public class Note {
 
     @Id
     @Column("NOTE_ID")
-<<<<<<< Updated upstream
-    @GeneratedValue(strategy= GenerationType.AUTO)
-=======
->>>>>>> Stashed changes
     private Integer noteId;
     private Integer OneToOneID;
     private String note;
@@ -31,7 +27,6 @@ public class Note {
     public Note(Integer oneToOneID, String note) {
         OneToOneID = oneToOneID;
         this.note = note;
-        this.noteId = 1; //TESTING PURPOSES - REMOVE WHEN AUTOINCREMENT WORKS
     }
 
     public Note() {
