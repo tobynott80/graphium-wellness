@@ -18,14 +18,11 @@ import java.time.LocalDate;
 public class CheckinController {
 
     @Autowired
-    private CheckinRepositoryImpl checkinRepository;
-
-    @Autowired
     private CheckinService checkinService;
 
     @Autowired
-    public CheckinController(CheckinRepositoryImpl checkinRepository) {
-        this.checkinRepository = checkinRepository;
+    public CheckinController(CheckinService checkinService) {
+        this.checkinService = checkinService;
     }
 
     @GetMapping("")
