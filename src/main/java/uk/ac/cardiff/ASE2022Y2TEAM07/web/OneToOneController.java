@@ -36,7 +36,7 @@ public class OneToOneController {
         return currentPrincipalName;
     }
 
-    private Employee getCurrentEmployee() {
+    public Employee getCurrentEmployee() {
         String email = getCurrentEmployeeEmail();
         return employeeRepository.findByEmail(email);
     }

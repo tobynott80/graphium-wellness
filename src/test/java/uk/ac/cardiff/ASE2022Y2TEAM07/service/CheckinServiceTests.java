@@ -23,11 +23,11 @@ public class CheckinServiceTests {
     @Test
     public void shouldSaveCheckin() {
         //Given
-        CheckinDto checkinDto = new CheckinDto(3, 2, 8, LocalDate.now());
+        CheckinDto checkinDto = new CheckinDto(3, 3, 8, LocalDate.now());
         //When
         checkinService.save(checkinDto);
         //Then
-        assertEquals("JAMES", employeeRepository.findByEmployeeId(checkinService.getCheckinById(3).getEmployeeId()).getName());
+        assertEquals("OLI", employeeRepository.findByEmployeeId(checkinService.getCheckinById(3).getEmployeeId()).getName());
     }
 }
 

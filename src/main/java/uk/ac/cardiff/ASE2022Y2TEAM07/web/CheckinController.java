@@ -21,13 +21,16 @@ public class CheckinController {
     private CheckinService checkinService;
 
     @Autowired
+    private OneToOneController oneToOneController;
+
+    @Autowired
     public CheckinController(CheckinService checkinService) {
         this.checkinService = checkinService;
     }
 
     @GetMapping("")
     public ModelAndView checkinsForm(Model model, @PathVariable("employeeId") Integer employeeId){
-        model.addAttribute("name","John");
+        model.addAttribute("name", oneToOneController.getCurrentEmployee().getName());
         model.addAttribute("supervisor", "Carl");
         model.addAttribute("checkinForm",new CheckinForm(employeeId, 5));
         var mv = new ModelAndView("employee/EmployeeCheckinPage", model.asMap());
