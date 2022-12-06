@@ -19,7 +19,7 @@
     <form th:method="post" th:action="@{/employee/onetoone}" th:object="${OneToOneForm}">
       <div class="mb-3">
         <label for="datetime" class="form-label">Requested Time for Meeting</label>
-        <input type="datetime-local" class="form-control" id="datetime" th:feild="*{date}" >
+        <input type="date" class="form-control" id="datetime" th:feild="*{date}" >
       </div>
       <div class="mb-3">
         <label for="notes" class="form-label">Meeting Notes</label>

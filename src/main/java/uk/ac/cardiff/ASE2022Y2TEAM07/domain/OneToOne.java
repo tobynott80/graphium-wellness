@@ -21,29 +21,32 @@ public class OneToOne {
     private int employeeId;
     private int supervisorId;
 
-    public OneToOne(int employeeId, int supervisorId, LocalDateTime date) {
+    private LocalDate date;
+
+
+    public OneToOne(int employeeId, int supervisorId, LocalDate date) {
         this.employeeId = employeeId;
         this.supervisorId = supervisorId;
         this.date = date;
     }
-    public OneToOne(int oneToOneId, int employeeId, int supervisorId, LocalDateTime date) {
+    public OneToOne(int oneToOneId, int employeeId, int supervisorId, LocalDate date) {
         this.oneToOneId = oneToOneId;
         this.employeeId = employeeId;
         this.supervisorId = supervisorId;
         this.date = date;
     }
 
+    //Constructor for taking in SQL date format and converting to javaLocalDate
     public OneToOne(int oneToOneId, int employeeId, int supervisorId, Date date) {
         this.oneToOneId = oneToOneId;
         this.employeeId = employeeId;
         this.supervisorId = supervisorId;
-        this.date = date.toLocalDate().atStartOfDay();
+        this.date = date.toLocalDate();
     }
 
     public OneToOne() {
     }
 
-    private LocalDateTime date;
 
 
     public int getOneToOneId() {
@@ -58,7 +61,7 @@ public class OneToOne {
         return supervisorId;
     }
 
-    public LocalDateTime getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
