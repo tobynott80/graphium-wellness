@@ -14,7 +14,7 @@ import java.util.Date;
 @AllArgsConstructor
 public class OneToOneForm {
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd'")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate date;
 
     private String notes;
