@@ -8,5 +8,5 @@ import java.util.List;
 public interface CheckinService {
     List<CheckinDto> findAll();
 
-    void save(Checkin checkin);
+    void save(CheckinDto checkinDto);
 }
