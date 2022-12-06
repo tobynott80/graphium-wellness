@@ -21,14 +21,15 @@ import java.util.Comparator;
 public class CheckinController {
 
     @Autowired
-    private CheckinService checkinService;
+    private final CheckinService checkinService;
 
     @Autowired
-    private OneToOneController oneToOneController;
+    private final OneToOneController oneToOneController;
 
     @Autowired
-    public CheckinController(CheckinService checkinService) {
+    public CheckinController(CheckinService checkinService, OneToOneController oneToOneController) {
         this.checkinService = checkinService;
+        this.oneToOneController = oneToOneController;
     }
 
     @GetMapping("")
