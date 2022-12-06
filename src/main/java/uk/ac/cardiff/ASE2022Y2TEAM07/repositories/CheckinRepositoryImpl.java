@@ -42,4 +42,10 @@ public class CheckinRepositoryImpl implements CheckinRepository{
     public void save(Checkin checkin) {
         repoJdbc.save(checkin);
     }
+
+    @Override
+    public Checkin getCheckinById(Integer checkInsId) {
+        Checkin checkin = repoJdbc.findByCheckInsId(checkInsId);
+        return checkin;
+    }
 }

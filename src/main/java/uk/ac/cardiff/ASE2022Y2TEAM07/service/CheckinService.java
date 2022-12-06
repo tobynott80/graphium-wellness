@@ -10,4 +10,6 @@ public interface CheckinService {
     List<CheckinDto> findAll();
 
     void save(CheckinDto checkinDto);
+
+    Checkin getCheckinById(Integer checkInsId);
 }

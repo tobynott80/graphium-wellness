@@ -18,4 +18,6 @@ public interface CheckinRepository {
     List<Checkin> findAll();
 
     void save(Checkin checkin);
+
+    Checkin getCheckinById(Integer checkInsId);
 }
