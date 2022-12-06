@@ -28,19 +28,19 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-
         http
-                .authorizeRequests()
-                .anyRequest().authenticated()
-                .and().formLogin();
+                .authorizeRequests(authorize -> authorize
+                        .antMatchers("/h2-console/**").permitAll()
+                        .anyRequest().authenticated()
+                )
+                .formLogin(withDefaults())
+                .httpBasic(withDefaults())
+                .csrf().disable()
+                .headers().frameOptions().disable();
+
+        http.csrf().ignoringAntMatchers("/h2-console/**").and().headers().frameOptions().sameOrigin();
         return http.build();
     }
-//
-//    @Bean
-//    public WebSecurityCustomizer webSecurityCustomizer() {
-//
-//}
-
 
 
     @Bean

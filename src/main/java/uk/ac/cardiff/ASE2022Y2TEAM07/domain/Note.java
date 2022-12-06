@@ -6,8 +6,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
-//import javax.persistence.GeneratedValue;
-//import javax.persistence.GenerationType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 
 @Data
 @Table
@@ -15,7 +15,6 @@ public class Note {
 
     @Id
     @Column("NOTE_ID")
-  //  @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer noteId;
     private Integer OneToOneID;
     private String note;
@@ -28,7 +27,6 @@ public class Note {
     public Note(Integer oneToOneID, String note) {
         OneToOneID = oneToOneID;
         this.note = note;
-        this.noteId = 1; //TESTING PURPOSES - REMOVE WHEN AUTOINCREMENT WORKS
     }
 
     public Note() {

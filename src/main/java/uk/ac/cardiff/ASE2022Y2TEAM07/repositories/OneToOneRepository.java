@@ -7,4 +7,5 @@ public interface OneToOneRepository {
 
     void save(OneToOne oneToOne);
 
+    Integer getNewestOneToOneId();
 }

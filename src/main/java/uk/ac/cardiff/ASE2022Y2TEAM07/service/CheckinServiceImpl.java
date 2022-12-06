@@ -1,35 +1,35 @@
 package uk.ac.cardiff.ASE2022Y2TEAM07.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import uk.ac.cardiff.ASE2022Y2TEAM07.domain.Checkin;
+import uk.ac.cardiff.ASE2022Y2TEAM07.domain.OneToOne;
 import uk.ac.cardiff.ASE2022Y2TEAM07.dto.CheckinDto;
-import uk.ac.cardiff.ASE2022Y2TEAM07.repositories.CheckinRepositoryImpl;
-import uk.ac.cardiff.ASE2022Y2TEAM07.repositories.CheckinRepositorySpringDataJdbc;
+import uk.ac.cardiff.ASE2022Y2TEAM07.repositories.CheckinRepository;
 
-import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class CheckinServiceImpl implements CheckinService {
 
-    private CheckinRepositorySpringDataJdbc repoJdbc;
-
-    private final CheckinRepositoryImpl checkinRepository;
-
-    public CheckinServiceImpl(CheckinRepositoryImpl checkinRepository) {
-        this.checkinRepository = checkinRepository;
-    }
+    @Autowired
+    private CheckinRepository checkinRepository;
 
 
     @Override
     public List<CheckinDto> findAll() {
-        System.out.println("service123");
-        List<CheckinDto> checkins = new ArrayList<>();
-//        repoJdbc.findAll().forEach(checkins::add);
-//        return checkins;
-        return checkins;
+        return null;
     }
 
     @Override
-    public void save(Checkin checkin) {
-        checkinRepository.save(checkin);
+    public void save(CheckinDto checkinDto) {
+        Checkin newCheckin = new Checkin(checkinDto.getEmployeeId(), checkinDto.getCheckInsId(), checkinDto.getScore(), checkinDto.getDate());
+        checkinRepository.save(newCheckin);
+    }
+
+    @Override
+    public Checkin getCheckinById(Integer checkInsId) {
+        Checkin checkin = checkinRepository.getCheckinById(checkInsId);
+        return checkin;
     }
 }
