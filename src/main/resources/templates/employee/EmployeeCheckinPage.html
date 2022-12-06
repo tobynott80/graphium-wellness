@@ -17,7 +17,7 @@
       <span class=" display-5" id="emoji">&#128512</span>
     </div>
 
-    <form th:action="@{/employee/{employeeId}/checkin (employeeId=${checkinForm.employeeId})}" th:method="post" th:object="${checkinForm}">
+    <form th:action="@{/employee/checkin}" th:method="post" th:object="${checkinForm}">
 
         <div class="row">
             <div class="input-group justify-content-center p-2">

@@ -3,7 +3,9 @@ package uk.ac.cardiff.ASE2022Y2TEAM07.api;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import uk.ac.cardiff.ASE2022Y2TEAM07.domain.Checkin;
+import uk.ac.cardiff.ASE2022Y2TEAM07.dto.CheckinDto;
 import uk.ac.cardiff.ASE2022Y2TEAM07.repositories.CheckinRepositoryImpl;
+import uk.ac.cardiff.ASE2022Y2TEAM07.service.CheckinService;
 import uk.ac.cardiff.ASE2022Y2TEAM07.service.message.ResponseTransfer;
 import uk.ac.cardiff.ASE2022Y2TEAM07.web.forms.CheckinForm;
 
@@ -15,6 +17,8 @@ import java.util.List;
 public class CheckinRestController {
 
     private CheckinRepositoryImpl checkinRepository;
+
+    private CheckinService checkinService;
 
     public CheckinRestController(CheckinRepositoryImpl checkinRepository) {
         this.checkinRepository = checkinRepository;
@@ -35,8 +39,8 @@ public class CheckinRestController {
         // gets date
         LocalDate now = LocalDate.now();
 
-        Checkin checkin = new Checkin(null, 0, 1, now);
-        checkinRepository.save(checkin);
+        CheckinDto checkinDto = new CheckinDto(null, 0, 1, now);
+        checkinService.save(checkinDto);
         System.out.printf("employee checkin space" + employeeCheckinPage);
         return new ResponseTransfer("Checkin created successfully", "200");
     }

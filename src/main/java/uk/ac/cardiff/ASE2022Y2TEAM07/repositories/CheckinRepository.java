@@ -2,8 +2,8 @@ package uk.ac.cardiff.ASE2022Y2TEAM07.repositories;
 
 import org.springframework.stereotype.Repository;
 import uk.ac.cardiff.ASE2022Y2TEAM07.domain.Checkin;
+import uk.ac.cardiff.ASE2022Y2TEAM07.dto.CheckinDto;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @Repository
@@ -18,4 +18,6 @@ public interface CheckinRepository {
     List<Checkin> findAll();
 
     void save(Checkin checkin);
+
+    Checkin getCheckinById(Integer checkInsId);
 }
