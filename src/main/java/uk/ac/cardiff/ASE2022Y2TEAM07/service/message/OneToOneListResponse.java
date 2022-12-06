@@ -5,7 +5,7 @@ import lombok.Builder;
 import lombok.Value;
 import uk.ac.cardiff.ASE2022Y2TEAM07.dto.OneToOneDto;
 
-import java.net.http.HttpResponse;
+import java.util.Collection;
 import java.util.List;
 
 @Value
@@ -14,9 +14,14 @@ import java.util.List;
 public class OneToOneListResponse {
 
     private OneToOneListRequest request;
-    private List<OneToOneDto> onetoone;
+    private List<OneToOneDto> oneToOnes;
 
-    public List<OneToOneDto> getOneToOnes() {
-        return null;
+//    public List<OneToOneDto> getOneToOnes() {
+//        return null;
+//    }
+
+    public Integer getOneToOneCount() {
+        return oneToOnes.size();
     }
+
 }

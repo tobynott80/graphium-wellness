@@ -17,9 +17,9 @@ public class OneToOneRepositoryImpl implements OneToOneRepository{
 
     @Override
     public List<OneToOne> findAll() {
-        List<OneToOne> onetoone = new ArrayList<>();
-        repoJdbc.findAll().forEach(onetoone::add);
-        return onetoone;
+        List<OneToOne> oneToOnes = new ArrayList<>();
+        repoJdbc.findAll().forEach(oneToOnes::add);
+        return oneToOnes;
     }
 
     @Override

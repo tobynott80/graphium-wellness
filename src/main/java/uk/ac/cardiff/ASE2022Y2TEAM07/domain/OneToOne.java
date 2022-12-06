@@ -10,7 +10,6 @@ import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor
-@Table
 public class OneToOne {
 
     @Id
