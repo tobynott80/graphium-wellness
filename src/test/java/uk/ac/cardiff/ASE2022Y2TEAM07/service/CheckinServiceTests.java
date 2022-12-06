@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import uk.ac.cardiff.ASE2022Y2TEAM07.dto.CheckinDto;
-import uk.ac.cardiff.ASE2022Y2TEAM07.repositories.CheckinRepository;
 import uk.ac.cardiff.ASE2022Y2TEAM07.repositories.EmployeeRepository;
 
 
@@ -21,7 +20,6 @@ public class CheckinServiceTests {
     @Autowired
     private EmployeeRepository employeeRepository;
 
-    //TODO: implement the methods to make this test work.
     @Test
     public void shouldSaveCheckin() {
         //Given
