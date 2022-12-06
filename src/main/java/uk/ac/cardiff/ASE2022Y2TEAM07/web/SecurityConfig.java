@@ -10,6 +10,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+import static org.springframework.security.config.Customizer.withDefaults;
+
 //adapted from: https://stackoverflow.com/questions/49387988/authentication-of-users-from-two-database-tables-in-spring-security
 
 @Configuration
