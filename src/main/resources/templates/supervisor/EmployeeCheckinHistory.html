@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>One To One Request</title>
+    <link th:replace="fragments/supervisorHeader :: bootstrap-css">
+</head>
+<body>
+<div th:replace="fragments/supervisorHeader :: supervisorHeader"></div>
+
+
+<div class="container align-items-center text-center py-4 px-5" id="employeeData">
+    <div class="row">
+        <div class="col">
+            <h4>{employeeName}</h4>
+        </div>
+    </div>
+    <div class="row">
+        <h4>This Week's Check In History</h4>
+    </div>
+
+
+</div>
+
+
+
+<script th:replace="fragments/footer :: bootstrap-js"></script>
+
+</body>
+</html>
