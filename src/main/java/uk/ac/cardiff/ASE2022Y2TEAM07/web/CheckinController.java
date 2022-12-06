@@ -13,7 +13,7 @@ import uk.ac.cardiff.ASE2022Y2TEAM07.web.forms.CheckinForm;
 
 import java.time.LocalDate;
 
-@RequestMapping("employee/{employeeId}/checkin")
+@RequestMapping("employee/checkin")
 @Controller
 public class CheckinController {
 
@@ -29,7 +29,7 @@ public class CheckinController {
     }
 
     @GetMapping("")
-    public ModelAndView checkinsForm(Model model, @PathVariable("employeeId") Integer employeeId){
+    public ModelAndView checkinsForm(Model model, Integer employeeId){
         model.addAttribute("name", oneToOneController.getCurrentEmployee().getName());
         model.addAttribute("supervisor", "Carl");
         model.addAttribute("checkinForm",new CheckinForm(employeeId, 5));
@@ -38,7 +38,7 @@ public class CheckinController {
     }
 
     @PostMapping("")
-    public ModelAndView checkinForm(CheckinForm checkinForm, @PathVariable Integer employeeId, Model model, BindingResult bindingResult) {
+    public ModelAndView checkinForm(CheckinForm checkinForm, Model model, BindingResult bindingResult) {
 
         // gets date
         LocalDate now = LocalDate.now();
