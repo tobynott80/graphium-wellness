@@ -12,9 +12,9 @@ public class OneToOneDto {
     private int OneToOneId;
     private int employeeId;
     private int supervisorId;
-    private LocalDateTime date;
+    private LocalDate date;
 
-    public OneToOneDto(int oneToOneId, int employeeId, int supervisorId, LocalDateTime date) {
+    public OneToOneDto(int oneToOneId, int employeeId, int supervisorId, LocalDate date) {
         OneToOneId = oneToOneId;
         this.employeeId = employeeId;
         this.supervisorId = supervisorId;
@@ -33,7 +33,7 @@ public class OneToOneDto {
         return supervisorId;
     }
 
-    public LocalDateTime getDate() {
+    public LocalDate getDate() {
         return date;
     }
 

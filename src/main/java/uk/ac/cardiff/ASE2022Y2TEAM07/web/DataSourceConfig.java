@@ -11,13 +11,13 @@ public class DataSourceConfig {
 
 
     //same config as application.properties
-    @Bean
-    public DataSource getDataSource() {
-        DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
-        dataSourceBuilder.driverClassName("org.h2.Driver");
-        dataSourceBuilder.url("jdbc:h2:mem:testdb");
-        dataSourceBuilder.username("sa");
-        dataSourceBuilder.password("");
-        return dataSourceBuilder.build();
-    }
+//    @Bean
+//    public DataSource getDataSource() {
+//        DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
+//        dataSourceBuilder.driverClassName("org.h2.Driver");
+//        dataSourceBuilder.url("jdbc:h2:mem:testdb");
+//        dataSourceBuilder.username("sa");
+//        dataSourceBuilder.password("");
+//        return dataSourceBuilder.build();
+//    }
 }
