@@ -99,7 +99,7 @@ public class OneToOneServiceImpl implements OneToOneService {
         return OneToOneListResponse
                 .of()
                 .request(oneToOneListRequest)
-                .onetoone(oneToOnes)
+                .oneToOnes(oneToOnes)
                 .build();
     }
 
