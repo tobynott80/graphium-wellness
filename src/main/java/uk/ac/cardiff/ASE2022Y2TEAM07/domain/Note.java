@@ -15,7 +15,10 @@ public class Note {
 
     @Id
     @Column("NOTE_ID")
+<<<<<<< Updated upstream
     @GeneratedValue(strategy= GenerationType.AUTO)
+=======
+>>>>>>> Stashed changes
     private Integer noteId;
     private Integer OneToOneID;
     private String note;
