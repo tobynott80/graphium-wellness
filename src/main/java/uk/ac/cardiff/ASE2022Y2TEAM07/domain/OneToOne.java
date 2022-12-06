@@ -7,6 +7,7 @@ import org.springframework.data.relational.core.mapping.Table;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import java.sql.Date;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -30,6 +31,13 @@ public class OneToOne {
         this.employeeId = employeeId;
         this.supervisorId = supervisorId;
         this.date = date;
+    }
+
+    public OneToOne(int oneToOneId, int employeeId, int supervisorId, Date date) {
+        this.oneToOneId = oneToOneId;
+        this.employeeId = employeeId;
+        this.supervisorId = supervisorId;
+        this.date = date.toLocalDate().atStartOfDay();
     }
 
     public OneToOne() {
