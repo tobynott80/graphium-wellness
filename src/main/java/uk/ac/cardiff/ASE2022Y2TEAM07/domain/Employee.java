@@ -5,6 +5,10 @@ import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
+import javax.persistence.CascadeType;
+import javax.persistence.OneToMany;
+import java.util.Set;
+
 @Data
 @AllArgsConstructor
 @Table
@@ -33,12 +37,19 @@ public class Employee {
         return supervisorId;
     }
 
+    public Set<Checkin> getCheckins() {
+        return checkins;
+    }
+
     private int employeeId;
     private String name;
     private String email;
     private String role;
     private String passwordHash;
     private int supervisorId;
+
+    @OneToMany(mappedBy = "employeeId", cascade = CascadeType.ALL)
+    private Set<Checkin> checkins;
 
 
 }

@@ -40,4 +40,7 @@ public class Checkin {
         return score;
     }
 
+    public LocalDate getDate() {
+        return date;
+    }
 }
