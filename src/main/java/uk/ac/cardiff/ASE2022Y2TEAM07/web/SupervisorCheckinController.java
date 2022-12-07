@@ -1,6 +1,8 @@
 package uk.ac.cardiff.ASE2022Y2TEAM07.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +18,7 @@ import java.util.Optional;
 
 
 @Controller
+@PreAuthorize("hasRole('ROLE_SUPERVISOR')")
 @RequestMapping("/supervisor/employee")
 public class SupervisorCheckinController {
     @Autowired

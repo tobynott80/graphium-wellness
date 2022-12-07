@@ -1,6 +1,7 @@
 package uk.ac.cardiff.ASE2022Y2TEAM07.web;
 
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,7 @@ import uk.ac.cardiff.ASE2022Y2TEAM07.service.OneToOneService;
 import uk.ac.cardiff.ASE2022Y2TEAM07.web.forms.OneToOneForm;
 
 @Controller
+@PreAuthorize("hasRole('ROLE_EMPLOYEE')")
 @RequestMapping("employee/onetoone")
 public class OneToOneController {
     private final OneToOneService oneToOneService;
