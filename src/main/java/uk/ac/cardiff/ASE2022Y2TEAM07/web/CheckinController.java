@@ -6,8 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import uk.ac.cardiff.ASE2022Y2TEAM07.domain.Employee;
 import uk.ac.cardiff.ASE2022Y2TEAM07.dto.CheckinDto;
-import uk.ac.cardiff.ASE2022Y2TEAM07.repositories.CheckinRepositoryImpl;
 import uk.ac.cardiff.ASE2022Y2TEAM07.service.CheckinService;
 import uk.ac.cardiff.ASE2022Y2TEAM07.web.forms.CheckinForm;
 
@@ -32,7 +32,7 @@ public class CheckinController {
     public ModelAndView checkinsForm(Model model, Integer employeeId){
         model.addAttribute("name", oneToOneController.getCurrentEmployee().getName());
         model.addAttribute("supervisor", "Carl");
-        model.addAttribute("checkinForm",new CheckinForm(employeeId, 5));
+        model.addAttribute("checkinForm",new CheckinForm(oneToOneController.getCurrentEmployee().getEmployeeId(), 5));
         var mv = new ModelAndView("employee/EmployeeCheckinPage", model.asMap());
         return mv;
     }
@@ -40,10 +40,12 @@ public class CheckinController {
     @PostMapping("")
     public ModelAndView checkinForm(CheckinForm checkinForm, Model model, BindingResult bindingResult) {
 
+        Employee employee = oneToOneController.getCurrentEmployee();
+
         // gets date
         LocalDate now = LocalDate.now();
 
-        CheckinDto checkinDto = new CheckinDto(null, checkinForm.getEmployeeId(), checkinForm.getScore(), now);
+        CheckinDto checkinDto = new CheckinDto(null, employee.getEmployeeId(), checkinForm.getScore(), now);
         checkinService.save(checkinDto);
 
         var mv = new ModelAndView("employee/EmployeeHomepage.html", model.asMap());
