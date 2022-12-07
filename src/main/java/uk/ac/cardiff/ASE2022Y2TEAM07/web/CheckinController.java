@@ -1,6 +1,7 @@
 package uk.ac.cardiff.ASE2022Y2TEAM07.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,6 +15,7 @@ import uk.ac.cardiff.ASE2022Y2TEAM07.web.forms.CheckinForm;
 import java.time.LocalDate;
 
 @RequestMapping("employee/checkin")
+@PreAuthorize("hasRole('ROLE_EMPLOYEE')")
 @Controller
 public class CheckinController {
 
