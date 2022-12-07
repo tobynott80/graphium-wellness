@@ -10,6 +10,8 @@ public interface OneToOneService {
     List<OneToOneDto> findAll();
 
     //
+    List<OneToOneDto> getSupervisorOneToOnes();
+
     OneToOneListResponse getOneToOnes(OneToOneListRequest listRequest);
 
 }

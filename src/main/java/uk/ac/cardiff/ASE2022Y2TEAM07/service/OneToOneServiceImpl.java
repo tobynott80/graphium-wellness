@@ -19,16 +19,30 @@ public class OneToOneServiceImpl implements OneToOneService {
     //TODO: Implement this service
 
     //working on this
-
     private final OneToOneRepository oneToOneRepository;
 
     public OneToOneServiceImpl(OneToOneRepository otoRepo) {
         this.oneToOneRepository = otoRepo;
     }
 
+//    @Override
+//    public List<OneToOneDto> findAll() {
+//        List<OneToOne> oneToOnes = oneToOneRepository.findAll();
+//        return OneToOneAssembler.toDto(oneToOnes);
+//    }
+
+    @Override
+    public List<OneToOneDto> getSupervisorOneToOnes() {
+        List<OneToOne> oneToOnes = oneToOneRepository.getOneToOnes();
+
+        return OneToOneAssembler.toDto(oneToOnes);
+    }
+
+
     @Override
     public List<OneToOneDto> findAll() {
-        return null;
+        List<OneToOne> oneToOnes = oneToOneRepository.getOneToOnes();
+        return OneToOneAssembler.toDto(oneToOnes);
     }
 
     @Override
@@ -57,4 +71,11 @@ public class OneToOneServiceImpl implements OneToOneService {
         return oneToOnes.stream().map(oto -> OneToOneAssembler.toDto(oto)).collect(Collectors.toList());
     }
 
+//    public List<Charity> getCharities() {
+//
+//        String allCharitiesSQL = "select * from charity";
+//        return jdbc.query(allCharitiesSQL, charityMapper);
+//
+//    }
+//
 }

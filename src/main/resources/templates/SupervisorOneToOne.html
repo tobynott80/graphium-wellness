@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,8 +22,8 @@
             </thead>
             <tbody>
             <tr th:each="onetoone : ${oneToOnes}">
-                <td th:text="${onetoone}">
-                    one to one
+                <td th:text="${onetoone.getOneToOneID()}">
+                    one to one ID
                 </td>
             </tr>
             </tbody>
