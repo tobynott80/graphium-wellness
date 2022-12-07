@@ -7,7 +7,9 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
 import uk.ac.cardiff.ASE2022Y2TEAM07.domain.Checkin;
+
 import uk.ac.cardiff.ASE2022Y2TEAM07.domain.Employee;
 import uk.ac.cardiff.ASE2022Y2TEAM07.dto.CheckinDto;
 import uk.ac.cardiff.ASE2022Y2TEAM07.service.CheckinService;
@@ -43,7 +45,7 @@ public class CheckinController {
                 .findFirst();
 
         if (checkIn.isPresent() && LocalDate.now().compareTo(checkIn.get().getDate()) < 0) {
-            JOptionPane optionPane = new JOptionPane("You have already checked in for today",JOptionPane.WARNING_MESSAGE);
+            JOptionPane optionPane = new JOptionPane("You have already checked in for today", JOptionPane.WARNING_MESSAGE);
             JDialog dialog = optionPane.createDialog("Warning!");
             dialog.setAlwaysOnTop(true);
             dialog.setVisible(true);
@@ -58,6 +60,14 @@ public class CheckinController {
         }
         return null;
     }
+        
+//    public ModelAndView checkinsForm(Model model, Integer employeeId){
+//        model.addAttribute("name", oneToOneController.getCurrentEmployee().getName());
+//        model.addAttribute("supervisor", "Carl");
+//        model.addAttribute("checkinForm",new CheckinForm(oneToOneController.getCurrentEmployee().getEmployeeId(), 5));
+//        var mv = new ModelAndView("employee/EmployeeCheckinPage", model.asMap());
+//        return mv;
+//    }
 
     @PostMapping("")
     public ModelAndView checkinForm(CheckinForm checkinForm, Model model, BindingResult bindingResult) {
