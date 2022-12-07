@@ -2,6 +2,7 @@ package uk.ac.cardiff.ASE2022Y2TEAM07.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -12,7 +13,9 @@ import uk.ac.cardiff.ASE2022Y2TEAM07.domain.Supervisor;
 import uk.ac.cardiff.ASE2022Y2TEAM07.repositories.EmployeeRepository;
 import uk.ac.cardiff.ASE2022Y2TEAM07.repositories.SupervisorRepository;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 // adapted from https://stackoverflow.com/questions/49387988/authentication-of-users-from-two-database-tables-in-spring-security
 
@@ -30,12 +33,12 @@ public class CustomUserDetailsService implements UserDetailsService {
         // first try loading from User table
         Employee employee = employeeRepository.findByEmail(email);
         if (employee != null) {
-            return new CustomUserDetails(employee.getEmail(), employee.getPasswordHash());
+            return new CustomUserDetails(employee.getEmail(), employee.getPasswordHash(), "ROLE_EMPLOYEE");
         } else {
             // Not found in user table, so check admin
             Supervisor supervisor = supervisorRepository.findByEmail(email);
             if (supervisor != null) {
-                return new CustomUserDetails(supervisor.getEmail(), supervisor.getPasswordHash());
+                return new CustomUserDetails(supervisor.getEmail(), supervisor.getPasswordHash(), "ROLE_SUPERVISOR");
             }
         }
         throw new UsernameNotFoundException("User '" + email + "' not found");
@@ -45,23 +48,25 @@ public class CustomUserDetailsService implements UserDetailsService {
 
         private String username;
         private String password;
+        private String role;
 
         public CustomUserDetails() {
             super();
         }
 
-        public CustomUserDetails(String username, String password) {
+        public CustomUserDetails(String username, String password, String role) {
             this.username = username;
             this.password = password;
-
+            this.role = role;
         }
 
 
         @Override
         public Collection<? extends GrantedAuthority> getAuthorities() {
-            return null;
+            List<GrantedAuthority> list = new ArrayList<GrantedAuthority>();
+            list.add(new SimpleGrantedAuthority(role));
+            return list;
         }
-
         @Override
         public String getPassword() {
             return password;
