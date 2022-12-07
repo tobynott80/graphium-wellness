@@ -18,4 +18,6 @@ public interface CheckinRepositorySpringDataJdbc extends CrudRepository<Checkin,
     Checkin findByScore(Integer score);
 
     Checkin findByCheckInsId(Integer checkInId);
+
+    Iterable<Checkin> findAllByEmployeeId(Integer employeeId);
 }

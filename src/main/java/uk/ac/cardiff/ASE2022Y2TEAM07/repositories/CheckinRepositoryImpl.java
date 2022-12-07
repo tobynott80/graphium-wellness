@@ -39,6 +39,13 @@ public class CheckinRepositoryImpl implements CheckinRepository{
     }
 
     @Override
+    public List<Checkin> findAllByEmployeeId(Integer employeeId) {
+        List<Checkin> checkins = new ArrayList<>();
+        repoJdbc.findAllByEmployeeId(employeeId).forEach(checkins::add);
+        return checkins;
+    }
+
+    @Override
     public void save(Checkin checkin) {
         repoJdbc.save(checkin);
     }

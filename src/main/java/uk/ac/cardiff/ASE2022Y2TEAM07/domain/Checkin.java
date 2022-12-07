@@ -10,7 +10,6 @@ import java.time.LocalDate;
 
 
 @Data
-@AllArgsConstructor
 @Table("CHECK_INS")
 @Builder
 public class Checkin {
