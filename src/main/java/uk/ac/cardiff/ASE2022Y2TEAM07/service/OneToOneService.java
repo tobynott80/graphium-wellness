@@ -20,6 +20,8 @@ public interface OneToOneService {
     OneToOneListResponse getAllOneToOne(OneToOneListRequest onetooneListRequest);
 
     //
+    List<OneToOneDto> getSupervisorOneToOnes();
+
     OneToOneListResponse getOneToOnes(OneToOneListRequest listRequest);
 
 }

@@ -28,6 +28,10 @@ public class OneToOneServiceImpl implements OneToOneService {
     @Autowired
     private NoteRepository noteRepository;
 
+    public OneToOneServiceImpl(OneToOneRepository otoRepo) {
+        this.oneToOneRepository = otoRepo;
+    }
+
     @Override
     public void save(OneToOneDto oneToOneDto, NoteDto noteDto) {
         System.out.println("Coming from service: " + oneToOneDto.toString());
@@ -37,12 +41,27 @@ public class OneToOneServiceImpl implements OneToOneService {
         Note newNote = new Note(newOneToOneId, noteDto.getNote());
 
         noteRepository.save(newNote);
-
     }
+
+
+//    @Override
+//    public List<OneToOneDto> findAll() {
+//        List<OneToOne> oneToOnes = oneToOneRepository.findAll();
+//        return OneToOneAssembler.toDto(oneToOnes);
+//    }
+
+    @Override
+    public List<OneToOneDto> getSupervisorOneToOnes() {
+        List<OneToOne> oneToOnes = oneToOneRepository.getOneToOnes();
+
+        return OneToOneAssembler.toDto(oneToOnes);
+    }
+
 
     @Override
     public List<OneToOneDto> findAll() {
-        return null;
+        List<OneToOne> oneToOnes = oneToOneRepository.getOneToOnes();
+        return OneToOneAssembler.toDto(oneToOnes);
     }
 
     @Override
@@ -58,32 +77,6 @@ public class OneToOneServiceImpl implements OneToOneService {
     }
 
     public OneToOneListResponse getAllOneToOne(OneToOneListRequest onetooneListRequest) {
-        return null;
-
-//    //working on this
-//
-//    private final OneToOneRepository oneToOneRepository;
-    }
-
-    public OneToOneServiceImpl(OneToOneRepository otoRepo) {
-            this.oneToOneRepository = otoRepo;
-    }
-
-    public OneToOneListResponse getOneToOnes (OneToOneListRequest oneToOneListRequest) {
-
-    }
-        //TODO: Implement this service
-
-        //working on this
-
-    private final OneToOneRepository oneToOneRepository;
-
-    public OneToOneServiceImpl(OneToOneRepository otoRepo) {
-        this.oneToOneRepository = otoRepo;
-    }
-
-    @Override
-    public List<OneToOneDto> findAll () {
         return null;
     }
 
@@ -103,27 +96,9 @@ public class OneToOneServiceImpl implements OneToOneService {
                 .build();
     }
 
-
-    private List<OneToOneDto> getOneToOnes (OneToOneListRequest listRequest){
-
-    }
-
-    private List<OneToOneDto> getOneToOnes () {
-        List<OneToOne> oneToOnes = oneToOneRepository.getOneToOnes();
-    }
-
     private List<OneToOneDto> getOneToOnesBySearch (String search){
 
     }
-    private List<OneToOneDto> getOneToOnesBySearch(Integer search) {
-        List<OneToOne> oneToOnes = oneToOneRepository.getOneToOnesBySearch(search);
-        return oneToOnes.stream().map(oto -> OneToOneAssembler.toDto(oto)).collect(Collectors.toList());
-    }
-
-
-    private List<OneToOneDto> getOneToOnes () {
-        List<OneToOne> oneToOnes = oneToOneRepository.getOneToOnes();
-        return oneToOnes.stream().map(oto -> OneToOneAssembler.toDto(oto)).collect(Collectors.toList());
-    }
 
 }
+
