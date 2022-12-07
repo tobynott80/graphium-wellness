@@ -17,6 +17,8 @@ public interface CheckinRepository {
 
     List<Checkin> findAll();
 
+    List<Checkin> findAllByEmployeeId(Integer employeeId);
+
     void save(Checkin checkin);
 
     Checkin getCheckinById(Integer checkInsId);

@@ -5,8 +5,6 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -16,7 +14,6 @@ import java.time.LocalDateTime;
 public class OneToOne {
     @Id
     @Column("ONE_TO_ONE_ID")
-    @GeneratedValue(strategy= GenerationType.AUTO)
     private int oneToOneId;
     private int employeeId;
     private int supervisorId;
