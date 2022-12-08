@@ -3,6 +3,7 @@ package uk.ac.cardiff.ASE2022Y2TEAM07.domain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.MappedCollection;
 import org.springframework.data.relational.core.mapping.Table;
 
 import javax.persistence.CascadeType;
@@ -41,6 +42,7 @@ public class Employee {
         return checkins;
     }
 
+    @Id
     private int employeeId;
     private String name;
     private String email;
@@ -48,7 +50,7 @@ public class Employee {
     private String passwordHash;
     private int supervisorId;
 
-    @OneToMany(mappedBy = "employeeId", cascade = CascadeType.ALL)
+    @MappedCollection(idColumn="EMPLOYEE_ID", keyColumn = "EMPLOYEE_ID")
     private Set<Checkin> checkins;
 
 

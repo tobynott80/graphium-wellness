@@ -7,8 +7,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import uk.ac.cardiff.ASE2022Y2TEAM07.domain.Checkin;
+import uk.ac.cardiff.ASE2022Y2TEAM07.domain.Employee;
 import uk.ac.cardiff.ASE2022Y2TEAM07.dto.CheckinDto;
-import uk.ac.cardiff.ASE2022Y2TEAM07.repositories.CheckinRepositoryImpl;
 import uk.ac.cardiff.ASE2022Y2TEAM07.service.CheckinService;
 import uk.ac.cardiff.ASE2022Y2TEAM07.web.forms.CheckinForm;
 
@@ -40,8 +40,11 @@ public class CheckinController {
                 .limit(1)
                 .findFirst();
 
-        if (checkIn.isPresent() && LocalDate.now().compareTo(checkIn.get().getDate()) > 0) {
-            JOptionPane.showMessageDialog(null, "You have already checked in for today");
+        if (checkIn.isPresent() && LocalDate.now().compareTo(checkIn.get().getDate()) < 0) {
+            JOptionPane optionPane = new JOptionPane("You have already checked in for today",JOptionPane.WARNING_MESSAGE);
+            JDialog dialog = optionPane.createDialog("Warning!");
+            dialog.setAlwaysOnTop(true);
+            dialog.setVisible(true);
 
         } else {
 
@@ -57,10 +60,12 @@ public class CheckinController {
     @PostMapping("")
     public ModelAndView checkinForm(CheckinForm checkinForm, Model model, BindingResult bindingResult) {
 
+        Employee employee = oneToOneController.getCurrentEmployee();
+
         // gets date
         LocalDate now = LocalDate.now();
 
-        CheckinDto checkinDto = new CheckinDto(null, checkinForm.getEmployeeId(), checkinForm.getScore(), now);
+        CheckinDto checkinDto = new CheckinDto(null, employee.getEmployeeId(), checkinForm.getScore(), now);
         checkinService.save(checkinDto);
 
         var mv = new ModelAndView("employee/EmployeeHomepage.html", model.asMap());
