@@ -27,6 +27,11 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
     }
 
     @Override
+    public Employee findByName(String name) {
+        return repoJdbc.findByName(name);
+    }
+
+    @Override
     public List<Employee> findAll() {
         List<Employee> employees = new ArrayList<>();
         repoJdbc.findAll().forEach(employees::add);

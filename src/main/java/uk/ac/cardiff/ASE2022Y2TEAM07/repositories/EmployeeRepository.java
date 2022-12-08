@@ -10,5 +10,7 @@ public interface EmployeeRepository {
 
     Employee findByEmployeeId(Integer employeeId);
 
+    Employee findByName(String name);
+
     List<Employee> findAll();
 }

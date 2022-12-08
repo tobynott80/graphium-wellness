@@ -10,16 +10,18 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import uk.ac.cardiff.ASE2022Y2TEAM07.domain.Employee;
+import uk.ac.cardiff.ASE2022Y2TEAM07.dto.EmployeeDto;
 import uk.ac.cardiff.ASE2022Y2TEAM07.repositories.CheckinRepository;
 import uk.ac.cardiff.ASE2022Y2TEAM07.repositories.EmployeeRepository;
 import uk.ac.cardiff.ASE2022Y2TEAM07.service.EmployeeService;
 
+import java.util.List;
 import java.util.Optional;
 
 
 @Controller
 @PreAuthorize("hasRole('ROLE_SUPERVISOR')")
-@RequestMapping("/supervisor/employee")
+@RequestMapping("/supervisor")
 public class SupervisorCheckinController {
     @Autowired
     private EmployeeRepository employeeRepository;
@@ -27,7 +29,24 @@ public class SupervisorCheckinController {
     @Autowired
     private CheckinRepository checkinRepository;
 
-    @GetMapping("/{furl}")
+    private List<Employee> getEmployees(){
+        return employeeRepository.findAll();
+    }
+
+    @GetMapping("")
+    public ModelAndView getAllEmployees(Model model){
+        List<Employee> AllEmployees = getEmployees();
+
+        for (Employee e : AllEmployees){
+            String SingleEmployee = e.getName();
+            model.addAttribute("EmployeeName", SingleEmployee);
+        }
+
+        var mv = new ModelAndView("supervisor/SupervisorPage", model.asMap());
+        return mv;
+    }
+
+    @GetMapping("/employee/{furl}")
     public ModelAndView getEmployeeCheckinHistoryPage(@PathVariable("furl") Optional<Integer> furl, Model model) {
         Employee employee = employeeRepository.findByEmployeeId(furl.get());
         model.addAttribute("EmployeeName", employee.getName());
