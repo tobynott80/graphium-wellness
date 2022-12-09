@@ -3,6 +3,7 @@ package uk.ac.cardiff.ASE2022Y2TEAM07.domain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
 @Data
@@ -33,6 +34,7 @@ public class Employee {
         return supervisorId;
     }
 
+    @Id
     private int employeeId;
     private String name;
     private String email;

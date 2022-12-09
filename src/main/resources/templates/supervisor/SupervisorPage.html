@@ -22,10 +22,18 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each ="employee : ${EmployeeName}">
-            <th scope="row" th:text="${employee.name}"></th>
-            <td>Checkin Placeholder</td>
-        </tr>
+<!--        <tr>-->
+<!--        <tr th:each ="employee: ${EmployeeName}">-->
+<!--            <td th:text="${employee.name}"></td>-->
+<!--            <td th:text="${.score}"></td>-->
+<!--&lt;!&ndash;            <td th:text = "${EmployeeName}"></td>&ndash;&gt;-->
+<!--&lt;!&ndash;            <td th:text = "${Checkins}"></td>&ndash;&gt;-->
+
+            <div class="row" th:each="employee : ${SingleEmployee}">
+                <div class="col">
+                    <h5 th:text="${employee.name}"></h5>
+                </div>
+<!--        </tr>-->
         <tr>
             <th scope="row">{user.name}</th>
             <td>Checkin Placeholder</td>

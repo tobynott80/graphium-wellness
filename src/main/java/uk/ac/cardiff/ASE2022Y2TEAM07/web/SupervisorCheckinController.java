@@ -8,13 +8,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import uk.ac.cardiff.ASE2022Y2TEAM07.domain.Checkin;
 import uk.ac.cardiff.ASE2022Y2TEAM07.domain.Employee;
 import uk.ac.cardiff.ASE2022Y2TEAM07.dto.EmployeeDto;
 import uk.ac.cardiff.ASE2022Y2TEAM07.repositories.CheckinRepository;
 import uk.ac.cardiff.ASE2022Y2TEAM07.repositories.EmployeeRepository;
 import uk.ac.cardiff.ASE2022Y2TEAM07.service.EmployeeService;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,13 +37,27 @@ public class SupervisorCheckinController {
         return employeeRepository.findAll();
     }
 
+    private List<Checkin> getCheckins(){
+        return checkinRepository.findAll();
+    }
+
     @GetMapping("")
-    public ModelAndView getAllEmployees(Model model){
+    public ModelAndView getAllEmployees(Model model, @RequestParam(name = "name", required = false) String name){
+
         List<Employee> AllEmployees = getEmployees();
+        List<Checkin> AllCheckins = getCheckins();
+        List<Integer> SingleCheckin;
 
         for (Employee e : AllEmployees){
             String SingleEmployee = e.getName();
-            model.addAttribute("EmployeeName", SingleEmployee);
+            model.addAttribute("SingleEmployee", SingleEmployee);
+            System.out.println(SingleEmployee);
+        }
+
+        for (Checkin c : AllCheckins){
+            SingleCheckin = Collections.singletonList(c.getScore());
+            model.addAttribute("Checkins", SingleCheckin);
+            System.out.println(SingleCheckin);
         }
 
         var mv = new ModelAndView("supervisor/SupervisorPage", model.asMap());
