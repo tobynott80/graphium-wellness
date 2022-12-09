@@ -23,25 +23,6 @@ public class OneToOneController {
     public OneToOneController(OneToOneService otoService) {
         this.oneToOneService = otoService;
     }
-
-//    @GetMapping("onetoone")
-//    public ModelAndView getSupervisorOneToOnePage( Model model) {
-//        List<OneToOneDto> oneToOnes = oneToOneService.findAll();
-//        model.addAttribute("onetoones", oneToOnes);
-//
-//        var mv = new ModelAndView("supervisor/onetoone", model.asMap());
-//        return mv;
-//    }
-
-//    @GetMapping("onetoone")
-//    public ModelAndView getSupervisorOneToOnePage( Model model) {
-//        List<OneToOneDto> oneToOnes = oneToOneService.getOneToOnes();
-//        model.addAttribute("onetoones", oneToOnes);
-//
-//        var mv = new ModelAndView("supervisor/onetoone", model.asMap());
-//        return mv;
-//    }
-
     @GetMapping("onetoone")
     public ModelAndView getSupervisorOneToOnePage(Model model) {
         List<OneToOneDto> oneToOnes = oneToOneService.getSupervisorOneToOnes();
@@ -54,22 +35,5 @@ public class OneToOneController {
     private List<OneToOneDto> getSupervisorOneToOnePage() {
         return oneToOneService.getSupervisorOneToOnes();
     }
-
-//    @GetMapping("onetoone")
-//    public ModelAndView getSupervisorOneToOnePage(@RequestParam(name="q", required = false) Integer query, Model model) {
-//        List<OneToOneDto> oneToOnes;
-//
-//        OneToOneListRequest oneToOneListRequest = OneToOneListRequest
-//                .of()
-//                .searchTerm(query)
-//                .build();
-//
-//        var oneToOneListResponse = oneToOneService.getOneToOnes(oneToOneListRequest);
-//
-//        model.addAttribute("onetoones", oneToOneListResponse.getOneToOnes());
-//
-//        var mv = new ModelAndView("supervisor/onetoone", model.asMap());
-//        return mv;
-//    }
 
 }
