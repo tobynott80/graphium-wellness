@@ -8,7 +8,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class RequestRouter implements WebMvcConfigurer {
 
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/employee").setViewName("employee/EmployeeHomepage");
+//        registry.addViewController("/employee").setViewName("employee/EmployeeHomepage");
 //        registry.addViewController("/login").setViewName("/LoginPage");
         registry.addViewController("/supervisor/onetone").setViewName("supervisor/SupervisorOneToOne");
         registry.addViewController("/supervisor").setViewName("supervisor/SupervisorPage");
