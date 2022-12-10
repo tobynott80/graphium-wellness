@@ -3,7 +3,12 @@ package uk.ac.cardiff.ASE2022Y2TEAM07.domain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.MappedCollection;
 import org.springframework.data.relational.core.mapping.Table;
+
+import javax.persistence.CascadeType;
+import javax.persistence.OneToMany;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -33,12 +38,20 @@ public class Employee {
         return supervisorId;
     }
 
+    public Set<Checkin> getCheckins() {
+        return checkins;
+    }
+
+    @Id
     private int employeeId;
     private String name;
     private String email;
     private String role;
     private String passwordHash;
     private int supervisorId;
+
+    @MappedCollection(idColumn="EMPLOYEE_ID", keyColumn = "EMPLOYEE_ID")
+    private Set<Checkin> checkins;
 
 
 }

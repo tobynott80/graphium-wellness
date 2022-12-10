@@ -47,9 +47,9 @@ tasks.named('test') {
 	useJUnitPlatform()
 }
 
-/*tasks.bootRun.configure {
+tasks.bootRun.configure {
 	systemProperty("spring.profiles.active", "dev")
-}*/
+}
 
 // Path: application-prod.properties
 tasks.register('bootRunProd') {
