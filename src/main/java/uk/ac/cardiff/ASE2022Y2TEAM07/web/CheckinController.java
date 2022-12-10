@@ -35,6 +35,12 @@ public class CheckinController {
     }
 
     @GetMapping("")
+    public ModelAndView checkinsForm(Model model, Integer employeeId){
+        model.addAttribute("name", oneToOneController.getCurrentEmployee().getName());
+        model.addAttribute("supervisor", "Carl");
+        model.addAttribute("checkinForm",new CheckinForm(oneToOneController.getCurrentEmployee().getEmployeeId(), 5));
+        var mv = new ModelAndView("employee/EmployeeCheckinPage", model.asMap());
+        return mv;
     public ModelAndView checkinsForm(Model model, Integer employeeId) {
         var checkIn = oneToOneController.getCurrentEmployee().getCheckins()
                 .stream()
@@ -52,7 +58,7 @@ public class CheckinController {
 
             model.addAttribute("name", oneToOneController.getCurrentEmployee().getName());
             model.addAttribute("supervisor", "Carl");
-            model.addAttribute("checkinForm", new CheckinForm(employeeId, 5));
+            model.addAttribute("checkinForm", new CheckinForm(oneToOneController.getCurrentEmployee.getEmployeeId, 5));
             var mv = new ModelAndView("employee/EmployeeCheckinPage", model.asMap());
             return mv;
         }
