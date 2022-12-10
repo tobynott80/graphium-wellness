@@ -38,6 +38,8 @@ public class CheckinController {
 
     @GetMapping("")
     public ModelAndView checkinsForm(Model model, Integer employeeId) {
+        Employee employee = oneToOneController.getCurrentEmployee();
+
         var checkIn = oneToOneController.getCurrentEmployee().getCheckins()
                 .stream()
                 .sorted(Comparator.comparing(Checkin::getDate).reversed())
@@ -54,7 +56,9 @@ public class CheckinController {
 
             model.addAttribute("name", oneToOneController.getCurrentEmployee().getName());
             model.addAttribute("supervisor", "Carl");
-            model.addAttribute("checkinForm", new CheckinForm(employeeId, 5));
+
+            model.addAttribute("checkinForm", new CheckinForm(employee.getEmployeeId(), 5));
+
             var mv = new ModelAndView("employee/EmployeeCheckinPage", model.asMap());
             return mv;
         }
