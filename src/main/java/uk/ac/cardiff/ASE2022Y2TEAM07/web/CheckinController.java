@@ -35,13 +35,9 @@ public class CheckinController {
     }
 
     @GetMapping("")
-    public ModelAndView checkinsForm(Model model, Integer employeeId){
-        model.addAttribute("name", oneToOneController.getCurrentEmployee().getName());
-        model.addAttribute("supervisor", "Carl");
-        model.addAttribute("checkinForm",new CheckinForm(oneToOneController.getCurrentEmployee().getEmployeeId(), 5));
-        var mv = new ModelAndView("employee/EmployeeCheckinPage", model.asMap());
-        return mv;
     public ModelAndView checkinsForm(Model model, Integer employeeId) {
+        Employee employee = oneToOneController.getCurrentEmployee();
+
         var checkIn = oneToOneController.getCurrentEmployee().getCheckins()
                 .stream()
                 .sorted(Comparator.comparing(Checkin::getDate).reversed())
@@ -49,7 +45,7 @@ public class CheckinController {
                 .findFirst();
 
         if (checkIn.isPresent() && LocalDate.now().compareTo(checkIn.get().getDate()) < 0) {
-            JOptionPane optionPane = new JOptionPane("You have already checked in for today",JOptionPane.WARNING_MESSAGE);
+            JOptionPane optionPane = new JOptionPane("You have already checked in for today", JOptionPane.WARNING_MESSAGE);
             JDialog dialog = optionPane.createDialog("Warning!");
             dialog.setAlwaysOnTop(true);
             dialog.setVisible(true);
@@ -58,7 +54,7 @@ public class CheckinController {
 
             model.addAttribute("name", oneToOneController.getCurrentEmployee().getName());
             model.addAttribute("supervisor", "Carl");
-            model.addAttribute("checkinForm", new CheckinForm(oneToOneController.getCurrentEmployee.getEmployeeId, 5));
+            model.addAttribute("checkinForm", new CheckinForm(employee.getEmployeeId(), 5));
             var mv = new ModelAndView("employee/EmployeeCheckinPage", model.asMap());
             return mv;
         }
