@@ -12,6 +12,7 @@ import uk.ac.cardiff.ASE2022Y2TEAM07.repositories.CheckinRepositoryImpl;
 import uk.ac.cardiff.ASE2022Y2TEAM07.service.CheckinService;
 import uk.ac.cardiff.ASE2022Y2TEAM07.web.forms.CheckinForm;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
 @RequestMapping("employee/checkin")
@@ -43,7 +44,7 @@ public class CheckinController {
     public ModelAndView checkinForm(CheckinForm checkinForm, Model model, BindingResult bindingResult) {
 
         // gets date
-        LocalDate now = LocalDate.now();
+        Date now = Date.valueOf(LocalDate.now());
 
         CheckinDto checkinDto = new CheckinDto(null, checkinForm.getEmployeeId(), checkinForm.getScore(), now);
         checkinService.save(checkinDto);

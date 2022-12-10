@@ -1,6 +1,7 @@
 package uk.ac.cardiff.ASE2022Y2TEAM07.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -15,12 +16,11 @@ import uk.ac.cardiff.ASE2022Y2TEAM07.domain.Employee;
 import uk.ac.cardiff.ASE2022Y2TEAM07.dto.EmployeeDto;
 import uk.ac.cardiff.ASE2022Y2TEAM07.repositories.CheckinRepository;
 import uk.ac.cardiff.ASE2022Y2TEAM07.repositories.EmployeeRepository;
+import uk.ac.cardiff.ASE2022Y2TEAM07.service.CheckinService;
 import uk.ac.cardiff.ASE2022Y2TEAM07.service.EmployeeService;
+import uk.ac.cardiff.ASE2022Y2TEAM07.service.EmployeeServiceImpl;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 
 @Controller
@@ -33,6 +33,9 @@ public class SupervisorCheckinController {
     @Autowired
     private CheckinRepository checkinRepository;
 
+    @Autowired
+    private EmployeeServiceImpl employeeServiceImpl;
+
     private List<Employee> getEmployees(){
         return employeeRepository.findAll();
     }
@@ -42,23 +45,16 @@ public class SupervisorCheckinController {
     }
 
     @GetMapping("")
-    public ModelAndView getAllEmployees(Model model, @RequestParam(name = "name", required = false) String name){
+    public ModelAndView getAllEmployees(Model model){
 
-        List<Employee> AllEmployees = getEmployees();
-        List<Checkin> AllCheckins = getCheckins();
-        List<Integer> SingleCheckin;
+        List<Employee> allEmployees = getEmployees();
+        List<Checkin> allCheckins = getCheckins();
 
-        for (Employee e : AllEmployees){
-            String SingleEmployee = e.getName();
-            model.addAttribute("SingleEmployee", SingleEmployee);
-            System.out.println(SingleEmployee);
-        }
+        Map<Integer, Integer> avgCheckins = employeeServiceImpl.getAvg();
+        System.out.println(employeeServiceImpl.getAvg());
 
-        for (Checkin c : AllCheckins){
-            SingleCheckin = Collections.singletonList(c.getScore());
-            model.addAttribute("Checkins", SingleCheckin);
-            System.out.println(SingleCheckin);
-        }
+        model.addAttribute("Employees", allEmployees);
+        model.addAttribute("Checkins", avgCheckins);
 
         var mv = new ModelAndView("supervisor/SupervisorPage", model.asMap());
         return mv;

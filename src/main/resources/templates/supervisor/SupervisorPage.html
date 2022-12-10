@@ -22,21 +22,12 @@
         </tr>
         </thead>
         <tbody>
-<!--        <tr>-->
-<!--        <tr th:each ="employee: ${EmployeeName}">-->
-<!--            <td th:text="${employee.name}"></td>-->
-<!--            <td th:text="${.score}"></td>-->
-<!--&lt;!&ndash;            <td th:text = "${EmployeeName}"></td>&ndash;&gt;-->
-<!--&lt;!&ndash;            <td th:text = "${Checkins}"></td>&ndash;&gt;-->
-
-            <div class="row" th:each="employee : ${SingleEmployee}">
-                <div class="col">
-                    <h5 th:text="${employee.name}"></h5>
-                </div>
-<!--        </tr>-->
         <tr>
-            <th scope="row">{user.name}</th>
-            <td>Checkin Placeholder</td>
+        <tr th:each ="employee: ${Employees}">
+            <td th:text="${employee.name}"></td>
+        </tr>
+        <tr>
+            <td th:text="${Checkins}"></td>
         </tr>
         <tr>
             <th scope="row">{user.name}</th>
@@ -45,40 +36,6 @@
         </tbody>
     </table>
 </div>
-
-<!--<div class="container my-4">-->
-<!--    <h2 class="font-weight-bold">-->
-<!--       Historical Data-->
-<!--    </h2>-->
-<!--    <div id = "container">-->
-<!--        <script>-->
-<!--            anychart.onDocumentReady(function () {-->
-
-<!--                var data = [-->
-
-<!--                ];-->
-
-<!--                var dataSet = anychart.data.set(data);-->
-
-<!--                var averageData = dataSet.mapAs({x: 0, value: 1});-->
-
-<!--                var chart = anychart.line();-->
-
-<!--                var average = chart.line(averageData);-->
-<!--                average.name("Team");-->
-
-<!--                chart.legend().enabled(true);-->
-
-<!--                chart.title("Supervisor's Team Average");-->
-
-<!--                chart.container("container");-->
-
-<!--                chart.draw();-->
-
-<!--            });-->
-<!--        </script>-->
-<!--    </div>-->
-<!--</div>-->
 
 <div class="contianer align-items-center text-center py-4">
     <div class="contianer align-items-center text-center py-4">

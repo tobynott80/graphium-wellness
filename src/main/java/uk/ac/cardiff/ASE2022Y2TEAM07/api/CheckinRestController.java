@@ -9,6 +9,7 @@ import uk.ac.cardiff.ASE2022Y2TEAM07.service.CheckinService;
 import uk.ac.cardiff.ASE2022Y2TEAM07.service.message.ResponseTransfer;
 import uk.ac.cardiff.ASE2022Y2TEAM07.web.forms.CheckinForm;
 
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -37,7 +38,7 @@ public class CheckinRestController {
         Integer employeeId = 0;
 
         // gets date
-        LocalDate now = LocalDate.now();
+        Date now = Date.valueOf(LocalDate.now());
 
         CheckinDto checkinDto = new CheckinDto(null, 0, 1, now);
         checkinService.save(checkinDto);
