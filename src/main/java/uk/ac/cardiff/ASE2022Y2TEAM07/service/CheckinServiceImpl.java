@@ -23,7 +23,7 @@ public class CheckinServiceImpl implements CheckinService {
 
     @Override
     public void save(CheckinDto checkinDto) {
-        Checkin newCheckin = new Checkin(checkinDto.getEmployeeId(), checkinDto.getCheckInsId(), checkinDto.getScore(), checkinDto.getDate());
+        Checkin newCheckin = new Checkin(checkinDto.getCheckInsId(), checkinDto.getEmployeeId(), checkinDto.getScore(), checkinDto.getDate());
         checkinRepository.save(newCheckin);
     }
 
