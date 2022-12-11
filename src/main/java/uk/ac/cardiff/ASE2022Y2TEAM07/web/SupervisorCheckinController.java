@@ -36,6 +36,12 @@ public class SupervisorCheckinController {
     @Autowired
     private EmployeeServiceImpl employeeServiceImpl;
 
+    private EmployeeServiceImpl employeeService;
+    @Autowired
+    public SupervisorCheckinController(EmployeeServiceImpl employeeService) {
+        this.employeeService = employeeService;
+    }
+
     private List<Employee> getEmployees(){
         return employeeRepository.findAll();
     }
@@ -51,7 +57,7 @@ public class SupervisorCheckinController {
         List<Checkin> allCheckins = getCheckins();
 
         Map<Integer, Integer> avgCheckins = employeeServiceImpl.getAvg();
-        System.out.println(employeeServiceImpl.getAvg());
+        System.out.println(avgCheckins);
 
         model.addAttribute("Employees", allEmployees);
         model.addAttribute("Checkins", avgCheckins);

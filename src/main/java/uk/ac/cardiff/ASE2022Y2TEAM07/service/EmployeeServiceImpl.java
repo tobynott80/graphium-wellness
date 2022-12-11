@@ -14,11 +14,16 @@ import java.util.Map;
 public class EmployeeServiceImpl {
     //here the findAll method will be implemented when the database is complete
 
+    private final EmployeeRepository employeeRepository;
+
     @Autowired
-    private EmployeeRepository employeeRepository;
+    public EmployeeServiceImpl(EmployeeRepository employeeRepository) {
+        this.employeeRepository = employeeRepository;
+    }
 
     public Map<Integer,Integer> getAvg(){
         System.out.println(employeeRepository.findEmployeeWithAvg());
+        // Ask Carl why spring injection not working.
         List<Checkin> checkins = employeeRepository.findEmployeeWithAvg();
         Map<Integer,Integer> employeeWithAvg = new HashMap<>();
         for (Checkin c : checkins) {
