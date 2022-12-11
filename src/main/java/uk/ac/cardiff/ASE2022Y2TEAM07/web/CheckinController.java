@@ -16,6 +16,7 @@ import uk.ac.cardiff.ASE2022Y2TEAM07.service.CheckinService;
 import uk.ac.cardiff.ASE2022Y2TEAM07.web.forms.CheckinForm;
 
 import javax.swing.*;
+import javax.validation.Valid;
 import java.time.LocalDate;
 import java.util.Comparator;
 
@@ -38,7 +39,7 @@ public class CheckinController {
 
     @GetMapping("")
     public ModelAndView checkinsForm(Model model, Integer employeeId) {
-        Employee employee = oneToOneController.getCurrentEmployee();
+        Employee em = oneToOneController.getCurrentEmployee();
 
         var checkIn = oneToOneController.getCurrentEmployee().getCheckins()
                 .stream()
@@ -57,7 +58,7 @@ public class CheckinController {
             model.addAttribute("name", oneToOneController.getCurrentEmployee().getName());
             model.addAttribute("supervisor", "Carl");
 
-            model.addAttribute("checkinForm", new CheckinForm(employee.getEmployeeId(), 5));
+            model.addAttribute("checkinForm", new CheckinForm(em.getEmployeeId(), 5));
 
             var mv = new ModelAndView("employee/EmployeeCheckinPage", model.asMap());
             return mv;
@@ -76,12 +77,19 @@ public class CheckinController {
     @PostMapping("")
     public ModelAndView checkinForm(CheckinForm checkinForm, Model model, BindingResult bindingResult) {
 
-        Employee employee = oneToOneController.getCurrentEmployee();
+//        if (bindingResult.hasErrors()){
+//            model.addAttribute("name", oneToOneController.getCurrentEmployee().getName());
+//            model.addAttribute("supervisor", "Carl");
+//            model.addAttribute("checkinForm",  checkinForm);
+//            var mv = new ModelAndView("employee/EmployeeCheckinPage", model.asMap());
+//            return mv;
+//        }
 
-        // gets date
+        Employee em = oneToOneController.getCurrentEmployee();
+
         LocalDate now = LocalDate.now();
 
-        CheckinDto checkinDto = new CheckinDto(null, employee.getEmployeeId(), checkinForm.getScore(), now);
+        CheckinDto checkinDto = new CheckinDto(null, em.getEmployeeId(), checkinForm.getScore(), now);
         checkinService.save(checkinDto);
 
         var mv = new ModelAndView("employee/EmployeeHomepage.html", model.asMap());
