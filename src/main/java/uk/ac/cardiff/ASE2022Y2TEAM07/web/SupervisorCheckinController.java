@@ -1,23 +1,18 @@
 package uk.ac.cardiff.ASE2022Y2TEAM07.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import uk.ac.cardiff.ASE2022Y2TEAM07.domain.Checkin;
 import uk.ac.cardiff.ASE2022Y2TEAM07.domain.Employee;
-import uk.ac.cardiff.ASE2022Y2TEAM07.dto.EmployeeDto;
 import uk.ac.cardiff.ASE2022Y2TEAM07.repositories.CheckinRepository;
 import uk.ac.cardiff.ASE2022Y2TEAM07.repositories.EmployeeRepository;
-import uk.ac.cardiff.ASE2022Y2TEAM07.service.CheckinService;
-import uk.ac.cardiff.ASE2022Y2TEAM07.service.EmployeeService;
+import uk.ac.cardiff.ASE2022Y2TEAM07.service.CheckinServiceImpl;
 import uk.ac.cardiff.ASE2022Y2TEAM07.service.EmployeeServiceImpl;
 
 import java.util.*;
@@ -34,13 +29,7 @@ public class SupervisorCheckinController {
     private CheckinRepository checkinRepository;
 
     @Autowired
-    private EmployeeServiceImpl employeeServiceImpl;
-
-    private EmployeeServiceImpl employeeService;
-    @Autowired
-    public SupervisorCheckinController(EmployeeServiceImpl employeeService) {
-        this.employeeService = employeeService;
-    }
+    private CheckinServiceImpl checkinService;
 
     private List<Employee> getEmployees(){
         return employeeRepository.findAll();
@@ -54,10 +43,8 @@ public class SupervisorCheckinController {
     public ModelAndView getAllEmployees(Model model){
 
         List<Employee> allEmployees = getEmployees();
-        List<Checkin> allCheckins = getCheckins();
 
-        Map<Integer, Integer> avgCheckins = employeeServiceImpl.getAvg();
-        System.out.println(avgCheckins);
+        Map<Integer, Integer> avgCheckins = checkinService.getAvg();
 
         model.addAttribute("Employees", allEmployees);
         model.addAttribute("Checkins", avgCheckins);

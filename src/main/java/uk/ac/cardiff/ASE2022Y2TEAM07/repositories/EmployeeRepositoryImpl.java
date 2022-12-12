@@ -15,8 +15,6 @@ import java.util.List;
 public class EmployeeRepositoryImpl implements EmployeeRepository {
 
     private EmployeeRepositorySpringDataJdbc repoJdbc;
-
-    @Autowired
     private JdbcTemplate jdbc;
 
     @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
@@ -45,12 +43,5 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
         List<Employee> employees = new ArrayList<>();
         repoJdbc.findAll().forEach(employees::add);
         return employees;
-    }
-
-    @Override
-    public List<Checkin> findEmployeeWithAvg() {
-        RowMapper<Checkin> checkinMapper = (rs, i) -> new Checkin();
-        String employeeAvg = "SELECT AVG(CHECK_INS.SCORE), CHECK_INS.EMPLOYEE_ID FROM CHECK_INS JOIN EMPLOYEE ON EMPLOYEE.EMPLOYEE_ID = CHECK_INS.EMPLOYEE_ID GROUP BY CHECK_INS.EMPLOYEE_ID";
-        return jdbc.query(employeeAvg, checkinMapper);
     }
 }

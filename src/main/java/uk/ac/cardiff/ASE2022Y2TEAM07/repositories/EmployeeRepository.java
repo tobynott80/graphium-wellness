@@ -15,6 +15,4 @@ public interface EmployeeRepository {
     Employee findByName(String name);
 
     List<Employee> findAll();
-
-    List<Checkin> findEmployeeWithAvg();
 }
