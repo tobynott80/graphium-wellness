@@ -6,14 +6,15 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MvcResult;
-import uk.ac.cardiff.ASE2022Y2TEAM07.domain.OneToOne;
 import uk.ac.cardiff.ASE2022Y2TEAM07.dto.OneToOneDto;
 import uk.ac.cardiff.ASE2022Y2TEAM07.service.OneToOneService;
 import uk.ac.cardiff.ASE2022Y2TEAM07.service.message.OneToOneListRequest;
 import uk.ac.cardiff.ASE2022Y2TEAM07.service.message.OneToOneListResponse;
+<<<<<<< HEAD
 //import uk.ac.cardiff.ASE2022Y2TEAM07.web.controller.OneToOneController;
 import uk.ac.cardiff.ASE2022Y2TEAM07.web.controller.SupervisorOneToOneController;
+=======
+>>>>>>> 577d481dd6df09d0cc4a83a1246a171c421c580f
 
 import java.time.LocalDate;
 import java.util.List;
@@ -22,9 +23,12 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+<<<<<<< HEAD
 @WebMvcTest(controllers = SupervisorOneToOneController.class)
+=======
+@WebMvcTest(controllers = OneToOneController.class)
+>>>>>>> 577d481dd6df09d0cc4a83a1246a171c421c580f
 @AutoConfigureMockMvc
 public class GetOneToOnes {
 

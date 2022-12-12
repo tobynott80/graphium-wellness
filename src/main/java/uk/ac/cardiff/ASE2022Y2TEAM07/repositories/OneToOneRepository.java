@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface OneToOneRepository {
+
     OneToOne getOneToOneById(Integer oneToOneId);
 
     void save(OneToOne oneToOne);
@@ -15,6 +16,7 @@ public interface OneToOneRepository {
 
 
     List<OneToOne> findAll();
+
 
     List<OneToOne> getOneToOnes();
 
