@@ -10,11 +10,11 @@ import org.springframework.web.servlet.ModelAndView;
 import uk.ac.cardiff.ASE2022Y2TEAM07.domain.Checkin;
 import uk.ac.cardiff.ASE2022Y2TEAM07.domain.Employee;
 import uk.ac.cardiff.ASE2022Y2TEAM07.dto.CheckinDto;
+import uk.ac.cardiff.ASE2022Y2TEAM07.repositories.CheckinRepository;
 import uk.ac.cardiff.ASE2022Y2TEAM07.service.CheckinService;
 import uk.ac.cardiff.ASE2022Y2TEAM07.web.forms.CheckinForm;
 
 import javax.swing.*;
-import javax.validation.Valid;
 import java.time.LocalDate;
 import java.util.Comparator;
 
@@ -27,11 +27,15 @@ public class CheckinController {
     private final CheckinService checkinService;
 
     @Autowired
+    private final CheckinRepository checkinRepository;
+
+    @Autowired
     private final OneToOneController oneToOneController;
 
     @Autowired
-    public CheckinController(CheckinService checkinService, OneToOneController oneToOneController) {
+    public CheckinController(CheckinService checkinService, CheckinRepository checkinRepository, OneToOneController oneToOneController) {
         this.checkinService = checkinService;
+        this.checkinRepository = checkinRepository;
         this.oneToOneController = oneToOneController;
     }
 
@@ -80,7 +84,14 @@ public class CheckinController {
         CheckinDto checkinDto = new CheckinDto(null, em.getEmployeeId(), checkinForm.getScore(), now);
         checkinService.save(checkinDto);
 
-        var mv = new ModelAndView("employee/EmployeeHomepage.html", model.asMap());
+        var mv = new ModelAndView("redirect://localhost:8080/employee", model.asMap());
+        return mv;
+    }
+
+    @GetMapping("/history")
+    public ModelAndView checkinHistory(Model model) {
+        model.addAttribute("checkins", checkinRepository.findAllByEmployeeId(oneToOneController.getCurrentEmployee().getEmployeeId()));
+        var mv = new ModelAndView("employee/EmployeeCheckinHistory", model.asMap());
         return mv;
     }
 
