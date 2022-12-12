@@ -60,6 +60,10 @@ public class CheckinController {
     @GetMapping("")
     public ModelAndView checkinsForm(Model model, Integer employeeId) {
         Employee em = this.getCurrentEmployee();
+        Employee employee = this.getCurrentEmployee();
+        String employeeName = this.getCurrentEmployee().getName().toLowerCase();
+        String employeeNameCapitalized = employeeName.substring(0, 1).toUpperCase() + employeeName.substring(1);
+        model.addAttribute("employeeName", employeeNameCapitalized);
 
         var checkIn = this.getCurrentEmployee().getCheckins()
                 .stream()
@@ -74,8 +78,7 @@ public class CheckinController {
             dialog.setVisible(true);
 
         } else {
-
-            model.addAttribute("name", this.getCurrentEmployee().getName());
+            model.addAttribute("employeeName", employeeNameCapitalized);
             model.addAttribute("supervisor", "Carl");
             model.addAttribute("checkinForm", new CheckinForm(em.getEmployeeId(), 5));
             var mv = new ModelAndView("employee/EmployeeCheckinPage", model.asMap());
