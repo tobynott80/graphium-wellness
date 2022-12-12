@@ -13,7 +13,6 @@ import uk.ac.cardiff.ASE2022Y2TEAM07.domain.Employee;
 import uk.ac.cardiff.ASE2022Y2TEAM07.repositories.CheckinRepository;
 import uk.ac.cardiff.ASE2022Y2TEAM07.repositories.EmployeeRepository;
 import uk.ac.cardiff.ASE2022Y2TEAM07.service.CheckinServiceImpl;
-import uk.ac.cardiff.ASE2022Y2TEAM07.service.EmployeeServiceImpl;
 
 import java.util.*;
 
