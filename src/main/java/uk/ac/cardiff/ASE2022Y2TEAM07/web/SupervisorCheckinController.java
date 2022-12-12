@@ -31,23 +31,17 @@ public class SupervisorCheckinController {
     @Autowired
     private CheckinServiceImpl checkinService;
 
-    private List<Employee> getEmployees(){
-        return employeeRepository.findAll();
-    }
-
-    private List<Checkin> getCheckins(){
-        return checkinRepository.findAll();
-    }
-
     @GetMapping("")
     public ModelAndView getAllEmployees(Model model){
 
-        List<Employee> allEmployees = getEmployees();
-
         Map<Integer, Integer> avgCheckins = checkinService.getAvg();
 
-        model.addAttribute("Employees", allEmployees);
-        model.addAttribute("Checkins", avgCheckins);
+        List<Averages> averagesList = new ArrayList<>();
+        for (Map.Entry<Integer, Integer> entry: avgCheckins.entrySet()) {
+            averagesList.add(new Averages(entry.getValue(), employeeRepository.findByEmployeeId(entry.getKey()).getName()));
+        }
+
+        model.addAttribute("Employees", averagesList);
 
         var mv = new ModelAndView("supervisor/SupervisorPage", model.asMap());
         return mv;

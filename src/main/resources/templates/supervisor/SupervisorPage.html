@@ -22,9 +22,9 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each ="employee: ${Employees}">
-            <td th:text="${employee.name}"></td>
-            <td th:text = "${Checkins}"></td>
+        <tr th:each ="averages: ${Employees}">
+            <td th:text="${averages.employeeName}"></td>
+            <td th:text = "${averages.average}"></td>
         </tr>
         </tbody>
     </table>
