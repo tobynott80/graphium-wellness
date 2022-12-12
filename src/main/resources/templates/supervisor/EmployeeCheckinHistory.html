@@ -19,6 +19,14 @@
     <div class="row">
         <h4>This Week's Check In History</h4>
     </div>
+    <div class="row">
+        <div class="col">
+            <h5>Date</h5>
+        </div>
+        <div class="col">
+            <h5>Check-In Score</h5>
+        </div>
+    </div>
     <div class="row" th:each="checkin : ${checkins}">
         <div class="col">
             <h5 th:text="${checkin.date}"></h5>
