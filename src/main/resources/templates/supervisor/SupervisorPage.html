@@ -22,16 +22,9 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
         <tr th:each ="employee: ${Employees}">
             <td th:text="${employee.name}"></td>
-        </tr>
-        <tr>
-            <td th:text="${Checkins}"></td>
-        </tr>
-        <tr>
-            <th scope="row">{user.name}</th>
-            <td>Checkin Placeholder</td>
+            <td th:text = "${Checkins}"></td>
         </tr>
         </tbody>
     </table>
