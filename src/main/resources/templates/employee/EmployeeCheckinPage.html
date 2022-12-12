@@ -11,7 +11,7 @@
 
 <div class="container align-items-center text-center py-4">
     <div class="row">
-        <h2 th:text="'How are you today '+${name}+'?'"></h2>
+        <h2 th:text="'How are you today '+${employeeName}+'?'"></h2>
     </div>
     <div class="row justify-content-center p-4">
       <span class=" display-5" id="emoji">&#128512</span>
@@ -23,6 +23,11 @@
             <div class="input-group justify-content-center p-2">
                 <label for="score"></label>
                 <input class="inputRange" type="range" min="1" max="10" value="5" th:field="*{score}">
+
+                <div class="alert alert-warning" th:errors="*{score}"
+                     th:if="${#fields.hasErrors('score')}">Score Error
+                </div>
+
             </div>
         </div>
         <div class="row">

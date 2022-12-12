@@ -4,7 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.MappedCollection;
 import org.springframework.data.relational.core.mapping.Table;
+
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -34,6 +37,10 @@ public class Employee {
         return supervisorId;
     }
 
+    public Set<Checkin> getCheckins() {
+        return checkins;
+    }
+
     @Id
     private int employeeId;
     private String name;
@@ -41,6 +48,9 @@ public class Employee {
     private String role;
     private String passwordHash;
     private int supervisorId;
+
+    @MappedCollection(idColumn="EMPLOYEE_ID", keyColumn = "EMPLOYEE_ID")
+    private Set<Checkin> checkins;
 
 
 }

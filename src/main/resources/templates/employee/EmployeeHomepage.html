@@ -3,9 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
-
-    <link rel="stylesheet" type="text/css" media="all" href="../../css/Stylesheet" th:href="@{/css/Stylesheet.css}">
 
     <link th:replace="fragments/employeeHeader :: bootstrap-css">
 
@@ -13,11 +10,9 @@
 </head>
 <body>
 <div th:replace="fragments/employeeHeader :: employeeHeader"></div>
-    <div class="d-flex justify-content-center p-5">
-        <img class="filler-image" src="https://www.researchgate.net/publication/336183372/figure/fig4/AS:869803812196353@1584388797209/Tests-by-authors-using-remote-means-a-graph-of-happiness-over-the-days-of-the-week.png" alt="filler line graph">
-<!--        filler for when we have a graph of their happiness over the course of the week-->
-    </div>
-
+<div class="justify-content-center text-center p-5">
+    <h1 th:text="'Welcome back '+${employeeName}+'!'"></h1>
+    <h2>Would you like to <a href="/employee/checkin">check in</a> today?</h2>
 </div>
 
 
