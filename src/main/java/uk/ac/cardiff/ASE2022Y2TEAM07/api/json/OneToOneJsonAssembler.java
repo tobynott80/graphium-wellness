@@ -10,9 +10,9 @@ public class OneToOneJsonAssembler {
   public static OneToOneJson toOneToOneJson(OneToOneDto oneToOneDto) {
       return OneToOneJson
               .of()
-              .oneToOneID(oneToOneDto.getOneToOneID())
-              .employeeID(oneToOneDto.getEmployeeID())
-              .supervisorID(oneToOneDto.getSupervisorID())
+              .oneToOneId(oneToOneDto.getOneToOneId())
+              .employeeId(oneToOneDto.getEmployeeId())
+              .supervisorId(oneToOneDto.getSupervisorId())
               .date(oneToOneDto.getDate())
               .build();
   }

@@ -14,16 +14,9 @@ public interface OneToOneRepository {
     Integer getNewestOneToOneId();
 
 
-
     List<OneToOne> findAll();
 
-
-    List<OneToOne> getAllOneToOne();
-
-    //working on this
     List<OneToOne> getOneToOnes();
-
-//    List<OneToOne> getOneToOnesBySearch(String search);
 
     List<OneToOne> getOneToOnesBySearch(Integer search);
 }

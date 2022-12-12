@@ -16,10 +16,6 @@ public class OneToOneListResponse {
     private OneToOneListRequest request;
     private List<OneToOneDto> oneToOnes;
 
-//    public List<OneToOneDto> getOneToOnes() {
-//        return null;
-//    }
-
     public Integer getOneToOneCount() {
         return oneToOnes.size();
     }

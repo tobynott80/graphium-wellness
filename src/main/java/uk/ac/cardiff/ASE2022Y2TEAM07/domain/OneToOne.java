@@ -17,14 +17,13 @@ import org.springframework.data.relational.core.mapping.Table;
 import java.time.LocalDate;
 
 @Data
-@AllArgsConstructor
+//@AllArgsConstructor
 public class OneToOne {
     @Id
     @Column("ONE_TO_ONE_ID")
     private int oneToOneId;
     private int employeeId;
     private int supervisorId;
-
     private LocalDate date;
 
 
@@ -51,8 +50,6 @@ public class OneToOne {
     public OneToOne() {
     }
 
-
-
     public int getOneToOneId() {
         return oneToOneId;
     }
@@ -69,8 +66,7 @@ public class OneToOne {
         return date;
     }
 
-
-   public static OneToOne of(Integer oneToOneId, Integer employeeId, Integer supervisorId, LocalDate date) {
+   public static OneToOne of(int oneToOneId, int employeeId, int supervisorId, LocalDate date) {
        return new OneToOne(oneToOneId, employeeId, supervisorId, date);
    }
 

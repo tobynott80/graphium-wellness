@@ -12,7 +12,8 @@ import uk.ac.cardiff.ASE2022Y2TEAM07.dto.OneToOneDto;
 import uk.ac.cardiff.ASE2022Y2TEAM07.service.OneToOneService;
 import uk.ac.cardiff.ASE2022Y2TEAM07.service.message.OneToOneListRequest;
 import uk.ac.cardiff.ASE2022Y2TEAM07.service.message.OneToOneListResponse;
-import uk.ac.cardiff.ASE2022Y2TEAM07.web.controller.OneToOneController;
+//import uk.ac.cardiff.ASE2022Y2TEAM07.web.controller.OneToOneController;
+import uk.ac.cardiff.ASE2022Y2TEAM07.web.controller.SupervisorOneToOneController;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -23,7 +24,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(controllers = OneToOneController.class)
+@WebMvcTest(controllers = SupervisorOneToOneController.class)
 @AutoConfigureMockMvc
 public class GetOneToOnes {
 

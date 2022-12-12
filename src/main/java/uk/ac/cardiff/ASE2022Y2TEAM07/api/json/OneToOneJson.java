@@ -11,9 +11,9 @@ import java.time.LocalDate;
 @Builder(builderMethodName = "of")
 public class OneToOneJson {
 
-    private Integer oneToOneID;
-    private Integer employeeID;
-    private Integer supervisorID;
+    private Integer oneToOneId;
+    private Integer employeeId;
+    private Integer supervisorId;
     private LocalDate date;
 
 }

@@ -1,6 +1,5 @@
 package uk.ac.cardiff.ASE2022Y2TEAM07.domain;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
@@ -14,16 +13,16 @@ public class Note {
     @Id
     @Column("NOTE_ID")
     private Integer noteId;
-    private Integer OneToOneID;
+    private Integer OneToOneId;
     private String note;
 
-    public Note(Integer noteID, Integer oneToOneID, String note) {
+    public Note(Integer noteID, Integer oneToOneId, String note) {
         noteId = noteID;
-        OneToOneID = oneToOneID;
+        OneToOneId = oneToOneId;
         this.note = note;
     }
-    public Note(Integer oneToOneID, String note) {
-        OneToOneID = oneToOneID;
+    public Note(Integer oneToOneId, String note) {
+        OneToOneId = oneToOneId;
         this.note = note;
     }
 
@@ -33,8 +32,8 @@ public class Note {
         return noteId;
     }
 
-    public Integer getOneToOneID() {
-        return OneToOneID;
+    public Integer getOneToOneId() {
+        return OneToOneId;
     }
 
     public String getNote() {

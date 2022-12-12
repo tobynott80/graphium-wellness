@@ -17,9 +17,6 @@ public interface OneToOneService {
 
     OneToOne getOneToOneById(Integer OneToOneId);
 
-    OneToOneListResponse getAllOneToOne(OneToOneListRequest onetooneListRequest);
-
-    //
     List<OneToOneDto> getSupervisorOneToOnes();
 
     OneToOneListResponse getOneToOnes(OneToOneListRequest listRequest);

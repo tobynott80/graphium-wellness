@@ -2,6 +2,7 @@ package uk.ac.cardiff.ASE2022Y2TEAM07.service;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import uk.ac.cardiff.ASE2022Y2TEAM07.domain.Note;
@@ -43,41 +44,22 @@ public class OneToOneServiceImpl implements OneToOneService {
         noteRepository.save(newNote);
     }
 
-
-//    @Override
-//    public List<OneToOneDto> findAll() {
-//        List<OneToOne> oneToOnes = oneToOneRepository.findAll();
-//        return OneToOneAssembler.toDto(oneToOnes);
-//    }
-
-    @Override
-    public List<OneToOneDto> getSupervisorOneToOnes() {
-        List<OneToOne> oneToOnes = oneToOneRepository.getOneToOnes();
-
-        return OneToOneAssembler.toDto(oneToOnes);
-    }
-
-
-    @Override
-    public List<OneToOneDto> findAll() {
-        List<OneToOne> oneToOnes = oneToOneRepository.getOneToOnes();
-        return OneToOneAssembler.toDto(oneToOnes);
-    }
-
     @Override
     public OneToOne getOneToOneById(Integer OneToOneId) {
         OneToOne oneToOne = oneToOneRepository.getOneToOneById(OneToOneId);
         return oneToOne;
     }
 
-    private List<Object> getOneToOnes() {
-        List<OneToOne> onetoones = OneToOneRepository.getOneToOnes();
-        return onetoones.stream().map(c -> OneToOneAssembler.toDto(c)).collect(Collectors.toList());
-
+    @Override
+    public List<OneToOneDto> getSupervisorOneToOnes() {
+        List<OneToOne> oneToOnes = oneToOneRepository.getOneToOnes();
+        return OneToOneAssembler.toDto(oneToOnes);
     }
 
-    public OneToOneListResponse getAllOneToOne(OneToOneListRequest onetooneListRequest) {
-        return null;
+    @Override
+    public List<OneToOneDto> findAll() {
+        List<OneToOne> oneToOnes = oneToOneRepository.getOneToOnes();
+        return OneToOneAssembler.toDto(oneToOnes);
     }
 
     @Override
@@ -96,9 +78,16 @@ public class OneToOneServiceImpl implements OneToOneService {
                 .build();
     }
 
-    private List<OneToOneDto> getOneToOnesBySearch (String search){
-
+    private List<OneToOneDto> getOneToOnesBySearch (int search) {
+        List<OneToOne> oneToOnes = oneToOneRepository.getOneToOnesBySearch(search);
+        return oneToOnes.stream().map(oto -> OneToOneAssembler.toDto(oto)).collect(Collectors.toList());
     }
+
+    private List<OneToOneDto> getOneToOnes() {
+        List<OneToOne> oneToOnes = oneToOneRepository.getOneToOnes();
+        return oneToOnes.stream().map(oto -> OneToOneAssembler.toDto(oto)).collect(Collectors.toList());
+    }
+
 
 }
 

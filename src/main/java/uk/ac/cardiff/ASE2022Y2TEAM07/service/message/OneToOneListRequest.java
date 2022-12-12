@@ -10,6 +10,7 @@ import lombok.Value;
 public class OneToOneListRequest {
 
     private Integer searchTerm;
+
     public Boolean hasSearchTerm() {
         return (searchTerm != null);
     }

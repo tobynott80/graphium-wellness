@@ -16,7 +16,7 @@ public class OneToOneAssembler {
     }
 
     public static OneToOneDto toDto(OneToOne oto) {
-        return new OneToOneDto(oto.getOneToOneID(), oto.getEmployeeID(), oto.getSupervisorID(), oto.getDate());
+        return new OneToOneDto(oto.getOneToOneId(), oto.getEmployeeId(), oto.getSupervisorId(), oto.getDate());
     }
 
 }

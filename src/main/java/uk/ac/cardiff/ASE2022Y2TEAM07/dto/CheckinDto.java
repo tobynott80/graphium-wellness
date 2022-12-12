@@ -13,12 +13,12 @@ public class CheckinDto {
     private Integer score;
     private LocalDate date;
 
-    public CheckinDto(Integer checkInsId, Integer employeeId, Integer score, LocalDate date) {
-        this.checkInsId = checkInsId;
-        this.employeeId = employeeId;
-        this.score = score;
-        this.date = date;
-    }
+//    public CheckinDto(Integer checkInsId, Integer employeeId, Integer score, LocalDate date) {
+//        this.checkInsId = checkInsId;
+//        this.employeeId = employeeId;
+//        this.score = score;
+//        this.date = date;
+//    }
 
     public Integer getCheckInsId() {
         return checkInsId;
