@@ -102,7 +102,7 @@ public class CheckinController {
         CheckinDto checkinDto = new CheckinDto(null, em.getEmployeeId(), checkinForm.getScore(), now);
         checkinService.save(checkinDto);
 
-        var mv = new ModelAndView("redirect://localhost:8080/employee", model.asMap());
+        var mv = new ModelAndView("redirect:/employee", model.asMap());
         return mv;
     }
 
