@@ -34,7 +34,7 @@ public class CheckinRepo {
     public void shouldGetAllCheckins() throws Exception {
         //Given there is 8 checkins in the H2 database
         int numberOfCheckins = checkinRepository.findAll().size();
-        assertEquals(8, numberOfCheckins);
+        assertEquals(16, numberOfCheckins);
     }
 
 //    @Test
