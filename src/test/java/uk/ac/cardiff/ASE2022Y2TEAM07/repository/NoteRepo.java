@@ -25,7 +25,7 @@ public class NoteRepo {
     public void shouldSaveNote() throws Exception {
         //GIVEN
 
-        noteRepository.save(new Note(1, "This is a note"));
-        assertEquals("This is a note", noteRepository.getNoteByNoteId(1).get().getNote());
+        noteRepository.save(new Note(1, "good well-being"));
+        assertEquals("good well-being", noteRepository.getNoteByNoteId(1).get().getNote());
     }
 }
