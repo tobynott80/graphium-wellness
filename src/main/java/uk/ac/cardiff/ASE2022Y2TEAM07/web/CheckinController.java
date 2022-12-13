@@ -9,7 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import uk.ac.cardiff.ASE2022Y2TEAM07.domain.Checkin;
 import uk.ac.cardiff.ASE2022Y2TEAM07.domain.Employee;
 import uk.ac.cardiff.ASE2022Y2TEAM07.dto.CheckinDto;
 import uk.ac.cardiff.ASE2022Y2TEAM07.repositories.CheckinRepository;
@@ -18,9 +17,8 @@ import uk.ac.cardiff.ASE2022Y2TEAM07.service.CheckinService;
 import uk.ac.cardiff.ASE2022Y2TEAM07.web.forms.CheckinForm;
 
 import java.sql.Date;
-import javax.swing.*;
+import javax.validation.Valid;
 import java.time.LocalDate;
-import java.util.Comparator;
 
 @RequestMapping("employee/checkin")
 @PreAuthorize("hasRole('ROLE_EMPLOYEE')")
@@ -87,17 +85,17 @@ public class CheckinController {
     }
 
     @PostMapping("")
-    public ModelAndView checkinForm(CheckinForm checkinForm, Model model, BindingResult bindingResult) {
+    public ModelAndView checkinForm(@Valid CheckinForm checkinForm, BindingResult bindingResult, Model model) {
 
         // gets date
         Date now = Date.valueOf(LocalDate.now());
-//        if (bindingResult.hasErrors()){
-//            model.addAttribute("name", oneToOneController.getCurrentEmployee().getName());
-//            model.addAttribute("supervisor", "Carl");
-//            model.addAttribute("checkinForm",  checkinForm);
-//            var mv = new ModelAndView("employee/EmployeeCheckinPage", model.asMap());
-//            return mv;
-//        }
+        if (bindingResult.hasErrors()){
+            model.addAttribute("employeeName", this.getCurrentEmployee().getName());
+            model.addAttribute("supervisor", "Carl");
+            model.addAttribute("checkinForm",  checkinForm);
+            var mv = new ModelAndView("employee/EmployeeCheckinPage", model.asMap());
+            return mv;
+        }
 
         Employee em = this.getCurrentEmployee();
 
