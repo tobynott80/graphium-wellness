@@ -15,6 +15,6 @@ public interface EmployeeRepositorySpringDataJdbc extends CrudRepository<Employe
 
     Employee findByEmployeeId(Integer employeeId);
 
-
+    Employee findByName(String name);
 
 }

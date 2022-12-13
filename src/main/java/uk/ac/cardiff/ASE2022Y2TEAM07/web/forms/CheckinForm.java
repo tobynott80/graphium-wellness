@@ -18,10 +18,10 @@ public class CheckinForm {
 //    @Max(value = 10, message = "You can not checkin with a score more than 10")
     private Integer score;
 
-    public CheckinForm(Integer employeeId, Integer score) {
+/*    public CheckinForm(Integer employeeId, Integer score) {
         this.employeeId = employeeId;
         this.score = score;
-    }
+    }*/
 
     public Integer getEmployeeId() {
         return employeeId;

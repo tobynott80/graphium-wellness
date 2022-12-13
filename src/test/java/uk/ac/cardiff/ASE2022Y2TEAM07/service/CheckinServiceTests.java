@@ -7,6 +7,7 @@ import uk.ac.cardiff.ASE2022Y2TEAM07.dto.CheckinDto;
 import uk.ac.cardiff.ASE2022Y2TEAM07.repositories.EmployeeRepository;
 
 
+import java.sql.Date;
 import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -22,8 +23,10 @@ public class CheckinServiceTests {
 
     @Test
     public void shouldSaveCheckin() {
+
+        Date now = Date.valueOf(LocalDate.now());
         //Given
-        CheckinDto checkinDto = new CheckinDto(3, 3, 8, LocalDate.now());
+        CheckinDto checkinDto = new CheckinDto(3, 3, 8, now);
         //When
         checkinService.save(checkinDto);
         //Then

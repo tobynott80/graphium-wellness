@@ -3,7 +3,7 @@ package uk.ac.cardiff.ASE2022Y2TEAM07.dto;
 import lombok.AllArgsConstructor;
 import lombok.Value;
 
-import java.time.LocalDate;
+import java.sql.Date;
 
 @Value
 @AllArgsConstructor
@@ -11,14 +11,14 @@ public class CheckinDto {
     private Integer checkInsId;
     private Integer employeeId;
     private Integer score;
-    private LocalDate date;
+    private Date date;
 
-    public CheckinDto(Integer checkInsId, Integer employeeId, Integer score, LocalDate date) {
+/*    public CheckinDto(Integer checkInsId, Integer employeeId, Integer score, Date date) {
         this.checkInsId = checkInsId;
         this.employeeId = employeeId;
         this.score = score;
         this.date = date;
-    }
+    }*/
 
     public Integer getCheckInsId() {
         return checkInsId;
@@ -32,7 +32,7 @@ public class CheckinDto {
         return score;
     }
 
-    public LocalDate getDate() {
+    public Date getDate() {
         return date;
     }
 }

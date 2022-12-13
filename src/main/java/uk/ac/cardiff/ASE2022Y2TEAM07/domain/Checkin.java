@@ -4,8 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
+import java.sql.Date;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import java.time.LocalDate;
@@ -19,15 +21,27 @@ public class Checkin {
     @Id
     private Integer checkInsId;
     private Integer employeeId;
-    private Integer score;
-    private LocalDate date;
 
-    public Checkin(Integer checkInsId, Integer employeeId, Integer score, LocalDate date) {
+    @Column("SCORE")
+    private Integer score;
+    private Date date;
+
+    public Checkin(Integer checkInsId, Integer employeeId, Integer score, Date date) {
         this.checkInsId = checkInsId;
         this.employeeId = employeeId;
         this.score = score;
         this.date = date;
     }
+
+    public Checkin(Integer employeeId, Integer score) {
+        this.employeeId = employeeId;
+        this.score = score;
+    }
+
+    public Checkin() {
+    }
+
+
 
     public Integer getCheckInsId() {
         return checkInsId;
@@ -41,7 +55,7 @@ public class Checkin {
         return score;
     }
 
-    public LocalDate getDate() {
+    public Date getDate() {
         return date;
     }
 }

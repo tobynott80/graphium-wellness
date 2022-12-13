@@ -17,6 +17,7 @@ import uk.ac.cardiff.ASE2022Y2TEAM07.repositories.EmployeeRepository;
 import uk.ac.cardiff.ASE2022Y2TEAM07.service.CheckinService;
 import uk.ac.cardiff.ASE2022Y2TEAM07.web.forms.CheckinForm;
 
+import java.sql.Date;
 import javax.swing.*;
 import java.time.LocalDate;
 import java.util.Comparator;
@@ -65,31 +66,31 @@ public class CheckinController {
         String employeeNameCapitalized = employeeName.substring(0, 1).toUpperCase() + employeeName.substring(1);
         model.addAttribute("employeeName", employeeNameCapitalized);
 
-        var checkIn = this.getCurrentEmployee().getCheckins()
-                .stream()
-                .sorted(Comparator.comparing(Checkin::getDate).reversed())
-                .limit(1)
-                .findFirst();
+//        var checkIn = this.getCurrentEmployee().getCheckins()
+//                .stream()
+//                .sorted(Comparator.comparing(Checkin::getDate).reversed())
+//                .limit(1)
+//                .findFirst();
 
-        if (checkIn.isPresent() && LocalDate.now().compareTo(checkIn.get().getDate()) < 0) {
-            JOptionPane optionPane = new JOptionPane("You have already checked in for today", JOptionPane.WARNING_MESSAGE);
-            JDialog dialog = optionPane.createDialog("Warning!");
-            dialog.setAlwaysOnTop(true);
-            dialog.setVisible(true);
-
-        } else {
+//        if (checkIn.isPresent() && LocalDate.now().compareTo(checkIn.get().getDate()) < 0) {
+//            JOptionPane optionPane = new JOptionPane("You have already checked in for today", JOptionPane.WARNING_MESSAGE);
+//            JDialog dialog = optionPane.createDialog("Warning!");
+//            dialog.setAlwaysOnTop(true);
+//            dialog.setVisible(true);
+//
+//        } else {
             model.addAttribute("employeeName", employeeNameCapitalized);
             model.addAttribute("supervisor", "Carl");
             model.addAttribute("checkinForm", new CheckinForm(em.getEmployeeId(), 5));
             var mv = new ModelAndView("employee/EmployeeCheckinPage", model.asMap());
             return mv;
-        }
-        return null;
     }
 
     @PostMapping("")
     public ModelAndView checkinForm(CheckinForm checkinForm, Model model, BindingResult bindingResult) {
 
+        // gets date
+        Date now = Date.valueOf(LocalDate.now());
 //        if (bindingResult.hasErrors()){
 //            model.addAttribute("name", oneToOneController.getCurrentEmployee().getName());
 //            model.addAttribute("supervisor", "Carl");
@@ -99,8 +100,6 @@ public class CheckinController {
 //        }
 
         Employee em = this.getCurrentEmployee();
-
-        LocalDate now = LocalDate.now();
 
         CheckinDto checkinDto = new CheckinDto(null, em.getEmployeeId(), checkinForm.getScore(), now);
         checkinService.save(checkinDto);

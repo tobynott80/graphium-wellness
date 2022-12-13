@@ -22,4 +22,6 @@ public interface CheckinRepository {
     void save(Checkin checkin);
 
     Checkin getCheckinById(Integer checkInsId);
+
+    List<Checkin> findEmployeeWithAvg();
 }
