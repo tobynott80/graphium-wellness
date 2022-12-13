@@ -51,12 +51,12 @@ public class OneToOneController {
 
     @PostMapping("")
     public ModelAndView postOneToOneForm (Model model, OneToOneForm oneToOneForm) {
-         Employee employee = getCurrentEmployee();
+        Employee employee = getCurrentEmployee();
 
         OneToOneDto oneToOneDto = new OneToOneDto(1, employee.getEmployeeId(), employee.getSupervisorId(), oneToOneForm.getDate());
         NoteDto noteDto = new NoteDto(1, 1, oneToOneForm.getNotes());
         oneToOneService.save(oneToOneDto, noteDto);
-        var mv = new ModelAndView("employee/EmployeeHomepage.html");
+        var mv = new ModelAndView("redirect:/employee");
         return mv;
     }
 }
