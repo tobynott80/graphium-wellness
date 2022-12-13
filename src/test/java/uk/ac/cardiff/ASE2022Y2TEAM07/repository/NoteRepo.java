@@ -22,10 +22,20 @@ public class NoteRepo {
 //    }
 
     @Test
-    public void shouldSaveNote() throws Exception {
-        //GIVEN
-
-        noteRepository.save(new Note(1, "good well-being"));
+    public void shouldGetNote() throws Exception {
+        //GIVEN there is a note with "good well-being" in the test db (H2)
+        //WHEN the note is retrieved
+        //THEN the note text is "good well-being"
         assertEquals("good well-being", noteRepository.getNoteByNoteId(1).get().getNote());
+    }
+
+    @Test
+    public void shouldSaveNote() throws Exception {
+        //GIVEN a new note is saved
+        Note note = new Note(3, "This is a note");
+        noteRepository.save(note);
+        //WHEN the size of the notes db is retrieved and there are 4 original notes in the db
+        assertEquals(5, noteRepository.findAll().size());
+        //THEN there should be 5 notes in the db
     }
 }
