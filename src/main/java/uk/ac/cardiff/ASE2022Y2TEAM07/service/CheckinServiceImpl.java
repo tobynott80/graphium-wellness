@@ -46,7 +46,6 @@ public class CheckinServiceImpl implements CheckinService {
     public Integer getAvgByEmployeeId(Integer employeeId){
         List<Checkin> checkins = checkinRepository.findEmployeeWithAvg();
         for (Checkin c : checkins) {
-            System.out.println("Employee ID: " + c.getEmployeeId() + " Average Score: " + c.getScore());
             if (c.getEmployeeId().equals(employeeId)) return c.getScore();
         }
         return 0;
