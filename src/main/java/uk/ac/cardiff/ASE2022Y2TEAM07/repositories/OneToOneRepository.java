@@ -20,5 +20,6 @@ public interface OneToOneRepository {
 
     List<OneToOne> getOneToOnes();
 
+
     List<OneToOne> getOneToOnesBySearch(Integer search);
 }

@@ -21,8 +21,8 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="onetoone : ${oneToOnes}">
-                <td th:text="${onetoone.getOneToOneID()}">
+            <tr th:each="employee : ${oneToOnes}">
+                <td th:text="${employee.name}">
                     one to one ID
                 </td>
             </tr>

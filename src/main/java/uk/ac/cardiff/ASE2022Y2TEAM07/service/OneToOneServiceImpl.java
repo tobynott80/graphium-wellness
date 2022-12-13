@@ -62,6 +62,21 @@ public class OneToOneServiceImpl implements OneToOneService {
         return OneToOneAssembler.toDto(oneToOnes);
     }
 
+    private List<OneToOneDto> getOneToOnes() {
+        List<OneToOne> oneToOnes = oneToOneRepository.getOneToOnes();
+        return oneToOnes.stream().map(oto -> OneToOneAssembler.toDto(oto)).collect(Collectors.toList());
+    }
+
+
+
+
+
+
+
+
+
+
+
     @Override
     public OneToOneListResponse getOneToOnes (OneToOneListRequest oneToOneListRequest){
         List<OneToOneDto> oneToOnes;
@@ -83,10 +98,6 @@ public class OneToOneServiceImpl implements OneToOneService {
         return oneToOnes.stream().map(oto -> OneToOneAssembler.toDto(oto)).collect(Collectors.toList());
     }
 
-    private List<OneToOneDto> getOneToOnes() {
-        List<OneToOne> oneToOnes = oneToOneRepository.getOneToOnes();
-        return oneToOnes.stream().map(oto -> OneToOneAssembler.toDto(oto)).collect(Collectors.toList());
-    }
 
 
 }
