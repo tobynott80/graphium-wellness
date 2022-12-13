@@ -14,13 +14,7 @@ public class CheckinRepo {
     @Autowired
     private CheckinRepository checkinRepository;
 
-    @Test
-    public void shouldGetCheckin() throws Exception {
-        //Given
-        Integer score = 7;
-        Checkin checkinId1 = checkinRepository.findByScore(score);
-        assertEquals(1, checkinId1.getCheckInsId());
-    }
+
 
     @Test
     public void shouldGetCheckinById() throws Exception {
@@ -34,7 +28,7 @@ public class CheckinRepo {
     public void shouldGetAllCheckins() throws Exception {
         //Given there is 8 checkins in the H2 database
         int numberOfCheckins = checkinRepository.findAll().size();
-        assertEquals(8, numberOfCheckins);
+        assertEquals(16, numberOfCheckins);
     }
 
 //    @Test
