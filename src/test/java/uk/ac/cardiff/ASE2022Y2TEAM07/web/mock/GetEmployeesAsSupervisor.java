@@ -5,8 +5,12 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
+import uk.ac.cardiff.ASE2022Y2TEAM07.repositories.CheckinRepository;
+import uk.ac.cardiff.ASE2022Y2TEAM07.repositories.EmployeeRepository;
+import uk.ac.cardiff.ASE2022Y2TEAM07.service.CheckinServiceImpl;
 import uk.ac.cardiff.ASE2022Y2TEAM07.web.SupervisorCheckinController;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -15,7 +19,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(controllers = SupervisorCheckinController.class)
-@AutoConfigureMockMvc
+@AutoConfigureMockMvc(addFilters = false)
 public class GetEmployeesAsSupervisor {
 
 
@@ -23,6 +27,14 @@ public class GetEmployeesAsSupervisor {
     MockMvc mvc;
 
 
+    @MockBean
+    EmployeeRepository employeeRepository;
+
+    @MockBean
+    CheckinRepository checkinRepository;
+
+    @MockBean
+    CheckinServiceImpl checkinService;
 
 
     @Test
