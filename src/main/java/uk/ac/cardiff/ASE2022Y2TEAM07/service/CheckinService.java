@@ -16,6 +16,4 @@ public interface CheckinService {
 
     Map<Integer,Integer> getAvg();
 
-    Integer getAvgByEmployeeId(Integer employeeId);
-
 }
