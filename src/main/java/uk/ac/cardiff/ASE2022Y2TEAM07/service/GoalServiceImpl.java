@@ -22,7 +22,7 @@ public class GoalServiceImpl implements GoalService{
 
     @Override
     public void save(GoalDto goalDto) {
-        Goal goal = new Goal(goalDto.getGoalId(), goalDto.getEmployeeId(), goalDto.getTitle(), goalDto.getDescription(), goalDto.getTargetDate(), goalDto.getCompletedDate());
+        Goal goal = new Goal(goalDto.getGoalId(), goalDto.getEmployeeId(), goalDto.getTitle(), goalDto.getDescription(), goalDto.getTargetDate());
         goalRepository.save(goal);
     }
 

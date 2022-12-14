@@ -30,18 +30,41 @@
                 <th scope="col">Title</th>
                 <th scope="col">Description</th>
                 <th scope="col">Target Date</th>
-                <th scope="col">Completed date</th>
                 <th scope="col"></th>
             </tr>
             <tr th:each = "goal : ${employeeGoals}">
                 <th class="fw-normal" th:text="${goal.title}"></th>
                 <th class="fw-normal" th:text="${goal.description}"></th>
                 <th class="fw-normal" th:text="${goal.targetDate}"></th>
-                <th class="fw-normal" th:text="${goal.completedDate}"></th>
-
             </tr>
         </table>
     </div>
+    <form th:action="@{goals}" th:method="post" th:object="${goalForm}">
+
+        <div class="row">
+            <div class="input">
+                <label class="p-3" for="title">Input the title for your goal:</label>
+                <input class="input-group justify-content-center p-2" id="title" type="text" th:field="*{title}">
+            </div>
+            <div class="input">
+                <label class="p-3" for="description">Input the description for your goal:</label>
+                <input class="input-group justify-content-center p-2" id="description" type="text" th:field="*{description}">
+            </div>
+            <div class="input">
+                <label class="p-3" for="targetDate">Input the targetDate for your goal:</label>
+                <input class="input-group justify-content-center p-2" id="targetDate" type="date" th:field="*{targetDate}">
+            </div>
+<!--            <div class="input">-->
+<!--                <label class="p-3" for="title">Input the completedDate for your goal:</label>-->
+<!--                <input class="input-group justify-content-center p-2" type="date" th:field="*{completedDate}">-->
+<!--            </div>-->
+        </div>
+        <div class="row p-4">
+            <div class="btn-group d-inline" role="group" aria-label="Basic mixed styles example">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </form>
 </div>
 
 <script th:replace="fragments/footer :: bootstrap-js"></script>

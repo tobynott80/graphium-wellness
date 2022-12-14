@@ -3,6 +3,7 @@ package uk.ac.cardiff.ASE2022Y2TEAM07.web.forms;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -11,10 +12,8 @@ import java.util.Date;
 @Data
 public class GoalForm {
 
-    private int goalId;
-    private int employeeId;
     private String title;
     private String description;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date targetDate;
-    private Date completedDate;
 }

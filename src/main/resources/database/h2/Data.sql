@@ -68,19 +68,19 @@ INSERT INTO NOTE(NOTE_ID, ONE_TO_ONE_ID, NOTE) VALUES (3, 3, 'no issues');
 INSERT INTO NOTE(NOTE_ID, ONE_TO_ONE_ID, NOTE) VALUES (4, 4, 'anything');
 
 
-INSERT INTO GOAL(GOAL_ID, EMPLOYEE_ID, TITLE, `DESCRIPTION`, TARGET_DATE, COMPLETED_DATE)
-VALUES (1, 1, 'Better well-being', 'I would like to get my well-being to an AVG of 9', '2022-12-28', '2022-12-28');
-INSERT INTO GOAL(GOAL_ID, EMPLOYEE_ID, TITLE, `DESCRIPTION`, TARGET_DATE, COMPLETED_DATE)
-VALUES (2, 2, 'Make more friends at work', 'I would like to socialize more in the work-place', '2022-12-20', '2022-12-22');
-INSERT INTO GOAL(GOAL_ID, EMPLOYEE_ID, TITLE, `DESCRIPTION`, TARGET_DATE, COMPLETED_DATE)
-VALUES (3, 3, 'Take online courses', 'I would like to take more online course to improve my personal skills', '2023-02-01', '2023-01-01');
-INSERT INTO GOAL(GOAL_ID, EMPLOYEE_ID, TITLE, `DESCRIPTION`, TARGET_DATE, COMPLETED_DATE)
-VALUES (4, 4, 'Get better at time-management', 'I would like to work on my time-management because I am always late', '2022-12-31', '2023-01-21');
-INSERT INTO GOAL(GOAL_ID, EMPLOYEE_ID, TITLE, `DESCRIPTION`, TARGET_DATE, COMPLETED_DATE)
-VALUES (5, 5, 'Improve public speaking', 'I would like to improve my public speaking by asking my boss to preform weekly presentation', '2022-12-14', '2022-12-14');
-INSERT INTO GOAL(GOAL_ID, EMPLOYEE_ID, TITLE, `DESCRIPTION`, TARGET_DATE, COMPLETED_DATE)
-VALUES (6, 6, 'Improve my work-life balance', 'I feel like I am spending too much time in the workplace', '2022-12-08', '2022-12-14');
-INSERT INTO GOAL(GOAL_ID, EMPLOYEE_ID, TITLE, `DESCRIPTION`, TARGET_DATE, COMPLETED_DATE)
-VALUES (7, 7, 'Take on leadership responsibilities', 'I would like to improve my leadership skills', '2022-12-25', '2022-12-27');
-INSERT INTO GOAL(GOAL_ID, EMPLOYEE_ID, TITLE, `DESCRIPTION`, TARGET_DATE, COMPLETED_DATE)
-VALUES (8, 8, 'Go above and beyond in the workplace', 'I need to start putting more effort at work', '2022-10-28', '2022-12-03');
+INSERT INTO GOAL(GOAL_ID, EMPLOYEE_ID, TITLE, `DESCRIPTION`, TARGET_DATE)
+VALUES (1, 1, 'Better well-being', 'I would like to get my well-being to an AVG of 9', '2022-12-28');
+INSERT INTO GOAL(GOAL_ID, EMPLOYEE_ID, TITLE, `DESCRIPTION`, TARGET_DATE)
+VALUES (2, 2, 'Make more friends at work', 'I would like to socialize more in the work-place', '2022-12-20');
+INSERT INTO GOAL(GOAL_ID, EMPLOYEE_ID, TITLE, `DESCRIPTION`, TARGET_DATE)
+VALUES (3, 3, 'Take online courses', 'I would like to take more online course to improve my personal skills', '2023-02-01');
+INSERT INTO GOAL(GOAL_ID, EMPLOYEE_ID, TITLE, `DESCRIPTION`, TARGET_DATE)
+VALUES (4, 4, 'Get better at time-management', 'I would like to work on my time-management because I am always late', '2022-12-31');
+INSERT INTO GOAL(GOAL_ID, EMPLOYEE_ID, TITLE, `DESCRIPTION`, TARGET_DATE)
+VALUES (5, 5, 'Improve public speaking', 'I would like to improve my public speaking by asking my boss to preform weekly presentation', '2022-12-14');
+INSERT INTO GOAL(GOAL_ID, EMPLOYEE_ID, TITLE, `DESCRIPTION`, TARGET_DATE)
+VALUES (6, 6, 'Improve my work-life balance', 'I feel like I am spending too much time in the workplace', '2022-12-08');
+INSERT INTO GOAL(GOAL_ID, EMPLOYEE_ID, TITLE, `DESCRIPTION`, TARGET_DATE)
+VALUES (7, 7, 'Take on leadership responsibilities', 'I would like to improve my leadership skills', '2022-12-25');
+INSERT INTO GOAL(GOAL_ID, EMPLOYEE_ID, TITLE, `DESCRIPTION`, TARGET_DATE)
+VALUES (8, 8, 'Go above and beyond in the workplace', 'I need to start putting more effort at work', '2022-10-28');
