@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,17 +16,19 @@
     <h2>Request a One to One Meeting</h2>
   </div>
   <div class="row px-5">
-    <form th:method="post" th:action="@{/employee/onetoone}" th:object="${OneToOneForm}">
+    <form th:action="@{/employee/onetoone}" th:method="post" th:object="${OneToOneForm}">
       <div class="mb-3">
         <label for="datetime" class="form-label">Requested Time for Meeting</label>
-        <input type="date" class="form-control" id="datetime" th:feild="*{date}" >
+        <input type="date" class="form-control" id="datetime" th:field="*{date}" >
       </div>
       <div class="mb-3">
         <label for="notes" class="form-label">Meeting Notes</label>
-        <input type="text" class="form-control" id="notes" th:feild="*{notes}">
+        <input type="text" class="form-control" id="notes" th:field="*{notes}">
       </div>
 
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <div class="mb-3">
+        <button class="btn btn-primary">Submit</button>
+      </div>
     </form>
   </div>
 </div>
