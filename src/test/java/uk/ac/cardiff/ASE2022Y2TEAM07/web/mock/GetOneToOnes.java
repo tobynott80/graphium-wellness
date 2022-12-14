@@ -7,6 +7,9 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 import uk.ac.cardiff.ASE2022Y2TEAM07.dto.OneToOneDto;
+import uk.ac.cardiff.ASE2022Y2TEAM07.repositories.EmployeeRepository;
+import uk.ac.cardiff.ASE2022Y2TEAM07.repositories.OneToOneRepository;
+import uk.ac.cardiff.ASE2022Y2TEAM07.repositories.SupervisorRepository;
 import uk.ac.cardiff.ASE2022Y2TEAM07.service.OneToOneService;
 import uk.ac.cardiff.ASE2022Y2TEAM07.service.message.OneToOneListRequest;
 import uk.ac.cardiff.ASE2022Y2TEAM07.service.message.OneToOneListResponse;
@@ -32,6 +35,15 @@ public class GetOneToOnes {
 
     @MockBean
     OneToOneService oneToOneService;
+
+    @MockBean
+    OneToOneRepository oneToOneRepository;
+
+    @MockBean
+    EmployeeRepository employeeRepository;
+
+    @MockBean
+    SupervisorRepository supervisorRepository;
 
     @Test
     public void shouldGet3OneToOnes() throws Exception {

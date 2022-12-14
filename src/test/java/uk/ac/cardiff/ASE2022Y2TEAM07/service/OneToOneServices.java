@@ -41,7 +41,7 @@ public class OneToOneServices {
         //WHEN
         oneToOneService.save(oneToOneDto, noteDto);
         //THEN
-        assertEquals("JOHN", employeeRepository.findByEmployeeId(oneToOneService.getOneToOneById(5).getEmployeeId()).getName());
+        assertEquals("DAN", employeeRepository.findByEmployeeId(oneToOneService.getOneToOneById(5).getEmployeeId()).getName());
     }
 
     @Test
