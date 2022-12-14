@@ -56,25 +56,27 @@ public class SupervisorOneToOneController {
 
     @GetMapping("")
     public ModelAndView getSupervisorOneToOnePage(Model model) {
+        System.out.println("oNE TO one");
         Supervisor currentSupervisor = this.getCurrentSupervisor();
         List<OneToOneDto> oneToOnes = oneToOneService.getSupervisorOneToOnes();
 
         List<OneToOneDto> allOneToOnes = oneToOneService.findAll();
+        List<OneToOneDto> releventOneToOnes = new ArrayList<>();
 
         System.out.println("Get all one-to-ones");
         System.out.println(allOneToOnes.toString());
+        List<Meeting> meetings = new ArrayList<>();
 
         for (OneToOneDto o: allOneToOnes) {
-            if(currentSupervisor.getSupervisorId() != o.getSupervisorId()) {
-                allOneToOnes.remove(o);
+            if(currentSupervisor.getSupervisorId() == o.getSupervisorId()) {
+                releventOneToOnes.add(o);
             }
         }
 
         System.out.println("Get all one-to-ones for current supervisor logged in");
         System.out.printf(allOneToOnes.toString());
 
-        List<Meeting> meetings = new ArrayList<>();
-        for (OneToOneDto o: allOneToOnes) {
+        for (OneToOneDto o: releventOneToOnes) {
             meetings.add(new Meeting(employeeRepository.findByEmployeeId(o.getEmployeeId()).getName(), o.getDate()));
         }
 
