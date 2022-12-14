@@ -3,13 +3,12 @@ package uk.ac.cardiff.ASE2022Y2TEAM07.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import uk.ac.cardiff.ASE2022Y2TEAM07.domain.Checkin;
-import uk.ac.cardiff.ASE2022Y2TEAM07.domain.OneToOne;
-
-import org.springframework.stereotype.Service;
 import uk.ac.cardiff.ASE2022Y2TEAM07.dto.CheckinDto;
 import uk.ac.cardiff.ASE2022Y2TEAM07.repositories.CheckinRepository;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class CheckinServiceImpl implements CheckinService {
@@ -33,5 +32,22 @@ public class CheckinServiceImpl implements CheckinService {
     public Checkin getCheckinById(Integer checkInsId) {
         Checkin checkin = checkinRepository.getCheckinById(checkInsId);
         return checkin;
+    }
+
+    public Map<Integer,Integer> getAvg(){
+        List<Checkin> checkins = checkinRepository.findEmployeeWithAvg();
+        Map<Integer,Integer> employeeWithAvg = new HashMap<>();
+        for (Checkin c : checkins) {
+            employeeWithAvg.put(c.getEmployeeId(),c.getScore());
+        }
+        return employeeWithAvg;
+    }
+
+    public Integer getAvgByEmployeeId(Integer employeeId){
+        List<Checkin> checkins = checkinRepository.findEmployeeWithAvg();
+        for (Checkin c : checkins) {
+            if (c.getEmployeeId().equals(employeeId)) return c.getScore();
+        }
+        return 0;
     }
 }

@@ -17,9 +17,9 @@ public class CheckinRepo {
     @Test
     public void shouldGetCheckin() throws Exception {
         //Given
-        Integer score = 7;
+        Integer score = 3;
         Checkin checkinId1 = checkinRepository.findByScore(score);
-        assertEquals(1, checkinId1.getCheckInsId());
+        assertEquals(14, checkinId1.getCheckInsId());
     }
 
     @Test
@@ -32,9 +32,9 @@ public class CheckinRepo {
 
     @Test
     public void shouldGetAllCheckins() throws Exception {
-        //Given there is 8 checkins in the H2 database
+        //Given there is 16 checkins in the H2 database
         int numberOfCheckins = checkinRepository.findAll().size();
-        assertEquals(8, numberOfCheckins);
+        assertEquals(16, numberOfCheckins);
     }
 
 //    @Test

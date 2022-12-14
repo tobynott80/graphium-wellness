@@ -22,54 +22,12 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <th scope="row">{user.name}</th>
-            <td>Checkin Placeholder</td>
-        </tr>
-        <tr>
-            <th scope="row">{user.name}</th>
-            <td>Checkin Placeholder</td>
-        </tr>
-        <tr>
-            <th scope="row">{user.name}</th>
-            <td>Checkin Placeholder</td>
+        <tr th:each ="averages: ${Employees}">
+            <td th:text="${averages.employeeName}"></td>
+            <td th:text = "${averages.average}"></td>
         </tr>
         </tbody>
     </table>
-</div>
-
-<div class="container my-4">
-    <h2 class="font-weight-bold">
-       Historical Data
-    </h2>
-    <div id = "container">
-        <script>
-            anychart.onDocumentReady(function () {
-
-                var data = [
-
-                ];
-
-                var dataSet = anychart.data.set(data);
-
-                var averageData = dataSet.mapAs({x: 0, value: 1});
-
-                var chart = anychart.line();
-
-                var average = chart.line(averageData);
-                average.name("Team");
-
-                chart.legend().enabled(true);
-
-                chart.title("Supervisor's Team Average");
-
-                chart.container("container");
-
-                chart.draw();
-
-            });
-        </script>
-    </div>
 </div>
 
 <div class="contianer align-items-center text-center py-4">
@@ -78,7 +36,7 @@
             <h2>Scheduled One To One meetings</h2>
         </div>
     </div>
-    <a href="SupervisorOneToOne.html" class="btn btn-primary">View</a>
+    <a href="/supervisor/onetone" class="btn btn-primary">View</a>
 </div>
 
 <script th:replace="fragments/footer :: bootstrap-js"></script>

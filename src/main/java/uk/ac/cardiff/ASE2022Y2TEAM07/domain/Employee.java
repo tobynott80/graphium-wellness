@@ -3,12 +3,14 @@ package uk.ac.cardiff.ASE2022Y2TEAM07.domain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.MappedCollection;
 import org.springframework.data.relational.core.mapping.Table;
 
 
 //import javax.persistence.CascadeType;
 //import javax.persistence.OneToMany;
+
 
 import java.util.Set;
 

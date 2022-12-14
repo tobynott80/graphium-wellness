@@ -6,7 +6,6 @@ import uk.ac.cardiff.ASE2022Y2TEAM07.dto.CheckinDto;
 
 import java.util.List;
 
-@Repository
 public interface CheckinRepository {
 
     Checkin findByCheckInId(Integer checkinId);
@@ -22,4 +21,6 @@ public interface CheckinRepository {
     void save(Checkin checkin);
 
     Checkin getCheckinById(Integer checkInsId);
+
+    List<Checkin> findEmployeeWithAvg();
 }

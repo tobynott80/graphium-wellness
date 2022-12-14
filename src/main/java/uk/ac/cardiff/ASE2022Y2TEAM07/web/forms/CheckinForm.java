@@ -14,14 +14,14 @@ import javax.validation.constraints.NotNull;
 @Data
 public class CheckinForm {
     private Integer employeeId;
-//    @Min(value = 1,  message = "You can not checkin with a score less than 1")
-//    @Max(value = 10, message = "You can not checkin with a score more than 10")
+    @Min(value = 1,  message = "You can not checkin with a score less than 1")
+    @Max(value = 10, message = "You can not checkin with a score more than 10")
     private Integer score;
 
-//    public CheckinForm(Integer employeeId, Integer score) {
-//        this.employeeId = employeeId;
-//        this.score = score;
-//    }
+/*    public CheckinForm(Integer employeeId, Integer score) {
+        this.employeeId = employeeId;
+        this.score = score;
+    }*/
 
     public Integer getEmployeeId() {
         return employeeId;

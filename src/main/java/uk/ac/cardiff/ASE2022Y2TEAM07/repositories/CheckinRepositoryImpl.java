@@ -1,5 +1,7 @@
 package uk.ac.cardiff.ASE2022Y2TEAM07.repositories;
 
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import uk.ac.cardiff.ASE2022Y2TEAM07.domain.Checkin;
 import uk.ac.cardiff.ASE2022Y2TEAM07.dto.CheckinDto;
@@ -12,8 +14,12 @@ public class CheckinRepositoryImpl implements CheckinRepository{
 
     private CheckinRepositorySpringDataJdbc repoJdbc;
 
-    public CheckinRepositoryImpl(CheckinRepositorySpringDataJdbc aRepo){
+    private JdbcTemplate jdbc;
+
+    @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
+    public CheckinRepositoryImpl(CheckinRepositorySpringDataJdbc aRepo, JdbcTemplate jdbcTemplate){
         this.repoJdbc = aRepo;
+        jdbc = jdbcTemplate;
     }
 
     @Override
@@ -54,5 +60,15 @@ public class CheckinRepositoryImpl implements CheckinRepository{
     public Checkin getCheckinById(Integer checkInsId) {
         Checkin checkin = repoJdbc.findByCheckInsId(checkInsId);
         return checkin;
+    }
+
+    @Override
+    public List<Checkin> findEmployeeWithAvg() {
+        RowMapper<Checkin> checkinMapper = (rs, i) -> new Checkin(
+                rs.getInt("EMPLOYEE_ID"),
+                rs.getInt("AVG_SCORE"));
+
+        String employeeAvg = "SELECT AVG(CHECK_INS.SCORE) as AVG_SCORE, CHECK_INS.EMPLOYEE_ID FROM CHECK_INS JOIN EMPLOYEE ON EMPLOYEE.EMPLOYEE_ID = CHECK_INS.EMPLOYEE_ID GROUP BY CHECK_INS.EMPLOYEE_ID";
+        return jdbc.query(employeeAvg, checkinMapper);
     }
 }
