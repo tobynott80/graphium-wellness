@@ -14,7 +14,7 @@
         <h2 th:text="'How are you today '+${employeeName}+'?'"></h2>
     </div>
     <div class="row justify-content-center p-4">
-      <span class=" display-5" id="emoji">&#128512</span>
+      <span class=" display-5" id="emoji">&#128551</span>
     </div>
 
     <form th:action="@{/employee/checkin}" th:method="post" th:object="${checkinForm}">
@@ -30,17 +30,17 @@
 
             </div>
         </div>
-        <div class="row">
+<!--        <div class="row">-->
 <!--            <h4>Would you like to request a one to one meeting with {user.supervisor}?</h4>-->
-            <h4 th:text="'Would you like to request a one to one meeting with '+${supervisor}+'?'"></h4>
-        </div>
-        <div class="row p-1">
-            <div class="form-check form-switch justify-content-center">
-                <input class="form-check-input" type="checkbox" id="meetingRequest" style="float: none;">
-                <label class="form-check-label" for="meetingRequest">Request a meeting</label>
-            </div>
-        </div>
-        <div class="row p-1">
+<!--            <h4 th:text="'Would you like to request a one to one meeting with '+${supervisor}+'?'"></h4>-->
+<!--        </div>-->
+<!--        <div class="row p-1">-->
+<!--            <div class="form-check form-switch justify-content-center">-->
+<!--                <input class="form-check-input" type="checkbox" id="meetingRequest" style="float: none;">-->
+<!--                <label class="form-check-label" for="meetingRequest">Request a meeting</label>-->
+<!--            </div>-->
+<!--        </div>-->
+        <div class="row p-4">
             <div class="btn-group d-inline" role="group" aria-label="Basic mixed styles example">
                 <button type="button" class="btn btn-danger">Cancel</button>
                 <button type="submit" class="btn btn-primary">Submit</button>
