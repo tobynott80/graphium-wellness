@@ -1,7 +1,10 @@
 package uk.ac.cardiff.ASE2022Y2TEAM07.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.converter.json.GsonBuilderUtils;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import uk.ac.cardiff.ASE2022Y2TEAM07.domain.Averages;
 import uk.ac.cardiff.ASE2022Y2TEAM07.domain.Employee;
+import uk.ac.cardiff.ASE2022Y2TEAM07.domain.Supervisor;
 import uk.ac.cardiff.ASE2022Y2TEAM07.repositories.CheckinRepository;
 import uk.ac.cardiff.ASE2022Y2TEAM07.repositories.EmployeeRepository;
+import uk.ac.cardiff.ASE2022Y2TEAM07.repositories.SupervisorRepository;
 import uk.ac.cardiff.ASE2022Y2TEAM07.service.CheckinServiceImpl;
 
 import java.util.*;
@@ -30,8 +35,32 @@ public class SupervisorCheckinController {
     @Autowired
     private CheckinServiceImpl checkinService;
 
+    //--------------------------------------------------
+    @Autowired
+    private SupervisorRepository supervisorRepository;
+    //--------------------------------------------------
+
+    //--------------------------------------------------
+
+    private String getCurrentSupervisorEmail() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentPrincipalName = authentication.getName();
+        return currentPrincipalName;
+    }
+
+    public Supervisor getCurrentSupervisor() {
+        String email = getCurrentSupervisorEmail();
+        return supervisorRepository.findByEmail(email);
+    }
+
+    //--------------------------------------------------
+
     @GetMapping("")
     public ModelAndView getAllEmployees(Model model){
+
+        //--------------------------------------------------
+        System.out.println(getCurrentSupervisor());
+        //--------------------------------------------------
 
         Map<Integer, Integer> avgCheckins = checkinService.getAvg();
 
