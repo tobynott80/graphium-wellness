@@ -20,6 +20,7 @@ import uk.ac.cardiff.ASE2022Y2TEAM07.service.OneToOneService;
 import uk.ac.cardiff.ASE2022Y2TEAM07.web.forms.OneToOneForm;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 
 @Controller
 @PreAuthorize("hasRole('ROLE_EMPLOYEE')")
@@ -57,6 +58,12 @@ public class OneToOneController {
         if (bindingResult.hasErrors()){
             System.out.println("USER INPUT ERROR: Binding Result");
             bindingResult.getAllErrors().forEach(System.out::println);
+
+            ArrayList<String> errors = new ArrayList<>();
+            for ( var error : bindingResult.getAllErrors()) {
+                errors.add(error.getDefaultMessage());
+            }
+            model.addAttribute("errors", errors);
             model.addAttribute("OneToOneForm", oneToOneForm);
             var mv = new ModelAndView("employee/EmployeeOneToOnePage", model.asMap());
             return mv;

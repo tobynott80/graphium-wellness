@@ -17,6 +17,9 @@
   </div>
   <div class="row px-5">
     <form th:action="@{/employee/onetoone}" th:method="post" th:object="${OneToOneForm}">
+      <div th:each="error :${errors}" class="alert alert-warning">
+        <span th:text="${error}"></span>
+      </div>
       <div class="mb-3">
         <label for="datetime" class="form-label">Requested Time for Meeting</label>
         <input type="date" class="form-control" id="datetime" th:field="*{date}" >
