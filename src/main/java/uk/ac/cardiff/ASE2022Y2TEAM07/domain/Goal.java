@@ -20,5 +20,5 @@ public class Goal {
     private String goal;
     private String description;
     private Date targetDate;
-    private Date CompleteDate;
+    private Date completedDate;
 }

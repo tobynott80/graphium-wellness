@@ -12,7 +12,7 @@ public interface GoalRepository {
 
     List<Goal> findAll();
 
-    List<Goal> findAllByEmployeeID(Integer employeeId);
+    List<Goal> findAllByEmployeeId(Integer employeeId);
 
     void save(Goal goal);
 }

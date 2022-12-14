@@ -11,6 +11,10 @@ public class GoalRepositoryImpl implements GoalRepository{
 
     private GoalRepositorySpringDataJdbc repoJdbc;
 
+    public GoalRepositoryImpl(GoalRepositorySpringDataJdbc aRepo) {
+        this.repoJdbc = aRepo;
+    }
+
     @Override
     public Goal findByGoalId(Integer goalId) {
         return repoJdbc.findByGoalId(goalId);
@@ -29,9 +33,9 @@ public class GoalRepositoryImpl implements GoalRepository{
     }
 
     @Override
-    public List<Goal> findAllByEmployeeID(Integer employeeId) {
+    public List<Goal> findAllByEmployeeId(Integer employeeId) {
         List<Goal> goals = new ArrayList<>();
-        repoJdbc.findAllByEmployeeID(employeeId).forEach(goals::add);
+        repoJdbc.findAllByEmployeeId(employeeId).forEach(goals::add);
         return goals;
     }
 

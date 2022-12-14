@@ -13,5 +13,5 @@ public interface GoalRepositorySpringDataJdbc extends CrudRepository<Goal, Integ
 
     List<Goal> findAll();
 
-    List<Goal> findAllByEmployeeID(Integer employeeId);
+    List<Goal> findAllByEmployeeId(Integer employeeId);
 }
