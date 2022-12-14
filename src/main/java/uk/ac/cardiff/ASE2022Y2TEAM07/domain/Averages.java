@@ -6,7 +6,20 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class Averages {
-    private Integer average;
+//    private Integer average;
+//
+//    private String employeeName;
 
-    private String employeeName;
+
+    //--------------------------------------------------
+    private Integer average;
+    private Integer employeeId;
+    private Integer supervisorId;
+
+    public Averages(Integer average, Integer employeeId) {
+        this.average = average;
+        this.employeeId = employeeId;
+    }
+    //--------------------------------------------------
+
 }
