@@ -52,7 +52,8 @@ public class OneToOneController {
     @PostMapping("")
     public ModelAndView postOneToOneForm (Model model, OneToOneForm oneToOneForm) {
         Employee employee = getCurrentEmployee();
-
+        System.out.println("POSTed Date :" + oneToOneForm.getDate());
+        System.out.println("POSTed notes :"+oneToOneForm.getNotes());
         OneToOneDto oneToOneDto = new OneToOneDto(1, employee.getEmployeeId(), employee.getSupervisorId(), oneToOneForm.getDate());
         NoteDto noteDto = new NoteDto(1, 1, oneToOneForm.getNotes());
         oneToOneService.save(oneToOneDto, noteDto);
