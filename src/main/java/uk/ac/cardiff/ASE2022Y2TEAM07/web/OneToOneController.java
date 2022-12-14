@@ -6,6 +6,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,9 @@ import uk.ac.cardiff.ASE2022Y2TEAM07.repositories.EmployeeRepository;
 import uk.ac.cardiff.ASE2022Y2TEAM07.service.EmployeeService;
 import uk.ac.cardiff.ASE2022Y2TEAM07.service.OneToOneService;
 import uk.ac.cardiff.ASE2022Y2TEAM07.web.forms.OneToOneForm;
+
+import javax.validation.Valid;
+import java.util.ArrayList;
 
 @Controller
 @PreAuthorize("hasRole('ROLE_EMPLOYEE')")
@@ -50,9 +54,24 @@ public class OneToOneController {
     }
 
     @PostMapping("")
-    public ModelAndView postOneToOneForm (Model model, OneToOneForm oneToOneForm) {
-        Employee employee = getCurrentEmployee();
+    public ModelAndView postOneToOneForm (@Valid OneToOneForm oneToOneForm, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()){
+            System.out.println("USER INPUT ERROR: Binding Result");
+            bindingResult.getAllErrors().forEach(System.out::println);
 
+            ArrayList<String> errors = new ArrayList<>();
+            for ( var error : bindingResult.getAllErrors()) {
+                errors.add(error.getDefaultMessage());
+            }
+            model.addAttribute("errors", errors);
+            model.addAttribute("OneToOneForm", oneToOneForm);
+            var mv = new ModelAndView("employee/EmployeeOneToOnePage", model.asMap());
+            return mv;
+        }
+
+        Employee employee = getCurrentEmployee();
+        System.out.println("POSTed Date :" + oneToOneForm.getDate());
+        System.out.println("POSTed notes :"+oneToOneForm.getNotes());
         OneToOneDto oneToOneDto = new OneToOneDto(1, employee.getEmployeeId(), employee.getSupervisorId(), oneToOneForm.getDate());
         NoteDto noteDto = new NoteDto(1, 1, oneToOneForm.getNotes());
         oneToOneService.save(oneToOneDto, noteDto);
