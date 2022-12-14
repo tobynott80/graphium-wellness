@@ -4,9 +4,16 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
-@AllArgsConstructor
 public class Averages {
     private Integer average;
 
     private String employeeName;
+
+    private Integer employeeId;
+
+    public Averages(Integer average, String employeeName, Integer employeeId) {
+        this.average = average;
+        this.employeeName = employeeName;
+        this.employeeId = employeeId;
+    }
 }
