@@ -29,19 +29,12 @@ import java.util.*;
 public class SupervisorCheckinController {
     @Autowired
     private EmployeeRepository employeeRepository;
-
     @Autowired
     private CheckinRepository checkinRepository;
-
     @Autowired
     private CheckinServiceImpl checkinService;
-
-    //--------------------------------------------------
     @Autowired
     private SupervisorRepository supervisorRepository;
-    //--------------------------------------------------
-
-    //--------------------------------------------------
 
     private String getCurrentSupervisorEmail() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -54,44 +47,26 @@ public class SupervisorCheckinController {
         return supervisorRepository.findByEmail(email);
     }
 
-    //--------------------------------------------------
-
     @GetMapping("")
     public ModelAndView getAllEmployees(Model model){
-
-        //--------------------------------------------------
-        System.out.println(getCurrentSupervisor());
-
         Supervisor currentSupervisor = this.getCurrentSupervisor();
 
         List<Averages> relevantEmployees = new ArrayList<>();
-//        List<ArrayList> NewList = new ArrayList<>();
-        //--------------------------------------------------
 
         Map<Integer, Integer> avgCheckins = checkinService.getAvg();
 
-//        List<Averages> averagesList = new ArrayList<>();
         List<Averages> averagesList = new ArrayList<>();
         for (Map.Entry<Integer, Integer> entry: avgCheckins.entrySet()) {
-//            averagesList.add(new Averages(entry.getValue(), employeeRepository.findByEmployeeId(entry.getKey()).getName()));
-            averagesList.add(new Averages(entry.getValue(), employeeRepository.findByEmployeeId(entry.getKey()).getEmployeeId()));
+            averagesList.add(new Averages(entry.getValue(), employeeRepository.findByEmployeeId(entry.getKey()).getName(), entry.getKey(), employeeRepository.findByEmployeeId(entry.getKey()).getSupervisorId()));
         }
 
-        //--------------------------------------------------
-        System.out.println(averagesList);
+        for (Averages a : averagesList) {
+            if (currentSupervisor.getSupervisorId() == a.getSupervisorId()) {
+                relevantEmployees.add(a);
+            }
+        }
 
-        System.out.println(currentSupervisor.getSupervisorId());
-
-//        for (Averages a : averagesList) {
-//            if (currentSupervisor.getSupervisorId() == a.getSupervisorId()) {
-//                relevantEmployees.add(a);
-//            }
-//        }
-
-        System.out.println(relevantEmployees);
-        //--------------------------------------------------
-
-        model.addAttribute("Employees", averagesList);
+        model.addAttribute("Employees", relevantEmployees);
 
         var mv = new ModelAndView("supervisor/SupervisorPage", model.asMap());
     return mv;
