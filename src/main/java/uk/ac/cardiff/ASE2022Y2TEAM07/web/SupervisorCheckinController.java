@@ -37,7 +37,7 @@ public class SupervisorCheckinController {
 
         List<Averages> averagesList = new ArrayList<>();
         for (Map.Entry<Integer, Integer> entry: avgCheckins.entrySet()) {
-            averagesList.add(new Averages(entry.getValue(), employeeRepository.findByEmployeeId(entry.getKey()).getName()));
+            averagesList.add(new Averages(entry.getValue(), employeeRepository.findByEmployeeId(entry.getKey()).getName(), entry.getKey()));
         }
 
         model.addAttribute("Employees", averagesList);

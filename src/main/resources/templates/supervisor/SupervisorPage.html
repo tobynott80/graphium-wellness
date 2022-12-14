@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,7 +23,10 @@
         </thead>
         <tbody>
         <tr th:each ="averages: ${Employees}">
-            <td th:text="${averages.employeeName}"></td>
+            <th>
+                <a th:text="${averages.employeeName}" th:href="@{supervisor/employee/{id}(id=${averages.employeeId})}"></a>
+            </th>
+
             <td th:text = "${averages.average}"></td>
         </tr>
         </tbody>
@@ -36,7 +39,7 @@
             <h2>Scheduled One To One meetings</h2>
         </div>
     </div>
-    <a href="/supervisor/onetone" class="btn btn-primary">View</a>
+    <a href="/supervisor/onetoone" class="btn btn-primary">View</a>
 </div>
 
 <script th:replace="fragments/footer :: bootstrap-js"></script>
