@@ -1,13 +1,15 @@
-package uk.ac.cardiff.ASE2022Y2TEAM07.dto;
+package uk.ac.cardiff.ASE2022Y2TEAM07.web.forms;
 
 import lombok.AllArgsConstructor;
-import lombok.Value;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
-@Value
 @AllArgsConstructor
-public class GoalDto {
+@NoArgsConstructor
+@Data
+public class GoalForm {
 
     private int goalId;
     private int employeeId;
