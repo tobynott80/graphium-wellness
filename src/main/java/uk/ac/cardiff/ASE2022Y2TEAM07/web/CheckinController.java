@@ -64,7 +64,7 @@ public class CheckinController {
         model.addAttribute("employeeName", employeeNameCapitalized);
 
         model.addAttribute("employeeName", employeeNameCapitalized);
-        model.addAttribute("supervisor", "Carl");
+//        model.addAttribute("supervisor", "Carl");
         model.addAttribute("checkinForm", new CheckinForm(em.getEmployeeId(), 5));
         var mv = new ModelAndView("employee/EmployeeCheckinPage", model.asMap());
         return mv;
@@ -77,7 +77,7 @@ public class CheckinController {
         Date now = Date.valueOf(LocalDate.now());
         if (bindingResult.hasErrors()){
             model.addAttribute("employeeName", this.getCurrentEmployee().getName());
-            model.addAttribute("supervisor", "Carl");
+//            model.addAttribute("supervisor", "Carl");
             model.addAttribute("checkinForm",  checkinForm);
             var mv = new ModelAndView("employee/EmployeeCheckinPage", model.asMap());
             return mv;
