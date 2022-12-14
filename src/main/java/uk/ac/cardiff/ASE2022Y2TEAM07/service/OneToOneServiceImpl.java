@@ -62,10 +62,16 @@ public class OneToOneServiceImpl implements OneToOneService {
         return OneToOneAssembler.toDto(oneToOnes);
     }
 
+//    public List<OneToOneDto> getEmployeeId() {
+//        List<OneToOne> employeeIds = oneToOneRepository.getEmployeeIds();
+//        return OneToOneAssembler.toDto(employeeIds);
+//    }
+
     private List<OneToOneDto> getOneToOnes() {
         List<OneToOne> oneToOnes = oneToOneRepository.getOneToOnes();
         return oneToOnes.stream().map(oto -> OneToOneAssembler.toDto(oto)).collect(Collectors.toList());
     }
+
 
 
 

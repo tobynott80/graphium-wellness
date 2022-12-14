@@ -1,6 +1,8 @@
 package uk.ac.cardiff.ASE2022Y2TEAM07.web.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,12 +10,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import uk.ac.cardiff.ASE2022Y2TEAM07.domain.Employee;
+import uk.ac.cardiff.ASE2022Y2TEAM07.domain.Meeting;
 import uk.ac.cardiff.ASE2022Y2TEAM07.domain.OneToOne;
+import uk.ac.cardiff.ASE2022Y2TEAM07.domain.Supervisor;
 import uk.ac.cardiff.ASE2022Y2TEAM07.dto.OneToOneDto;
 import uk.ac.cardiff.ASE2022Y2TEAM07.repositories.EmployeeRepository;
 import uk.ac.cardiff.ASE2022Y2TEAM07.repositories.OneToOneRepository;
+import uk.ac.cardiff.ASE2022Y2TEAM07.repositories.SupervisorRepository;
 import uk.ac.cardiff.ASE2022Y2TEAM07.service.OneToOneService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,31 +36,53 @@ public class SupervisorOneToOneController {
     @Autowired
     private EmployeeRepository employeeRepository;
 
+    @Autowired
+    private SupervisorRepository supervisorRepository;
+
     public SupervisorOneToOneController(OneToOneService otoService) {
         this.oneToOneService = otoService;
     }
-//    @GetMapping("onetoone")
-//    public ModelAndView getSupervisorOneToOnePage(Model model) {
-//        List<OneToOneDto> oneToOnes = oneToOneService.getSupervisorOneToOnes();
-//        model.addAttribute("oneToOnes",oneToOnes);
-//
-//        var mv = new ModelAndView("supervisor/SupervisorOneToOne", model.asMap());
-//        return mv;
-//    }
 
-    private List<OneToOneDto> getSupervisorOneToOnePage() {
-        return oneToOneService.getSupervisorOneToOnes();
+    private String getCurrentSupervisorEmail() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentPrincipalName = authentication.getName();
+        return currentPrincipalName;
+    }
+
+    public Supervisor getCurrentSupervisor() {
+        String email = getCurrentSupervisorEmail();
+        return supervisorRepository.findByEmail(email);
     }
 
     @GetMapping("")
     public ModelAndView getSupervisorOneToOnePage(Model model) {
+        Supervisor currentSupervisor = this.getCurrentSupervisor();
         List<OneToOneDto> oneToOnes = oneToOneService.getSupervisorOneToOnes();
 
+        List<OneToOneDto> allOneToOnes = oneToOneService.findAll();
 
+        System.out.println("Get all one-to-ones");
+        System.out.println(allOneToOnes.toString());
 
-//        Employee employee = employeeRepository.findByEmployeeId();
-//        model.addAttribute("EmployeeName", employee.getName());
-        model.addAttribute("oneToOnes", oneToOnes);
+        for (OneToOneDto o: allOneToOnes) {
+            if(currentSupervisor.getSupervisorId() != o.getSupervisorId()) {
+                allOneToOnes.remove(o);
+            }
+        }
+
+        System.out.println("Get all one-to-ones for current supervisor logged in");
+        System.out.printf(allOneToOnes.toString());
+
+        List<Meeting> meetings = new ArrayList<>();
+        for (OneToOneDto o: allOneToOnes) {
+            meetings.add(new Meeting(employeeRepository.findByEmployeeId(o.getEmployeeId()).getName(), o.getDate()));
+        }
+
+        System.out.println(" ");
+        System.out.printf(meetings.toString());
+
+        model.addAttribute("meetings", meetings);
+
         var mv = new ModelAndView("supervisor/SupervisorOneToOne", model.asMap());
         return mv;
     }

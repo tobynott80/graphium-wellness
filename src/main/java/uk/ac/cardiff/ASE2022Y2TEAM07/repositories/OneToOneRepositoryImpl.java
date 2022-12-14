@@ -6,9 +6,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import uk.ac.cardiff.ASE2022Y2TEAM07.domain.OneToOne;
 
-import java.sql.Date;
-import java.time.LocalDate;
-import java.time.ZoneId;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,6 +26,10 @@ public class OneToOneRepositoryImpl implements OneToOneRepository{
         OneToOne oneToOne = repoJdbc.findByOneToOneId(oneToOneId);
         return oneToOne;
     }
+
+//    public Optional<OneToOne> findOneToOneById() {
+//        return null;
+//    }
 
     @Override
     public void save(OneToOne oneToOne) {
@@ -58,6 +60,18 @@ public class OneToOneRepositoryImpl implements OneToOneRepository{
     public List<OneToOne> getOneToOnesBySearch(Integer search) {
         return repoJdbc.findByOneToOneIdContaining(search);
     }
+
+    @Override
+    public List<OneToOne> getEmployeeIds() {
+        return null;
+    }
+
+
+    // -------------------------------------------------------------------------
+//    public Optional<OneToOne> getEmployeeId(Integer oneToOneId) {
+//        var oneToOnes = repoJdbc.findByOneToOneIds(oneToOneId);
+//        return oneToOnes;
+//    }
 
 }
 

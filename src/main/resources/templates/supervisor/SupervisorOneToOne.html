@@ -16,36 +16,109 @@
         <table class="summary-table">
             <thead>
             <tr>
-                <th class="table-header">Name</th>
+                <th class="table-header">meetings</th>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="onetoone : ${oneToOnes}">
-                <td th:text="${onetoone.getOneToOneId()}">
-                    one to one ID
+            <tr th:each="meeting : ${meetings}">
+                <td th:text="${meeting.employeeName}">
+                    one to one employeeName
+                </td>
+                <td th:text="${meeting.date}">
+                    one to one date
                 </td>
             </tr>
             </tbody>
         </table>
     </div>
     <!--    <ul class="list-inline justify-content-center">-->
-<!--        <li>placeholder</li>-->
-<!--        <li>placeholder</li>-->
-<!--        <li>placeholder</li>-->
-<!--    </ul>-->
-</div>
-
-<div class="contianer align-items-center text-center py-4">
-    <h2>Previous One to One meetings</h2>
-    <ul class="list-inline justify-content-center">
-        <li>placeholder</li>
-        <li>placeholder</li>
-        <li>placeholder</li>
-    </ul>
+    <!--        <li>placeholder</li>-->
+    <!--        <li>placeholder</li>-->
+    <!--        <li>placeholder</li>-->
+    <!--    </ul>-->
 </div>
 
 <script th:replace="fragments/footer :: bootstrap-js"></script>
 
-
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1">-->
+<!--    <title>Supervisor One To One</title>-->
+<!--    <link th:replace="fragments/supervisorHeader :: bootstrap-css">-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<div th:replace="fragments/supervisorHeader :: supervisorHeader"></div>-->
+
+<!--<div class="contianer align-items-center text-center py-4">-->
+<!--    <h2>Scheduled One to One meetings</h2>-->
+<!--    <div>-->
+<!--        <table class="summary-table">-->
+<!--            <thead>-->
+<!--            <tr>-->
+<!--                <th class="table-header">Name</th>-->
+<!--            </tr>-->
+<!--            </thead>-->
+<!--            <tbody>-->
+<!--            <tr th:each="onetoone : ${oneToOnes}">-->
+<!--                <td th:text="${onetoone.getOneToOneId()}">-->
+<!--                    one to one ID-->
+<!--                </td>-->
+<!--            </tr>-->
+<!--            </tbody>-->
+<!--        </table>-->
+<!--    </div>-->
+<!--    &lt;!&ndash;    <ul class="list-inline justify-content-center">&ndash;&gt;-->
+<!--&lt;!&ndash;        <li>placeholder</li>&ndash;&gt;-->
+<!--&lt;!&ndash;        <li>placeholder</li>&ndash;&gt;-->
+<!--&lt;!&ndash;        <li>placeholder</li>&ndash;&gt;-->
+<!--&lt;!&ndash;    </ul>&ndash;&gt;-->
+<!--</div>-->
+
+<!--<div class="contianer align-items-center text-center py-4">-->
+<!--    <h2>Previous One to One meetings</h2>-->
+<!--    <ul class="list-inline justify-content-center">-->
+<!--        <li>placeholder</li>-->
+<!--        <li>placeholder</li>-->
+<!--        <li>placeholder</li>-->
+<!--    </ul>-->
+<!--</div>-->
+
+<!--<script th:replace="fragments/footer :: bootstrap-js"></script>-->
+
+
+<!--</body>-->
+<!--</html>-->

@@ -22,4 +22,10 @@ public interface OneToOneRepository {
 
 
     List<OneToOne> getOneToOnesBySearch(Integer search);
+
+
+    //working on this
+//    Optional<OneToOne> findByOneToOneId(Integer oneToOneId);
+
+    List<OneToOne> getEmployeeIds();
 }
