@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import uk.ac.cardiff.ASE2022Y2TEAM07.domain.Averages;
 import uk.ac.cardiff.ASE2022Y2TEAM07.domain.Employee;
 import uk.ac.cardiff.ASE2022Y2TEAM07.domain.Supervisor;
+import uk.ac.cardiff.ASE2022Y2TEAM07.dto.EmployeeDto;
 import uk.ac.cardiff.ASE2022Y2TEAM07.repositories.CheckinRepository;
 import uk.ac.cardiff.ASE2022Y2TEAM07.repositories.EmployeeRepository;
 import uk.ac.cardiff.ASE2022Y2TEAM07.repositories.SupervisorRepository;
@@ -60,19 +61,40 @@ public class SupervisorCheckinController {
 
         //--------------------------------------------------
         System.out.println(getCurrentSupervisor());
+
+        Supervisor currentSupervisor = this.getCurrentSupervisor();
+
+        List<Averages> relevantEmployees = new ArrayList<>();
+//        List<ArrayList> NewList = new ArrayList<>();
         //--------------------------------------------------
 
         Map<Integer, Integer> avgCheckins = checkinService.getAvg();
 
+//        List<Averages> averagesList = new ArrayList<>();
         List<Averages> averagesList = new ArrayList<>();
         for (Map.Entry<Integer, Integer> entry: avgCheckins.entrySet()) {
-            averagesList.add(new Averages(entry.getValue(), employeeRepository.findByEmployeeId(entry.getKey()).getName(), entry.getKey()));
+//            averagesList.add(new Averages(entry.getValue(), employeeRepository.findByEmployeeId(entry.getKey()).getName()));
+            averagesList.add(new Averages(entry.getValue(), employeeRepository.findByEmployeeId(entry.getKey()).getEmployeeId()));
         }
+
+        //--------------------------------------------------
+        System.out.println(averagesList);
+
+        System.out.println(currentSupervisor.getSupervisorId());
+
+//        for (Averages a : averagesList) {
+//            if (currentSupervisor.getSupervisorId() == a.getSupervisorId()) {
+//                relevantEmployees.add(a);
+//            }
+//        }
+
+        System.out.println(relevantEmployees);
+        //--------------------------------------------------
 
         model.addAttribute("Employees", averagesList);
 
         var mv = new ModelAndView("supervisor/SupervisorPage", model.asMap());
-        return mv;
+    return mv;
     }
 
     @GetMapping("/employee/{furl}")
