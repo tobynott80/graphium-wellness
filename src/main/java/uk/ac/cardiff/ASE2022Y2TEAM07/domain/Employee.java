@@ -7,6 +7,11 @@ import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.MappedCollection;
 import org.springframework.data.relational.core.mapping.Table;
 
+
+//import javax.persistence.CascadeType;
+//import javax.persistence.OneToMany;
+
+
 import java.util.Set;
 
 @Data

@@ -27,8 +27,17 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+
 	implementation 'org.springframework.boot:spring-boot-devtools'
 	annotationProcessor 'org.projectlombok:lombok'
+
+	//testCompileOnly 'org.projectlombok:lombok:1.18.24'
+
+	implementation 'org.springframework.boot:spring-boot-tools:2.2.13.RELEASE'
+	annotationProcessor 'org.projectlombok:lombok:1.18.24'
+//	testCompileOnly 'org.projectlombok:lombok:1.18.24'
+
+
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
 	runtimeOnly 'com.h2database:h2'
