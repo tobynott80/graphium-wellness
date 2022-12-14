@@ -14,5 +14,4 @@ public class GoalDto {
     private String title;
     private String description;
     private Date targetDate;
-    private Date completedDate;
 }

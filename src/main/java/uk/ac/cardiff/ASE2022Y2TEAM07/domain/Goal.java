@@ -15,10 +15,9 @@ import java.util.Date;
 public class Goal {
 
     @Id
-    private int goalId;
+    private Integer goalId;
     private int employeeId;
     private String title;
     private String description;
     private Date targetDate;
-    private Date completedDate;
 }

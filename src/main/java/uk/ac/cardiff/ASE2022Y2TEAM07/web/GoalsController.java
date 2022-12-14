@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +14,7 @@ import uk.ac.cardiff.ASE2022Y2TEAM07.domain.Goal;
 import uk.ac.cardiff.ASE2022Y2TEAM07.dto.GoalDto;
 import uk.ac.cardiff.ASE2022Y2TEAM07.repositories.GoalRepository;
 import uk.ac.cardiff.ASE2022Y2TEAM07.service.GoalService;
+import uk.ac.cardiff.ASE2022Y2TEAM07.web.forms.CheckinForm;
 import uk.ac.cardiff.ASE2022Y2TEAM07.web.forms.GoalForm;
 
 import java.util.List;
@@ -43,21 +45,22 @@ public class GoalsController {
         List<Goal> goals = goalRepository.findAllByEmployeeId(em);
 
         model.addAttribute("employeeGoals", goals);
+        model.addAttribute("goalForm", new GoalForm());
 
         var mv = new ModelAndView("employee/EmployeePersonalGoalsPage", model.asMap());
         return mv;
     }
 
     @PostMapping("")
-    public ModelAndView personalGoal(Model model, GoalForm goalForm) {
+    public ModelAndView personalGoal(Model model, GoalForm goalForm, BindingResult bindingResult) {
         Employee em = oneToOneController.getCurrentEmployee();
 
-        GoalDto goalDto = new GoalDto(null, em.getEmployeeId(), goalForm.getTitle(), goalForm.getDescription(), goalForm.getTargetDate(), goalForm.getCompletedDate());
+//        model.addAttribute("goalFrom", goalForm);
+
+        GoalDto goalDto = new GoalDto(null, em.getEmployeeId(), goalForm.getTitle(), goalForm.getDescription(), goalForm.getTargetDate());
         goalService.save(goalDto);
 
-        System.out.println(goalDto);
-
-        var mv = new ModelAndView("employee/EmployeePersonalGoalsPage", model.asMap());
+        var mv = new ModelAndView("redirect:/employee/goals", model.asMap());
         return mv;
     }
 

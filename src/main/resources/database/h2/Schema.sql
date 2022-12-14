@@ -69,10 +69,9 @@ CREATE TABLE IF NOT EXISTS GOAL
 (
     `GOAL_ID`          INTEGER AUTO_INCREMENT NOT NULL,
     `EMPLOYEE_ID`      INTEGER                NOT NULL,
-    `TITLE`             VARCHAR(50)            NOT NULL,
+    `TITLE`            VARCHAR(50)            NOT NULL,
     `DESCRIPTION`      VARCHAR(300)           NOT NULL,
     `TARGET_DATE`      DATE                   NOT NULL,
-    `COMPLETED_DATE`   DATE,
     PRIMARY KEY (GOAL_ID),
     FOREIGN KEY (`EMPLOYEE_ID`) REFERENCES EMPLOYEE(`EMPLOYEE_ID`)
     )
