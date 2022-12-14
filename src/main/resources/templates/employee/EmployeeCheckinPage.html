@@ -30,16 +30,15 @@
 
             </div>
         </div>
-<!--        <div class="row">-->
-<!--            <h4>Would you like to request a one to one meeting with {user.supervisor}?</h4>-->
-<!--            <h4 th:text="'Would you like to request a one to one meeting with '+${supervisor}+'?'"></h4>-->
-<!--        </div>-->
-<!--        <div class="row p-1">-->
-<!--            <div class="form-check form-switch justify-content-center">-->
-<!--                <input class="form-check-input" type="checkbox" id="meetingRequest" style="float: none;">-->
-<!--                <label class="form-check-label" for="meetingRequest">Request a meeting</label>-->
-<!--            </div>-->
-<!--        </div>-->
+        <div class="row">
+            <h4 th:text="'Would you like to request a one to one meeting with '+${supervisor}+'?'"></h4>
+        </div>
+        <div class="row p-1">
+            <div class="form-check form-switch justify-content-center">
+                <input class="form-check-input" type="checkbox" id="meetingRequest" th:field="*{wantsMeeting}" style="float: none;">
+                <label class="form-check-label" for="meetingRequest" >Request a meeting</label>
+            </div>
+        </div>
         <div class="row p-4">
             <div class="btn-group d-inline" role="group" aria-label="Basic mixed styles example">
                 <button type="button" class="btn btn-danger">Cancel</button>

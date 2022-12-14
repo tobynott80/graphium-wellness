@@ -13,6 +13,7 @@ import uk.ac.cardiff.ASE2022Y2TEAM07.domain.Employee;
 import uk.ac.cardiff.ASE2022Y2TEAM07.dto.CheckinDto;
 import uk.ac.cardiff.ASE2022Y2TEAM07.repositories.CheckinRepository;
 import uk.ac.cardiff.ASE2022Y2TEAM07.repositories.EmployeeRepository;
+import uk.ac.cardiff.ASE2022Y2TEAM07.repositories.SupervisorRepository;
 import uk.ac.cardiff.ASE2022Y2TEAM07.service.CheckinService;
 import uk.ac.cardiff.ASE2022Y2TEAM07.web.forms.CheckinForm;
 
@@ -37,6 +38,9 @@ public class CheckinController {
     @Autowired
     private final EmployeeRepository employeeRepository;
 
+    @Autowired
+    private final SupervisorRepository supervisorRepository;
+
 
     private String getCurrentEmployeeEmail() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -49,11 +53,12 @@ public class CheckinController {
         return employeeRepository.findByEmail(email);
     }
     @Autowired
-    public CheckinController(CheckinService checkinService, CheckinRepository checkinRepository, OneToOneController oneToOneController, EmployeeRepository employeeRepository) {
+    public CheckinController(CheckinService checkinService, CheckinRepository checkinRepository, OneToOneController oneToOneController, EmployeeRepository employeeRepository, SupervisorRepository supervisorRepository) {
         this.checkinService = checkinService;
         this.checkinRepository = checkinRepository;
         this.oneToOneController = oneToOneController;
         this.employeeRepository = employeeRepository;
+        this.supervisorRepository = supervisorRepository;
     }
 
     @GetMapping("")
@@ -61,18 +66,18 @@ public class CheckinController {
         Employee em = this.getCurrentEmployee();
         String employeeName = this.getCurrentEmployee().getName().toLowerCase();
         String employeeNameCapitalized = employeeName.substring(0, 1).toUpperCase() + employeeName.substring(1);
+        String supervisorName = supervisorRepository.findBySupervisorId(em.getSupervisorId()).getName().toLowerCase();
+        String supervisorNameCapitalized = supervisorName.substring(0, 1).toUpperCase() + supervisorName.substring(1);
         model.addAttribute("employeeName", employeeNameCapitalized);
-
         model.addAttribute("employeeName", employeeNameCapitalized);
-//        model.addAttribute("supervisor", "Carl");
-        model.addAttribute("checkinForm", new CheckinForm(em.getEmployeeId(), 5));
+        model.addAttribute("supervisor", supervisorNameCapitalized);
+        model.addAttribute("checkinForm", new CheckinForm(em.getEmployeeId(), 5, Boolean.FALSE));
         var mv = new ModelAndView("employee/EmployeeCheckinPage", model.asMap());
         return mv;
     }
 
     @PostMapping("")
     public ModelAndView checkinForm(@Valid CheckinForm checkinForm, BindingResult bindingResult, Model model) {
-
         // gets date
         Date now = Date.valueOf(LocalDate.now());
         if (bindingResult.hasErrors()){
@@ -87,9 +92,11 @@ public class CheckinController {
 
         CheckinDto checkinDto = new CheckinDto(null, em.getEmployeeId(), checkinForm.getScore(), now);
         checkinService.save(checkinDto);
+        if(checkinForm.getWantsMeeting()){
+            return new ModelAndView("redirect:/employee/onetoone", model.asMap());
+        }
+        return new ModelAndView("redirect:/employee", model.asMap());
 
-        var mv = new ModelAndView("redirect:/employee", model.asMap());
-        return mv;
     }
 
     @GetMapping("/history")
