@@ -12,7 +12,6 @@ import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
 public class OneToOneForm {
 
     @Future(message = "Please enter a date for your meeting in the future")
@@ -22,4 +21,7 @@ public class OneToOneForm {
     @NotEmpty(message = "Please enter a reason for your meeting")
     private String notes;
 
+    public OneToOneForm() {
+        this(LocalDate.now(), "");
+    }
 }
