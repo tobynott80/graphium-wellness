@@ -5,8 +5,6 @@ import lombok.Data;
 
 @Data
 public class Averages {
-//    private Integer average;
-//
 
     private Integer average;
     private String employeeName;
@@ -19,7 +17,5 @@ public class Averages {
         this.employeeName = employeeName;
         this.supervisorId = supervisorId;
     }
-
-
 
 }
