@@ -11,8 +11,6 @@ import java.util.Date;
 @Data
 public class GoalForm {
 
-    private int goalId;
-    private int employeeId;
     private String title;
     private String description;
     private Date targetDate;
