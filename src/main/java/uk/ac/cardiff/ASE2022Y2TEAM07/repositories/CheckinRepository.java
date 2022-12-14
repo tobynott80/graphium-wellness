@@ -6,7 +6,6 @@ import uk.ac.cardiff.ASE2022Y2TEAM07.dto.CheckinDto;
 
 import java.util.List;
 
-@Repository
 public interface CheckinRepository {
 
     Checkin findByCheckInId(Integer checkinId);
