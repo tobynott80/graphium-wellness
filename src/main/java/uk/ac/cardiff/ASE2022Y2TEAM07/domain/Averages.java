@@ -5,15 +5,17 @@ import lombok.Data;
 
 @Data
 public class Averages {
+
     private Integer average;
-
     private String employeeName;
-
     private Integer employeeId;
+    private Integer supervisorId;
 
-    public Averages(Integer average, String employeeName, Integer employeeId) {
+    public Averages(Integer average, String employeeName, Integer employeeId, Integer supervisorId) {
         this.average = average;
-        this.employeeName = employeeName;
         this.employeeId = employeeId;
+        this.employeeName = employeeName;
+        this.supervisorId = supervisorId;
     }
+
 }
