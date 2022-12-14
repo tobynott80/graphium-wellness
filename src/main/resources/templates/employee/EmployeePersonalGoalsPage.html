@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,7 +15,7 @@
 <div class="container align-items-center text-center py-4 px-5" id="currentGoalsTable">
     <div class="row">
         <div class="col">
-            <h4>Current Goals</h4>
+            <h4 class="container align-items-center text-center py-4 px-5">Current Goals</h4>
         </div>
         <div class="col">
 
@@ -26,68 +26,20 @@
     </div>
     <div class="row">
         <table class="table">
-            <thead>
             <tr>
-                <th scope="col">Goal</th>
+                <th scope="col">Title</th>
                 <th scope="col">Description</th>
                 <th scope="col">Target Date</th>
+                <th scope="col">Completed date</th>
                 <th scope="col"></th>
             </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <th scope="row">Placeholder Goal</th>
-                <td>This is a description</td>
-                <td>14/12/2022</td>
-                <td><button class="btn btn-primary float-end">Complete</button></td>
-            </tr>
+            <tr th:each = "goal : ${employeeGoals}">
+                <th class="fw-normal" th:text="${goal.title}"></th>
+                <th class="fw-normal" th:text="${goal.description}"></th>
+                <th class="fw-normal" th:text="${goal.targetDate}"></th>
+                <th class="fw-normal" th:text="${goal.completedDate}"></th>
 
-            <tr>
-                <th scope="row">Placeholder Goal 2</th>
-                <td>This is another description</td>
-                <td>16/12/2022</td>
-                <td><button class="btn btn-primary float-end">Complete</button></td>
             </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
-
-<div class="container align-items-center text-center py-4 px-5" id="historicalGoalsTable">
-    <div class="row">
-        <div class="col">
-            <h4>Historical Goals</h4>
-        </div>
-        <div class="col">
-
-
-        </div>
-    </div>
-    <div class="row">
-        <table class="table">
-            <thead>
-            <tr>
-                <th scope="col">Goal</th>
-                <th scope="col">Description</th>
-                <th scope="col">Target Date</th>
-                <th scope="col">Completed On</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <th scope="row">Placeholder Goal 3</th>
-                <td>This is a description</td>
-                <td>14/12/2022</td>
-                <td>15/12/2022</td>
-            </tr>
-
-            <tr>
-                <th scope="row">Placeholder Goal 4</th>
-                <td>This is another description</td>
-                <td>16/12/2022</td>
-                <td>16/12/2022</td>
-            </tr>
-            </tbody>
         </table>
     </div>
 </div>

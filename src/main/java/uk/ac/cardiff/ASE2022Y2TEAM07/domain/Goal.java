@@ -17,7 +17,7 @@ public class Goal {
     @Id
     private int goalId;
     private int employeeId;
-    private String goal;
+    private String title;
     private String description;
     private Date targetDate;
     private Date completedDate;
