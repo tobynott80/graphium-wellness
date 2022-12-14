@@ -20,10 +20,16 @@
       <div class="mb-3">
         <label for="datetime" class="form-label">Requested Time for Meeting</label>
         <input type="date" class="form-control" id="datetime" th:field="*{date}" >
+
+        <div class="alert alert-warning" th:errors="*{date}" th:if="${#fields.hasErrors('date')}">Date Error</div>
+
       </div>
       <div class="mb-3">
         <label for="notes" class="form-label">Meeting Notes</label>
         <input type="text" class="form-control" id="notes" th:field="*{notes}">
+
+        <div class="alert alert-warning" th:errors="*{notes}" th:if="${#fields.hasErrors('notes')}">Note Error</div>
+
       </div>
 
       <div class="mb-3">
