@@ -2,7 +2,7 @@
 
 ## Team 7 - Graphium Wellbeing Portal
 
-### Running the Project#
+### Running the Project
 
 1. Clone the repository
 2. Run `./gradlew build` to build the project
