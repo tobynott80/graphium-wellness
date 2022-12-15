@@ -6,10 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import uk.ac.cardiff.ASE2022Y2TEAM07.repositories.CheckinRepository;
 import uk.ac.cardiff.ASE2022Y2TEAM07.repositories.EmployeeRepository;
+import uk.ac.cardiff.ASE2022Y2TEAM07.repositories.SupervisorRepository;
 import uk.ac.cardiff.ASE2022Y2TEAM07.service.CheckinServiceImpl;
 import uk.ac.cardiff.ASE2022Y2TEAM07.web.SupervisorCheckinController;
 
@@ -36,8 +38,12 @@ public class GetEmployeesAsSupervisor {
     @MockBean
     CheckinServiceImpl checkinService;
 
+    @MockBean
+    SupervisorRepository supervisorRepository;
+
 
     @Test
+    @WithMockUser(username = "carl@gmail.com")
     public void shouldListEmployees() throws Exception {
 
         MvcResult result = mvc.perform(get("/supervisor"))
