@@ -27,15 +27,11 @@ cache:
 
 assemble:gradle:
   stage: assemble
-  only:
-    - tags
   script:
     - ./gradlew assemble
 
 build:gradle:
   stage: build
-  only:
-    - tags
   script:
     - ./gradlew build
   artifacts:
@@ -50,8 +46,6 @@ build:gradle:
 pages:
 
   stage: publish
-
-
   script:
     - pwd
     - mv ./build/reports/tests/ public
@@ -63,6 +57,4 @@ pages:
     paths:
       - public
 
-  only:
-    - tags
 
