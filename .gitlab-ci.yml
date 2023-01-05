@@ -1,0 +1,67 @@
+image: openjdk:11-jdk
+
+default:
+  tags:
+    #- comsc-ci
+    - general-docker
+
+
+stages:
+  - assemble
+  - build
+  - publish
+  - deploy
+
+before_script:
+  - echo $GRADLE_HOME
+  - echo `pwd`
+  - export GRADLE_USER_HOME=`pwd`/.gradle
+  - rm -f  .gradle/caches/modules-2/modules-2.lock
+  - rm -fr .gradle/caches/*/plugin-resolution/
+  - chmod +x gradlew
+cache:
+  paths:
+    - .gradle/wrapper
+    - .gradle/caches
+
+assemble:gradle:
+  stage: assemble
+  only:
+    - tags
+  script:
+    - ./gradlew assemble
+
+build:gradle:
+  stage: build
+  only:
+    - tags
+  script:
+    - ./gradlew build
+  artifacts:
+    name: "$CI_JOB_NAME"
+    paths:
+      - ./build/reports/tests/
+      - ./build/libs/*.jar
+      - ./build/libs/*.log
+    expire_in: 4 week
+
+
+pages:
+
+  stage: publish
+
+
+  script:
+    - pwd
+    - mv ./build/reports/tests/ public
+    - mv ./build/libs/*.jar public
+    - pwd
+    - ls -lR public
+
+  artifacts:
+    paths:
+      - public
+
+  only:
+    - tags
+
