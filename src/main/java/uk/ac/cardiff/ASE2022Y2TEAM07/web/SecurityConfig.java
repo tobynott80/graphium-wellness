@@ -37,7 +37,7 @@ public class SecurityConfig {
                 .formLogin(withDefaults())
                 .httpBasic(withDefaults())
                 .csrf().disable()
-                .headers().frameOptions().disable();
+                .headers().frameOptions().disable().and().exceptionHandling().accessDeniedPage("/403");
 
         http.csrf().ignoringAntMatchers("/h2-console/**").and().headers().frameOptions().sameOrigin();
         return http.build();

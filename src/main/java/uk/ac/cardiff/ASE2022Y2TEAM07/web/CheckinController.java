@@ -32,8 +32,6 @@ public class CheckinController {
     @Autowired
     private final CheckinRepository checkinRepository;
 
-    @Autowired
-    private final OneToOneController oneToOneController;
 
     @Autowired
     private final EmployeeRepository employeeRepository;
@@ -53,10 +51,9 @@ public class CheckinController {
         return employeeRepository.findByEmail(email);
     }
     @Autowired
-    public CheckinController(CheckinService checkinService, CheckinRepository checkinRepository, OneToOneController oneToOneController, EmployeeRepository employeeRepository, SupervisorRepository supervisorRepository) {
+    public CheckinController(CheckinService checkinService, CheckinRepository checkinRepository, EmployeeRepository employeeRepository, SupervisorRepository supervisorRepository) {
         this.checkinService = checkinService;
         this.checkinRepository = checkinRepository;
-        this.oneToOneController = oneToOneController;
         this.employeeRepository = employeeRepository;
         this.supervisorRepository = supervisorRepository;
     }
