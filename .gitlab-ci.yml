@@ -18,6 +18,7 @@ before_script:
   - export GRADLE_USER_HOME=`pwd`/.gradle
   - rm -f  .gradle/caches/modules-2/modules-2.lock
   - rm -fr .gradle/caches/*/plugin-resolution/
+  - microdnf install findutils
   - chmod +x gradlew
 cache:
   paths:
