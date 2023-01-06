@@ -32,8 +32,8 @@ assemble:gradle:
 build:gradle:
   stage: build
   script:
-    - echo "$PROD_PASSWORD"
-    - ./gradlew build -PjvmArgs='-DPROD_PASSWORD="$PROD_PASSWORD"'
+    - export PROD_PASSWORD="$PROD_PASSWORD"
+    - ./gradlew build -PjvmArgs='-DPROD_PASSWORD=cardiff'
   artifacts:
     name: "$CI_JOB_NAME"
     paths:
