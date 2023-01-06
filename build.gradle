@@ -7,6 +7,8 @@ plugins {
 group = 'uk.ac.cardiff'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '17'
+ext.PROD_PASSWORD = System.getenv('PROD_PASSWORD')
+
 
 configurations {
 	compileOnly {
@@ -55,6 +57,14 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+build{
+	ext.PROD_PASSWORD = System.getenv('PROD_PASSWORD')
+	if ( project.hasProperty('jvmArgs') ) {
+		jvmArgs = (project.jvmArgs.split("\\s+") as List)
+
+	}
 }
 
 tasks.bootRun.configure {
