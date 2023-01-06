@@ -24,6 +24,13 @@ public class OneToOneDto {
         this.date = date;
     }
 
+    public OneToOneDto(int employeeId, int supervisorId, LocalDate date) {
+        this.OneToOneId = 0;
+        this.employeeId = employeeId;
+        this.supervisorId = supervisorId;
+        this.date = date;
+    }
+
     public int getOneToOneId() {
         return OneToOneId;
     }

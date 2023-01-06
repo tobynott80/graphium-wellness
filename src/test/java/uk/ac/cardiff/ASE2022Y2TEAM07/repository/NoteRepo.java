@@ -32,10 +32,11 @@ public class NoteRepo {
     @Test
     public void shouldSaveNote() throws Exception {
         //GIVEN a new note is saved
+        Integer oldNotes = noteRepository.findAll().size();
         Note note = new Note(3, "This is a note");
         noteRepository.save(note);
         //WHEN the size of the notes db is retrieved and there are 4 original notes in the db
-        assertEquals(5, noteRepository.findAll().size());
+        assertEquals(oldNotes + 1 , noteRepository.findAll().size());
         //THEN there should be 5 notes in the db
     }
 }

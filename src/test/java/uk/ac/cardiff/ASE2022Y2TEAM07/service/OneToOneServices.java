@@ -36,12 +36,15 @@ public class OneToOneServices {
     @Test
     public void shouldSaveOneToOneAndNote() {
         //GIVEN
-        OneToOneDto oneToOneDto = new OneToOneDto(5, 1, 1, LocalDate.now());
+        OneToOneDto oneToOneDto = new OneToOneDto( 1, 1, LocalDate.now());
         NoteDto noteDto = new NoteDto(null, 5, "This is a note");
+
         //WHEN
         oneToOneService.save(oneToOneDto, noteDto);
         //THEN
-        assertEquals("DAN", employeeRepository.findByEmployeeId(oneToOneService.getOneToOneById(5).getEmployeeId()).getName());
+        //Actual =  JOHN - the name of employee with id 1
+        //Expected = the
+        assertEquals("JOHN", employeeRepository.findByEmployeeId(oneToOneService.getOneToOneById(oneToOneRepository.findAll().size()).getEmployeeId()).getName());
     }
 
     @Test

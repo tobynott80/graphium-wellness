@@ -13,6 +13,11 @@ public class NoteDto {
         this.note = note;
     }
 
+    public NoteDto(Integer oneToOneID, String note) {
+        this.NoteID = 0;
+        OneToOneID = oneToOneID;
+        this.note = note;
+    }
 
     public Integer getNoteID() {
         return NoteID;
