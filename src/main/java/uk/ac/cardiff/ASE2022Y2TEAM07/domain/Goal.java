@@ -8,6 +8,9 @@ import org.springframework.data.relational.core.mapping.Table;
 
 import java.util.Date;
 
+/**
+ * Goal class. Contains the information for a goal.
+ */
 @Table
 @Data
 @AllArgsConstructor

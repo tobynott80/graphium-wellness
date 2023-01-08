@@ -9,6 +9,9 @@ import org.springframework.data.relational.core.mapping.Table;
 import java.time.LocalDate;
 
 
+/**
+ * Meeting class. Contains the information for a meeting.
+ */
 public class Meeting {
 
     private String employeeName;

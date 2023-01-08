@@ -10,6 +10,9 @@ import java.util.List;
 import java.util.stream.Collector;
 
 
+/**
+ * OneToOne data transfer object class. Contains the information for a OneToOne.
+ */
 @Value
 public class OneToOneDto {
     private int OneToOneId;

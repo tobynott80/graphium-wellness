@@ -14,6 +14,9 @@ import org.springframework.data.relational.core.mapping.Table;
 
 import java.util.Set;
 
+/**
+ * Employee class. Contains the information for an employee.
+ */
 @Data
 @AllArgsConstructor
 @Table

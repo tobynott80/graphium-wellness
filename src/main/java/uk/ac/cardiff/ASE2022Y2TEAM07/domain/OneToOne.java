@@ -16,8 +16,10 @@ import org.springframework.data.relational.core.mapping.Table;
 
 import java.time.LocalDate;
 
+/**
+ * One to One class. Contains the information for a One to One.
+ */
 @Data
-//@AllArgsConstructor
 public class OneToOne {
     @Id
     @Column("ONE_TO_ONE_ID")

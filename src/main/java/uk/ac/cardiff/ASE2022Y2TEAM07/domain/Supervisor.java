@@ -4,6 +4,9 @@ package uk.ac.cardiff.ASE2022Y2TEAM07.domain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+/**
+ * Supervisor class. Contains the information for a supervisor.
+ */
 @Data
 @AllArgsConstructor
 public class Supervisor {

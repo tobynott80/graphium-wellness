@@ -4,6 +4,9 @@ import uk.ac.cardiff.ASE2022Y2TEAM07.domain.Goal;
 
 import java.util.List;
 
+/**
+ *  Checkin repository interface. Contains the methods for accessing the checkin table in the database.
+ */
 public interface GoalRepository {
 
     Goal findByGoalId(Integer goalId);
