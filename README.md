@@ -11,10 +11,26 @@
    * `java -jar build/libs/ase-2022-y2-team-07-{version}-SNAPSHOT.jar --PROD_PASSWORD=cardiff`
    * Note: it is important to include the PROD_PASSWORD environment variable - this provides the password to the database.
 
+### Default Credentials
+
+#### Employees
+Email : {Name}@gmail.com
+
+e.g `john@gmail.com`
+
+Password : 1
+
+#### Supervisors
+Email : {Name}@gmail.com
+
+e.g `carl@gmail.com`
+
+Password : 1
+
 ### Wiki Links
 
 [Working Agreement](https://git.cardiff.ac.uk/c21048229/ase-2022-y2-team-07/-/wikis/Working-Agreement)
 
-[Team Availabiltiy](https://git.cardiff.ac.uk/c21048229/ase-2022-y2-team-07/-/wikis/Team-Availability)
+[Team Availability](https://git.cardiff.ac.uk/c21048229/ase-2022-y2-team-07/-/wikis/Team-Availability)
 
 [Niko Niko](https://git.cardiff.ac.uk/c21048229/ase-2022-y2-team-07/-/wikis/Niko-Niko-Calendar)
