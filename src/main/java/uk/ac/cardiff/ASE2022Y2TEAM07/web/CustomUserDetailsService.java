@@ -1,9 +1,11 @@
 package uk.ac.cardiff.ASE2022Y2TEAM07.web;
 
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -21,6 +23,7 @@ import java.util.List;
 
 
 @Service
+@Slf4j
 public class CustomUserDetailsService implements UserDetailsService {
 
     @Autowired
@@ -31,16 +34,22 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         // first try loading from User table
+        log.info("Trying to login as " + email);
         Employee employee = employeeRepository.findByEmail(email);
         if (employee != null) {
+            log.info("Found user " + employee.getEmail());
+            log.info("Attempting to login as employee");
             return new CustomUserDetails(employee.getEmail(), employee.getPasswordHash(), "ROLE_EMPLOYEE");
         } else {
-            // Not found in user table, so check admin
+            // Not found in user table, so check supervisor
             Supervisor supervisor = supervisorRepository.findByEmail(email);
             if (supervisor != null) {
+                log.info("Found user " + supervisor.getEmail());
+                log.info("Attempting to login as supervisor");
                 return new CustomUserDetails(supervisor.getEmail(), supervisor.getPasswordHash(), "ROLE_SUPERVISOR");
             }
         }
+        log.warn("User not found");
         throw new UsernameNotFoundException("User '" + email + "' not found");
     }
 
