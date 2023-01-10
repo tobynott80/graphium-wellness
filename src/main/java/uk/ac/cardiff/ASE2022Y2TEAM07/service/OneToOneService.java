@@ -7,6 +7,9 @@ import uk.ac.cardiff.ASE2022Y2TEAM07.service.message.*;
 
 import java.util.List;
 
+/**
+ * Service for OneToOne - Provides an abstraction for the controller to interact with the repository
+ */
 public interface OneToOneService {
 
     void save(OneToOneDto oneToOneDto, NoteDto noteDto);
