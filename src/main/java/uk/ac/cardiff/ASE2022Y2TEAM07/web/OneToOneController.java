@@ -22,6 +22,10 @@ import uk.ac.cardiff.ASE2022Y2TEAM07.web.forms.OneToOneForm;
 import javax.validation.Valid;
 import java.util.ArrayList;
 
+/**
+ * MVC controller for the OneToOne page. This page allows the user to create a new OneToOne meeting with their supervisor.
+ *
+ */
 @Controller
 @PreAuthorize("hasRole('ROLE_EMPLOYEE')")
 @RequestMapping("employee/onetoone")
@@ -36,16 +40,31 @@ public class OneToOneController {
     }
 
 
+    /**
+     * Returns the logged-in employee's email address.
+     * @return the currently logged in employee's email
+     */
     private String getCurrentEmployeeEmail() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentPrincipalName = authentication.getName();
         return currentPrincipalName;
     }
 
+    /**
+     * Returns the logged-in employee as an Employee object.
+     * @return the currently logged in employee as object
+     */
     public Employee getCurrentEmployee() {
         String email = getCurrentEmployeeEmail();
         return employeeRepository.findByEmail(email);
     }
+
+    /**
+     * GET Requests for the One To one page. This binds the OneToOneForm to the model and returns the page.
+     * The one to one form provides validation and sets the current date.
+     * @param model the model to be passed to the view
+     * @return the view for the OneToOne page
+     */
     @GetMapping("")
     public ModelAndView getOneToOneForm (Model model) {
         model.addAttribute("OneToOneForm", new OneToOneForm());
@@ -53,6 +72,13 @@ public class OneToOneController {
         return mv;
     }
 
+    /**
+     * POST requests for the one to one page. This validates the submitted data and returns the appropriate view.
+     * @param oneToOneForm the form containing the OneToOne details
+     * @param bindingResult
+     * @param model
+     * @return the view for the submitted OneToOne page
+     */
     @PostMapping("")
     public ModelAndView postOneToOneForm (@Valid OneToOneForm oneToOneForm, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()){
