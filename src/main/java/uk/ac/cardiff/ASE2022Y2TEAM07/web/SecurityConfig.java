@@ -23,15 +23,12 @@ import static org.springframework.security.config.Customizer.withDefaults;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig {
     @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
-
-    @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests(authorize -> authorize
                         .antMatchers("/h2-console/**").permitAll()
+                        .antMatchers("/supervisor/**").hasRole("SUPERVISOR")
+                        .antMatchers("/employee/**").hasRole("EMPLOYEE")
                         .anyRequest().authenticated()
                 )
                 .formLogin(withDefaults())
@@ -41,6 +38,11 @@ public class SecurityConfig {
 
         http.csrf().ignoringAntMatchers("/h2-console/**").and().headers().frameOptions().sameOrigin();
         return http.build();
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 
 
