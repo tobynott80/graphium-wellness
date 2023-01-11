@@ -6,6 +6,9 @@ import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
 
+/**
+ * Note class. Contains the information for a note.
+ */
 @Data
 @Table
 public class Note {

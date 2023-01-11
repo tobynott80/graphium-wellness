@@ -5,6 +5,9 @@ import lombok.Value;
 
 import java.util.Date;
 
+/**
+ * Goal data transfer object class. Contains the information for a goal.
+ */
 @Value
 @AllArgsConstructor
 public class GoalDto {

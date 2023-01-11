@@ -5,6 +5,9 @@ import lombok.Value;
 
 import java.sql.Date;
 
+/**
+ * Checkin data transfer object class. Contains the information for a checkin.
+ */
 @Value
 @AllArgsConstructor
 public class CheckinDto {
@@ -13,12 +16,6 @@ public class CheckinDto {
     private Integer score;
     private Date date;
 
-/*    public CheckinDto(Integer checkInsId, Integer employeeId, Integer score, Date date) {
-        this.checkInsId = checkInsId;
-        this.employeeId = employeeId;
-        this.score = score;
-        this.date = date;
-    }*/
 
     public Integer getCheckInsId() {
         return checkInsId;

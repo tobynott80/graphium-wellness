@@ -27,10 +27,6 @@ public class CheckinRepositoryImpl implements CheckinRepository{
         return repoJdbc.findByCheckInsId(checkinsId);
     }
 
-    @Override
-    public Checkin findByEmployeeId(Integer employeeId) {
-        return repoJdbc.findByEmployeeId(employeeId);
-    }
 
     @Override
     public Checkin findByScore(Integer score) {

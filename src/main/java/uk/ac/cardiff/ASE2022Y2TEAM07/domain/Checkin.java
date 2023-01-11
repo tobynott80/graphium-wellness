@@ -15,6 +15,9 @@ import javax.validation.constraints.Pattern;
 import java.time.LocalDate;
 
 
+/**
+ * Checkin class. Contains the information for a checkin.
+ */
 @Data
 @Table("CHECK_INS")
 @Builder

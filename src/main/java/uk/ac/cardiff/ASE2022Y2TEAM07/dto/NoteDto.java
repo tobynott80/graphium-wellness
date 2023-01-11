@@ -5,6 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Value;
 import org.springframework.data.annotation.Id;
 
+/**
+ * Note data transfer object class. Contains the information for a note.
+ */
 @Value
 public class NoteDto {
     public NoteDto(Integer noteID, Integer oneToOneID, String note) {

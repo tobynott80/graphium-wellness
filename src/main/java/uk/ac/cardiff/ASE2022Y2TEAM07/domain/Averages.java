@@ -3,6 +3,9 @@ package uk.ac.cardiff.ASE2022Y2TEAM07.domain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+/**
+ * Averages class. Contains the average of the employee's checkins and one to ones.
+ */
 @Data
 public class Averages {
 

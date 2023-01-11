@@ -7,6 +7,9 @@ import uk.ac.cardiff.ASE2022Y2TEAM07.domain.Checkin;
 import java.time.LocalDate;
 import java.util.Optional;
 
+/**
+ * Checkin repository JDBC CRUD interface. Contains the extension methods for Spring Data to modify the database.
+ */
 public interface CheckinRepositorySpringDataJdbc extends CrudRepository<Checkin, Integer> {
 
     Iterable<Checkin> findAll();
