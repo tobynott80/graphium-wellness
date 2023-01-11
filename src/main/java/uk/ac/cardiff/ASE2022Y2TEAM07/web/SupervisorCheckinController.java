@@ -27,9 +27,9 @@ import java.util.*;
 @PreAuthorize("hasRole('ROLE_SUPERVISOR')")
 @RequestMapping("/supervisor")
 public class SupervisorCheckinController {
-    @Autowired
+    @Autowired(required = false)
     private EmployeeRepository employeeRepository;
-    @Autowired
+    @Autowired(required = false)
     private CheckinRepository checkinRepository;
     @Autowired
     private CheckinServiceImpl checkinService;
@@ -49,6 +49,9 @@ public class SupervisorCheckinController {
 
     @GetMapping("")
     public ModelAndView getAllEmployees(Model model){
+        if(getCurrentSupervisor() == null){
+            return new ModelAndView("redirect:/403");
+        }
         Supervisor currentSupervisor = this.getCurrentSupervisor();
 
         List<Averages> relevantEmployees = new ArrayList<>();
