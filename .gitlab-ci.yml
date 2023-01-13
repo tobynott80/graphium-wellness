@@ -33,7 +33,7 @@ build:gradle:
   stage: build
   script:
     - export PROD_PASSWORD="$PROD_PASSWORD"
-    - ./gradlew build'
+    - ./gradlew build
   artifacts:
     name: "$CI_JOB_NAME"
     paths:
