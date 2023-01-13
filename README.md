@@ -10,6 +10,8 @@
 4. Run the generated jar file in the build/libs folder
    * `java -jar build/libs/ase-2022-y2-team-07-{version}-SNAPSHOT.jar --PROD_PASSWORD=cardiff`
    * Note: it is important to include the PROD_PASSWORD environment variable - this provides the password to the database.
+   * this can also be added by setting the environment variable in powershell
+      - `$Env:PROD_PASSWORD = "cardiff"`
 
 ### Default Credentials
 
