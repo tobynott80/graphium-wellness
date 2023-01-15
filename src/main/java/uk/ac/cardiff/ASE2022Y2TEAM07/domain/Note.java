@@ -10,7 +10,7 @@ import org.springframework.data.relational.core.mapping.Table;
  * Note class. Contains the information for a note.
  */
 @Data
-@Table
+@Table("NOTE")
 public class Note {
 
     @Id
