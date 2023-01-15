@@ -3,7 +3,8 @@ image: openjdk:17-jdk
 default:
   tags:
     #- comsc-ci
-    - general-docker
+    #- general-docker
+    - c21048229
 
 stages:
   - assemble
