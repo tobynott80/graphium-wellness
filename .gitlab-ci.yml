@@ -1,4 +1,4 @@
-image: openjdk:17-jdk
+image: ubuntu:22
 
 default:
   tags:
