@@ -1,6 +1,7 @@
 package uk.ac.cardiff.ASE2022Y2TEAM07.domain;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
@@ -21,26 +22,28 @@ import java.time.LocalDate;
  */
 @Data
 @Table("ONE_TO_ONE")
+@AllArgsConstructor
+@NoArgsConstructor
 public class OneToOne {
     @Id
     @Column("ONE_TO_ONE_ID")
-    private int oneToOneId;
+    private Integer oneToOneId;
     private int employeeId;
     private int supervisorId;
     private LocalDate date;
 
 
-    public OneToOne(int employeeId, int supervisorId, LocalDate date) {
-        this.employeeId = employeeId;
-        this.supervisorId = supervisorId;
-        this.date = date;
-    }
-    public OneToOne(int oneToOneId, int employeeId, int supervisorId, LocalDate date) {
-        this.oneToOneId = oneToOneId;
-        this.employeeId = employeeId;
-        this.supervisorId = supervisorId;
-        this.date = date;
-    }
+//    public OneToOne(int employeeId, int supervisorId, LocalDate date) {
+//        this.employeeId = employeeId;
+//        this.supervisorId = supervisorId;
+//        this.date = date;
+//    }
+//    public OneToOne(int oneToOneId, int employeeId, int supervisorId, LocalDate date) {
+//        this.oneToOneId = oneToOneId;
+//        this.employeeId = employeeId;
+//        this.supervisorId = supervisorId;
+//        this.date = date;
+//    }
 
     //Constructor for taking in SQL date format and converting to javaLocalDate
     public OneToOne(int oneToOneId, int employeeId, int supervisorId, Date date) {
@@ -50,10 +53,7 @@ public class OneToOne {
         this.date = date.toLocalDate();
     }
 
-    public OneToOne() {
-    }
-
-    public int getOneToOneId() {
+    public Integer getOneToOneId() {
         return oneToOneId;
     }
 
@@ -69,8 +69,8 @@ public class OneToOne {
         return date;
     }
 
-   public static OneToOne of(int oneToOneId, int employeeId, int supervisorId, LocalDate date) {
-       return new OneToOne(oneToOneId, employeeId, supervisorId, date);
-   }
+//   public static OneToOne of(int oneToOneId, int employeeId, int supervisorId, LocalDate date) {
+//       return new OneToOne(oneToOneId, employeeId, supervisorId, date);
+//   }
 
 }

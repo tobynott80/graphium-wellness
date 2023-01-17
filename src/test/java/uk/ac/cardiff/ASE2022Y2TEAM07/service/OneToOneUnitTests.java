@@ -22,10 +22,10 @@ public class OneToOneUnitTests {
 
     @Test
     public void shouldGetFourOneToOnesFromRepo() throws Exception {
-        OneToOne o1 = new OneToOne(1, 1, LocalDate.now());
-        OneToOne o2 = new OneToOne(2, 2, LocalDate.now());
-        OneToOne o3 = new OneToOne(3, 3, LocalDate.now());
-        OneToOne o4 = new OneToOne(4, 4, LocalDate.now());
+        OneToOne o1 = new OneToOne(null, 1, 1, LocalDate.now());
+        OneToOne o2 = new OneToOne(null, 2, 2, LocalDate.now());
+        OneToOne o3 = new OneToOne(null, 3, 3, LocalDate.now());
+        OneToOne o4 = new OneToOne(null, 4, 4, LocalDate.now());
 
         oneToOneRepository = mock(OneToOneRepositoryImpl.class);
         given(oneToOneRepository.findAll()).willReturn(List.of(o1, o2, o3, o4));

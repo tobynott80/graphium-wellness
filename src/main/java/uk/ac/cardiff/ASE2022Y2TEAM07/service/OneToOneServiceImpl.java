@@ -36,7 +36,7 @@ public class OneToOneServiceImpl implements OneToOneService {
     @Override
     public void save(OneToOneDto oneToOneDto, NoteDto noteDto) {
         System.out.println("Coming from service: " + oneToOneDto.toString());
-        OneToOne newOneToOne = new OneToOne(oneToOneDto.getEmployeeId(), oneToOneDto.getSupervisorId(), oneToOneDto.getDate());
+        OneToOne newOneToOne = new OneToOne(null, oneToOneDto.getEmployeeId(), oneToOneDto.getSupervisorId(), oneToOneDto.getDate());
         oneToOneRepository.save(newOneToOne);
         Integer newOneToOneId = oneToOneRepository.getNewestOneToOneId();
         Note newNote = new Note(newOneToOneId, noteDto.getNote());

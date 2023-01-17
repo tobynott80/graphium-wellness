@@ -52,8 +52,8 @@ public class OneToOneServices {
     @Test
     public void shouldSaveOneToOneAndNoteDetails(){
         //GIVEN
-        OneToOneDto oneToOneDto = new OneToOneDto(0, 1, 1, LocalDate.now());
-        NoteDto noteDto = new NoteDto(null, 5, "This is a note");
+        OneToOneDto oneToOneDto = new OneToOneDto(1, 1, LocalDate.now());
+        NoteDto noteDto = new NoteDto( 5, "This is a note");
         //WHEN
         oneToOneService.save(oneToOneDto, noteDto);
         //THEN
