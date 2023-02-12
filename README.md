@@ -1,8 +1,9 @@
-# ASE-2022-Y2-TEAM-07
+# Graphium Wellbeing Portal
 
-## Team 7 - Graphium Wellbeing Portal
+> No sensitive data is stored in this repository - only fictional employee data
 
 ### Running the Project
+
 
 1. Clone the repository
 2. Run the [init.sql](https://git.cardiff.ac.uk/c21048229/ase-2022-y2-team-07/-/wikis/uploads/f55ab506782c038a06d890d840be8612/init.sql) script in MariaDB to initialise the database credentials and create the schema
@@ -13,7 +14,7 @@
    * this can also be added by setting the environment variable in powershell
       - `$Env:PROD_PASSWORD = "cardiff"`
 
-### Default Credentials
+### Default Test Credentials
 
 #### Employees
 Email : {Name}@gmail.com
@@ -29,10 +30,4 @@ e.g `carl@gmail.com`
 
 Password : 1
 
-### Wiki Links
 
-[Working Agreement](https://git.cardiff.ac.uk/c21048229/ase-2022-y2-team-07/-/wikis/Working-Agreement)
-
-[Team Availability](https://git.cardiff.ac.uk/c21048229/ase-2022-y2-team-07/-/wikis/Team-Availability)
-
-[Niko Niko](https://git.cardiff.ac.uk/c21048229/ase-2022-y2-team-07/-/wikis/Niko-Niko-Calendar)
